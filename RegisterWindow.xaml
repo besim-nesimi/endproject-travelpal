@@ -7,6 +7,105 @@
         mc:Ignorable="d"
         Title="RegisterWindow" Height="450" Width="800">
     <Grid>
+        <Grid Grid.Column="0" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label 
+                x:Name="lblHeader"
+                Grid.Column="0"
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                Content="Please insert your informations. Welcome to TravelPal!"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontSize="24"
+                FontWeight="Bold"/>
+            <Label 
+                x:Name="lblNull"
+                Grid.Column="0"
+                Grid.Row="1"
+                Content="Username"
+                FontSize="16"
+                VerticalAlignment="Center"/>
+            <Label 
+                x:Name="lblNull2"
+                Grid.Column="0"
+                Grid.Row="2"
+                Content="Password"
+                FontSize="16"
+                VerticalAlignment="Center"/>
+            <Label 
+                x:Name="lblNull3"
+                Grid.Column="0"
+                Grid.Row="3"
+                Content="E-mail"
+                FontSize="16"
+                VerticalAlignment="Center"/>
+            <Label 
+                x:Name="lblNull4"
+                Grid.Column="0"
+                Grid.Row="4"
+                Content="Telephone number"
+                FontSize="16"
+                VerticalAlignment="Center"/>
+            <Label 
+                x:Name="lblCountries"
+                Grid.Column="0"
+                Grid.Row="5"
+                Content="Country ?"
+                FontSize="16"
+                VerticalAlignment="Center"/>
+            <TextBox 
+                x:Name="txtNull1"
+                Grid.Column="1"
+                Grid.Row="1"
+                Margin="4"
+                TextChanged="TextBox_TextChanged"/>
+            <TextBox 
+                x:Name="txtNull2"
+                Grid.Column="1"
+                Grid.Row="2"
+                Margin="4"
+                TextChanged="TextBox_TextChanged"/>
+            <TextBox 
+                x:Name="txtNull3"
+                Grid.Column="1"
+                Grid.Row="3"
+                Margin="4"
+                TextChanged="TextBox_TextChanged"/>
+            <TextBox 
+                x:Name="txtNull4"
+                Grid.Column="1"
+                Grid.Row="4"
+                Margin="4"
+                TextChanged="TextBox_TextChanged"/>
+            <ComboBox
+                x:Name="cbCountries"
+                Grid.Column="1"
+                Grid.Row="5"
+                Margin="4"
+                SelectionChanged="cbDepartments_SelectionChanged"/>
+            <Button
+                x:Name="btnAddEmployee"
+                Grid.Column="1"
+                Grid.Row="6"
+                Margin="4"
+                Content="Add Employee" 
+                Click="btnAddEmployee_Click"/>
+        </Grid>
         
     </Grid>
 </Window>
