@@ -19,11 +19,23 @@ public class UserManager
         admin.Password = "password";
 
         users.Add(admin);
-    }
-
+    }    
+    
     public List<User> GetAllUsers()
     {
         return users;
     }
+
+    public void AddUser(string username, string password)
+    {
+        Client client = new();
+
+        client.Username = username;
+        client.Password = password;
+
+        users.Add(client);
+    }
+
+
 }
 

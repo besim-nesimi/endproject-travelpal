@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace slutproj_TravelPal.Models;
 
-public abstract class User : IUser
+public abstract class User
 {    
     public List<Travel> Travels { get; set; }
     public string Username { get; set; }

@@ -31,13 +31,18 @@ namespace slutproj_TravelPal
             InitializeComponent();
         }
 
+        public MainWindow(UserManager userManager)
+        {
+            this.userManager = userManager;
+        }
+
         private void btnSignIn_Click(object sender, RoutedEventArgs e)
         {
             // Kolla om användaren finns
             users = userManager.GetAllUsers();
 
             string username = tbUsername.Text;
-            string password = pbPassword.Password;
+            string password = tbPassword.Text;
 
             bool isFoundUser = false;
 
@@ -69,8 +74,6 @@ namespace slutproj_TravelPal
             {
                 MessageBox.Show("Username or password is Incorrect", "Warning");
             }
-
-            Close();
         }
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
@@ -78,6 +81,8 @@ namespace slutproj_TravelPal
             RegisterWindow registerWindow = new(userManager); // Vi skickar userManager till RegisterWindow
 
             registerWindow.Show();
+
+            Close();
         }
     }
 }

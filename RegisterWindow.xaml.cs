@@ -23,6 +23,7 @@ namespace slutproj_TravelPal
     public partial class RegisterWindow : Window
     {
         private UserManager userManager;
+
         public RegisterWindow(UserManager userManager)
         {
             InitializeComponent();
@@ -54,12 +55,12 @@ namespace slutproj_TravelPal
         private bool CheckInputs()
         {
 
-            // Tre sätt att kolla om samtliga variabler är ifyllda, den som inte är utkommenterad är snyggast
+            // Kollar så att allt är ifyllt.
 
-            string firstName = txtNull1.Text;
-            string password = txtNull2.Text;
-            string email = txtNull3.Text;
-            string phoneNumber = txtNull4.Text;
+            string firstName = txtUsername.Text;
+            string password = txtPassword.Text;
+            string email = txtEmail.Text;
+            string phoneNumber = txtPhoneNumber.Text;
             string country = cbCountries.SelectedItem as string;
 
             string[] fields = new[] { firstName, password, email, phoneNumber, country };
@@ -74,5 +75,33 @@ namespace slutproj_TravelPal
 
             return true;
         }
+
+        // Kollar så att ett land är valt innan knappen blir klickbar.
+        private void cbCountries_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (CheckInputs())
+            {
+                    btnRegister.IsEnabled = true;
+            }
+        }
+
+        // Knappens logik
+        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new(userManager); // ?
+
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
+
+            this.userManager.AddUser(username, password);
+
+            mainWindow.Show();
+
+            Close();
+
+            // Efter att ha registrerat en user skickades jag till ett helt nytt fönster.
+            
+        }
     }
+    
 }

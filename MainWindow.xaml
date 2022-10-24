@@ -69,8 +69,8 @@
             FontStyle="Italic"
             HorizontalAlignment="Center"
             />
-        <PasswordBox
-            x:Name="pbPassword"
+        <TextBox
+            x:Name="tbPassword"
             Grid.Row="6"
             Grid.Column="2"
             Height="30"

@@ -7,123 +7,6 @@
         mc:Ignorable="d"
         Title="TravelWindow" Height="450" Width="800">
     <Grid Margin="10">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-
-        <!-- Left grid -->
-        <Grid Grid.Column="0" Margin="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="2*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="4*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <Label 
-                x:Name="lblUserName"
-                Grid.Column="0"
-                Grid.Row="0"
-                Grid.ColumnSpan="2"
-                Content="signed in username"
-                VerticalAlignment="Center"
-                FontSize="24"
-                FontWeight="Bold"/>
-            <Label 
-                x:Name="lblNull"
-                Grid.Column="0"
-                Grid.Row="1"
-                Content="To be decided"
-                FontSize="16"
-                VerticalAlignment="Center"/>
-            <Label 
-                x:Name="lblNull2"
-                Grid.Column="0"
-                Grid.Row="2"
-                Content="To be decided"
-                FontSize="16"
-                VerticalAlignment="Center"/>
-            <Label 
-                x:Name="lblNull3"
-                Grid.Column="0"
-                Grid.Row="3"
-                Content="To be decided"
-                FontSize="16"
-                VerticalAlignment="Center"/>
-            <Label 
-                x:Name="lblNull4"
-                Grid.Column="0"
-                Grid.Row="4"
-                Content="To be decided"
-                FontSize="16"
-                VerticalAlignment="Center"/>
-            <Label 
-                x:Name="lblPacklista"
-                Grid.Column="0"
-                Grid.Row="5"
-                Content="Packlista ?"
-                FontSize="16"
-                VerticalAlignment="Center"/>
-            <Label 
-                x:Name="lblCountries"
-                Grid.Column="0"
-                Grid.Row="6"
-                Content="Country ?"
-                FontSize="16"
-                VerticalAlignment="Center"/>
-            <TextBox 
-                x:Name="txtNull1"
-                Grid.Column="1"
-                Grid.Row="1"
-                Margin="4"
-                />
-            <TextBox 
-                x:Name="txtNull2"
-                Grid.Column="1"
-                Grid.Row="2"
-                Margin="4"
-                />
-            <TextBox 
-                x:Name="txtNull3"
-                Grid.Column="1"
-                Grid.Row="3"
-                Margin="4"/>
-            <TextBox 
-                x:Name="txtNull4"
-                Grid.Column="1"
-                Grid.Row="4"
-                Margin="4"/>
-            <TextBox 
-                x:Name="txtNull5"
-                Grid.Column="1"
-                Grid.Row="5"
-                Margin="4"
-                TextWrapping="Wrap"/>
-            <ComboBox
-                x:Name="cbCountries"
-                Grid.Column="1"
-                Grid.Row="6"
-                Margin="4"
-                />
-            <Button
-                x:Name="btnAddEmployee"
-                Grid.Column="1"
-                Grid.Row="7"
-                Margin="4"
-                Content="Add Employee" />
-        </Grid>
-
-
-        <!-- Right Grid -->
         <Grid Grid.Column="1" Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -133,7 +16,6 @@
                 <RowDefinition Height="5*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-
             <ListView
                 x:Name="lvEmployees"
                 Grid.Column="0"
@@ -145,7 +27,7 @@
                 Grid.Row="1"
                 Content="Show Details"
                 Margin="20" />
-                <Button 
+            <Button 
                 x:Name="btnRemove"
                 Grid.Column="1"
                 Grid.Row="1"
