@@ -1,4 +1,6 @@
-﻿using slutproj_TravelPal.Models;
+﻿using slutproj_TravelPal.Enums;
+using slutproj_TravelPal.Interfaces;
+using slutproj_TravelPal.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,33 +9,34 @@ using System.Threading.Tasks;
 
 namespace slutproj_TravelPal.Managers;
 
-public class UserManager : User
+public class UserManager
 {
-    public List<User> users = new(); // Alla våra users i travelapp, clienter och admins
+    
+    private List<IUser> allUsers = new(); // Alla våra users i travelapp, clienter och admins
+    private IUser signedInUser;
 
-    public UserManager()
+    public void DefaultUsers()
     {
-        Admin admin = new();
+        Admin admin = new("admin", "password");
 
-        admin.Username = "admin";
-        admin.Password = "password";
+        User defaultUser = new("gandalf", "password");
 
-        users.Add(admin);
+        allUsers.Add(admin);
+        allUsers.Add(defaultUser);
     }    
     
-    public List<User> GetAllUsers()
+    public List<IUser> GetAllUsers()
     {
-        return users;
+        return allUsers;
     }
 
     public void AddUser(string username, string password)
     {
-        Client client = new(username, password);
+        User user = new(username, password);
 
-        client.Username = username;
-        client.Password = password;
+        allUsers.Add(user);
 
-        users.Add(client);
+
     }
 
 

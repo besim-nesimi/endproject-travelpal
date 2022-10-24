@@ -1,4 +1,5 @@
-﻿using slutproj_TravelPal.Managers;
+﻿using slutproj_TravelPal.Interfaces;
+using slutproj_TravelPal.Managers;
 using slutproj_TravelPal.Models;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ public partial class TravelWindow : Window
 {
     private UserManager userManager;
     private User user;
+    private IUser user1;
 
     public TravelWindow(UserManager userManager, User user)
     {
@@ -32,5 +34,11 @@ public partial class TravelWindow : Window
         this.user = user;
 
         // Vid knapptryck User details ska vi öppna upp UserDetailsWindow.
+    }
+
+    public TravelWindow(UserManager userManager, IUser user1)
+    {
+        this.userManager = userManager;
+        this.user1 = user1;
     }
 }

@@ -24,46 +24,42 @@ namespace slutproj_TravelPal
     public partial class MainWindow : Window
     {
 
-        private List<User> users = new(); // Här har vi hela listan med users, och vi hämtar den från User klassen
+        private List<IUser> allUsers = new(); // Här har vi hela listan med users, och vi hämtar den från User klassen
         private UserManager userManager = new(); // UserManager håller alla våra users, den har listan med clients och admins. 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        public MainWindow(UserManager userManager)
-        {
-            this.userManager = userManager;
-        }
-
         private void btnSignIn_Click(object sender, RoutedEventArgs e)
         {
             // Kolla om användaren finns
-            users = userManager.GetAllUsers();
+            allUsers = userManager.GetAllUsers();
 
             string username = tbUsername.Text;
             string password = tbPassword.Text;
 
             bool isFoundUser = false;
 
-            foreach (User user in users)
+            foreach (IUser allUser in allUsers)
             {
-                if (user.Username == username && user.Password == password)
+
+                if (allUser.Username == username && allUser.Password == password)
                 {
                     // logga in
                     isFoundUser = true;
 
 
-                    if (user is Client)
+                    if (allUser is User)
                     {
-                        TravelWindow travelWindow = new(userManager, user); // vi skickar userManager till acountswindow
+                        TravelWindow travelWindow = new(userManager, allUser); // vi skickar userManager till travelwindow
 
                         travelWindow.Show();
 
                     }
-                    else if (user is Admin)
+                    else if (allUser is Admin)
                     {
-                        AdminsWindow adminsWindow = new(userManager, user);
+                        AdminsWindow adminsWindow = new(userManager, allUser);
 
                         adminsWindow.Show();
                     }

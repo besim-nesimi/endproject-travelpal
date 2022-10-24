@@ -1,4 +1,5 @@
-﻿using slutproj_TravelPal.Managers;
+﻿using slutproj_TravelPal.Interfaces;
+using slutproj_TravelPal.Managers;
 using slutproj_TravelPal.Models;
 using System;
 using System.Collections.Generic;
@@ -22,29 +23,30 @@ namespace slutproj_TravelPal;
 public partial class AdminsWindow : Window
 {
 
-    private List<Client> clients = new();
     private UserManager userManager;
+    private IUser user;
 
-    public AdminsWindow(UserManager userManager, User user)
+    public AdminsWindow(UserManager userManager, IUser user)
     {
         InitializeComponent();
 
         this.userManager = userManager;
+        this.user = user;
 
         FilterClients();
     }
 
     private void FilterClients()
     {
-        List<User> users = new();
+        List<IUser> allUsers = new();
 
-        users = this.userManager.GetAllUsers();
+        allUsers = userManager.GetAllUsers();
 
-        foreach (User user in users)
+        foreach (IUser user in allUsers)
         {
-            if (user is Client)
+            if (user is User)
             {
-                clients.Add(user as Client);
+                allUsers.Add(user as User);
             }
         }
     }
