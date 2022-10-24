@@ -5,8 +5,92 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:slutproj_TravelPal"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+        Title="MainWindow" Height="450" Width="286" ResizeMode="NoResize">
+    <Grid Background="MintCream">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Label 
+            x:Name="lblHeader"
+            Content="TravelPal"
+            Grid.Row="1"
+            Grid.Column="2"
+            Grid.ColumnSpan="5"
+            FontSize="30"
+            FontFamily="Arial"
+            FontWeight="Bold"
+            FontStyle="Italic"
+            HorizontalAlignment="Center" Width="165" RenderTransformOrigin="0.563,0.461"
+            />
+        <Label
+            x:Name="lblUserName"
+            Content="Username"
+            Grid.Row="3"
+            Grid.Column="2"
+            FontSize="20"
+            FontWeight="Normal"
+            FontStyle="Italic"
+            HorizontalAlignment="Center"/>
+        <TextBox
+            x:Name="tbUsername"
+            Grid.Row="4"
+            Grid.Column="2"
+            Height="30"
+            Width="200"
+            Margin="10"/>
+        <Label
+            x:Name="lblPassWord"
+            Content="Password"
+            Grid.Row="5"
+            Grid.Column="2"
+            FontSize="20"
+            FontWeight="Normal"
+            FontStyle="Italic"
+            HorizontalAlignment="Center"
+            />
+        <PasswordBox
+            x:Name="pbPassword"
+            Grid.Row="6"
+            Grid.Column="2"
+            Height="30"
+            Width="200"
+            Margin="10"/>
+        <Button
+            x:Name="btnSignIn"
+            Content="Sign in"
+            Grid.Row="8"
+            Grid.Column="2"
+            Width="60"
+            HorizontalAlignment="Right" Margin="10" Click="btnSignIn_Click"
+            />
+        <Button
+            x:Name="btnRegister"
+            Content="Register"
+            Grid.Row="8"
+            Grid.Column="2"
+            Width="60"
+            HorizontalAlignment="Left"
+            Margin="10" Click="btnRegister_Click"/>
     </Grid>
 </Window>

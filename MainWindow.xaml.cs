@@ -25,7 +25,7 @@ namespace slutproj_TravelPal
     {
 
         private List<User> users = new(); // Här har vi hela listan med users, och vi hämtar den från User klassen
-        private UserManager userManager = new(); // UserManager håller alla våra users, den har listan med allting. 
+        private UserManager userManager = new(); // UserManager håller alla våra users, den har listan med clients och admins. 
         public MainWindow()
         {
             InitializeComponent();
@@ -51,9 +51,10 @@ namespace slutproj_TravelPal
 
                     if (user is Client)
                     {
-                        AccountsWindow accountsWindow = new(userManager, user); // vi skickar userManager till acountswindow
+                        TravelWindow travelWindow = new(userManager, user); // vi skickar userManager till acountswindow
 
-                        accountsWindow.Show();
+                        travelWindow.Show();
+
                     }
                     else if (user is Admin)
                     {
@@ -68,6 +69,8 @@ namespace slutproj_TravelPal
             {
                 MessageBox.Show("Username or password is Incorrect", "Warning");
             }
+
+            Close();
         }
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)

@@ -85,25 +85,23 @@
                 Grid.Column="1"
                 Grid.Row="1"
                 Margin="4"
-                TextChanged="TextBox_TextChanged"/>
+                />
             <TextBox 
                 x:Name="txtNull2"
                 Grid.Column="1"
                 Grid.Row="2"
                 Margin="4"
-                TextChanged="TextBox_TextChanged"/>
+                />
             <TextBox 
                 x:Name="txtNull3"
                 Grid.Column="1"
                 Grid.Row="3"
-                Margin="4"
-                TextChanged="TextBox_TextChanged"/>
+                Margin="4"/>
             <TextBox 
                 x:Name="txtNull4"
                 Grid.Column="1"
                 Grid.Row="4"
-                Margin="4"
-                TextChanged="TextBox_TextChanged"/>
+                Margin="4"/>
             <TextBox 
                 x:Name="txtNull5"
                 Grid.Column="1"
@@ -115,14 +113,13 @@
                 Grid.Column="1"
                 Grid.Row="6"
                 Margin="4"
-                SelectionChanged="cbDepartments_SelectionChanged"/>
+                />
             <Button
                 x:Name="btnAddEmployee"
                 Grid.Column="1"
                 Grid.Row="7"
                 Margin="4"
-                Content="Add Employee" 
-                Click="btnAddEmployee_Click"/>
+                Content="Add Employee" />
         </Grid>
 
 
@@ -141,19 +138,19 @@
                 x:Name="lvEmployees"
                 Grid.Column="0"
                 Grid.Row="0"
-                Grid.ColumnSpan="2" SelectionChanged="lvEmployees_SelectionChanged"/>
+                Grid.ColumnSpan="2" />
             <Button
                 x:Name="btnShowDetails"
                 Grid.Column="0"
                 Grid.Row="1"
                 Content="Show Details"
-                Margin="20" Click="btnShowDetails_Click"/>
-            <Button 
+                Margin="20" />
+                <Button 
                 x:Name="btnRemove"
                 Grid.Column="1"
                 Grid.Row="1"
                 Content="Remove"
-                Margin="20" Click="btnRemove_Click"/>
+                Margin="20"/>
         </Grid>
     </Grid>
 </Window>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using slutproj_TravelPal.Managers;
+using slutproj_TravelPal.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,16 +14,38 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace slutproj_TravelPal
+namespace slutproj_TravelPal;
+
+/// <summary>
+/// Interaction logic for AdminsWindow.xaml
+/// </summary>
+public partial class AdminsWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for AdminsWindow.xaml
-    /// </summary>
-    public partial class AdminsWindow : Window
+
+    private List<Client> clients = new();
+    private UserManager userManager;
+
+    public AdminsWindow(UserManager userManager, User user)
     {
-        public AdminsWindow()
+        InitializeComponent();
+
+        this.userManager = userManager;
+
+        FilterClients();
+    }
+
+    private void FilterClients()
+    {
+        List<User> users = new();
+
+        users = this.userManager.GetAllUsers();
+
+        foreach (User user in users)
         {
-            InitializeComponent();
+            if (user is Client)
+            {
+                clients.Add(user as Client);
+            }
         }
     }
 }

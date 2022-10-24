@@ -12,16 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace slutproj_TravelPal
+namespace slutproj_TravelPal;
+
+/// <summary>
+/// Interaction logic for TravelDetailsWindow.xaml
+/// </summary>
+public partial class TravelDetailsWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for TravelDetailsWindow.xaml
-    /// </summary>
-    public partial class TravelDetailsWindow : Window
+    public TravelDetailsWindow()
     {
-        public TravelDetailsWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+
+        // vi ska kunna se information om resan.
     }
 }

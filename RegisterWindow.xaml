@@ -73,38 +73,37 @@
                 Grid.Column="1"
                 Grid.Row="1"
                 Margin="4"
-                TextChanged="TextBox_TextChanged"/>
+                />
             <TextBox 
                 x:Name="txtNull2"
                 Grid.Column="1"
                 Grid.Row="2"
                 Margin="4"
-                TextChanged="TextBox_TextChanged"/>
+                />
             <TextBox 
                 x:Name="txtNull3"
                 Grid.Column="1"
                 Grid.Row="3"
                 Margin="4"
-                TextChanged="TextBox_TextChanged"/>
+                />
             <TextBox 
                 x:Name="txtNull4"
                 Grid.Column="1"
                 Grid.Row="4"
                 Margin="4"
-                TextChanged="TextBox_TextChanged"/>
+                />
             <ComboBox
                 x:Name="cbCountries"
                 Grid.Column="1"
                 Grid.Row="5"
                 Margin="4"
-                SelectionChanged="cbDepartments_SelectionChanged"/>
+                />
             <Button
-                x:Name="btnAddEmployee"
+                x:Name="btnRegister"
                 Grid.Column="1"
                 Grid.Row="6"
                 Margin="4"
-                Content="Add Employee" 
-                Click="btnAddEmployee_Click"/>
+                Content="Register"/>
         </Grid>
         
     </Grid>
