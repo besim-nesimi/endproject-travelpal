@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace slutproj_TravelPal.Models
+namespace slutproj_TravelPal.Enums
 {
-    internal class Admin : User
+    internal class Countries
     {
     }
 }

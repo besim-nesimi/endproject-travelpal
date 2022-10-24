@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace slutproj_TravelPal.Models
+namespace slutproj_TravelPal.Interfaces
 {
-    internal class Admin : User
+    internal interface IUser
     {
     }
 }

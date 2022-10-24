@@ -1,4 +1,7 @@
-﻿using System;
+﻿using slutproj_TravelPal.Interfaces;
+using slutproj_TravelPal.Managers;
+using slutproj_TravelPal.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +23,58 @@ namespace slutproj_TravelPal
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private List<User> users = new(); // Här har vi hela listan med users, och vi hämtar den från User klassen
+        private UserManager userManager = new(); // UserManager håller alla våra users, den har listan med allting. 
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnSignIn_Click(object sender, RoutedEventArgs e)
+        {
+            // Kolla om användaren finns
+            users = userManager.GetAllUsers();
+
+            string username = tbUsername.Text;
+            string password = pbPassword.Password;
+
+            bool isFoundUser = false;
+
+            foreach (User user in users)
+            {
+                if (user.Username == username && user.Password == password)
+                {
+                    // logga in
+                    isFoundUser = true;
+
+
+                    if (user is Client)
+                    {
+                        AccountsWindow accountsWindow = new(userManager, user); // vi skickar userManager till acountswindow
+
+                        accountsWindow.Show();
+                    }
+                    else if (user is Admin)
+                    {
+                        AdminsWindow adminsWindow = new(userManager, user);
+
+                        adminsWindow.Show();
+                    }
+                }
+
+            }
+            if (!isFoundUser)
+            {
+                MessageBox.Show("Username or password is Incorrect", "Warning");
+            }
+        }
+
+        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterWindow registerWindow = new(userManager); // Vi skickar userManager till RegisterWindow
+
+            registerWindow.Show();
         }
     }
 }
