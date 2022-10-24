@@ -1,8 +1,11 @@
 ﻿namespace slutproj_TravelPal.Models
 {
-    internal class Client : User
+    public class Client : User
     {
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public Client(string username, string password)
+        {
+            Username = username;
+            Password = password;
+        }
     }
 }

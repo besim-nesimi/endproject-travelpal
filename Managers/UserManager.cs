@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace slutproj_TravelPal.Managers;
 
-public class UserManager
+public class UserManager : User
 {
-    private List<User> users = new(); // Alla våra users i travelapp, clienter och admins
+    public List<User> users = new(); // Alla våra users i travelapp, clienter och admins
 
     public UserManager()
     {
@@ -28,7 +28,7 @@ public class UserManager
 
     public void AddUser(string username, string password)
     {
-        Client client = new();
+        Client client = new(username, password);
 
         client.Username = username;
         client.Password = password;

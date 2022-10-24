@@ -88,13 +88,14 @@ namespace slutproj_TravelPal
         // Knappens logik
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new(userManager); // ?
+             // ?
 
             string username = txtUsername.Text;
             string password = txtPassword.Text;
 
             this.userManager.AddUser(username, password);
-
+            
+            MainWindow mainWindow = new();
             mainWindow.Show();
 
             Close();

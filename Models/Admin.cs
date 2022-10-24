@@ -1,4 +1,5 @@
-﻿using slutproj_TravelPal.Interfaces;
+﻿using slutproj_TravelPal.Enums;
+using slutproj_TravelPal.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,17 @@ using System.Threading.Tasks;
 
 namespace slutproj_TravelPal.Models
 {
-    internal class Admin : User
+    public class Admin : IUser
     {
         public string Username { get; set; }
         public string Password { get; set; }
+        public Countries Location { get; set; }
+        public bool isAdmin { get; set; } = true;
+        public Admin(string userName, string passWord, Countries location)
+        {
+            Username = userName;
+            Password = passWord;
+            Location = location;
+        }
     }
 }
