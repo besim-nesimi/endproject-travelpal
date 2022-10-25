@@ -1,4 +1,5 @@
 ﻿using slutproj_TravelPal.Enums;
+using slutproj_TravelPal.Interfaces;
 using slutproj_TravelPal.Managers;
 using slutproj_TravelPal.Models;
 using System;
@@ -29,23 +30,21 @@ namespace slutproj_TravelPal
             InitializeComponent();
 
             this.userManager = userManager;
-
-            // Get all the names of the countries enum
-            string[] countries = Enum.GetNames(typeof(Countries)); // Hämtar vår enum Countries och lägger det i en array
-
-            // Put the countries array in the combobox
-            cbCountries.ItemsSource = countries; // Vi sätter ComboBoxens innehåll till vår array
+            
+            // Hämtar vår enum Countries och lägger det i en array
+            string[] countries = Enum.GetNames(typeof(Countries)); 
+            
+            // Vi sätter ComboBoxens innehåll till vår enum countries
+            cbCountries.ItemsSource = countries; 
 
             // Enable & disable buttons
             // När appen startar ska knapparna vara avstängd
             // Detta gör att våra knappar Show Details och Remove är utgråade.
-            // Disable buttons
             btnRegister.IsEnabled = false;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
             if (CheckInputs())
             {
                 btnRegister.IsEnabled = true;
@@ -55,15 +54,14 @@ namespace slutproj_TravelPal
         private bool CheckInputs()
         {
 
-            // Kollar så att allt är ifyllt.
-
-            string firstName = txtUsername.Text;
+            // Kollar så att allt är ifyllt
+            string username = txtUsername.Text;
             string password = txtPassword.Text;
             string email = txtEmail.Text;
             string phoneNumber = txtPhoneNumber.Text;
             string country = cbCountries.SelectedItem as string;
 
-            string[] fields = new[] { firstName, password, email, phoneNumber, country };
+            string[] fields = new[] { username, password, email, phoneNumber, country };
 
             foreach (string field in fields)
             {
@@ -88,7 +86,6 @@ namespace slutproj_TravelPal
         // Knappens logik
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-             // ?
 
             string username = txtUsername.Text;
             string password = txtPassword.Text;
@@ -100,7 +97,7 @@ namespace slutproj_TravelPal
 
             Close();
 
-            // Efter att ha registrerat en user skickades jag till ett helt nytt fönster.
+            // Efter att ha registrerat en user skickades jag till ett helt nytt o annat fönster.
             
         }
     }

@@ -22,23 +22,18 @@ namespace slutproj_TravelPal;
 /// </summary>
 public partial class TravelWindow : Window
 {
-    private UserManager userManager;
-    private User user;
-    private IUser user1;
 
-    public TravelWindow(UserManager userManager, User user)
+    public TravelWindow(UserManager userManager, IUser user, List<IUser> allUsers)
     {
         InitializeComponent();
-        
-        this.userManager = userManager;
-        this.user = user;
-
+       
         // Vid knapptryck User details ska vi öppna upp UserDetailsWindow.
     }
 
-    public TravelWindow(UserManager userManager, IUser user1)
+    private void btnUserDetails_Click(object sender, RoutedEventArgs e)
     {
-        this.userManager = userManager;
-        this.user1 = user1;
+        UserDetailsWindow userDetailsWindow = new();
+
+        userDetailsWindow.Show();
     }
 }

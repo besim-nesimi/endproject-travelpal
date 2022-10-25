@@ -21,9 +21,9 @@ public class User : IUser
     public List<Travel> Travels { get; set; }
 
 
-    public User(string userName, string password)
+    public User(string userName, string passWord)
     {
         Username = userName;
-        Password = password;
+        Password = passWord;
     }
 }

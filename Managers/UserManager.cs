@@ -19,13 +19,21 @@ public class UserManager
     {
         Admin admin = new("admin", "password");
 
-        User defaultUser = new("gandalf", "password");
+        admin.Username = "admin";
+        admin.Password = "password";
+        admin.isAdmin = true;
+
+        User defaultUser = new("gandalf", "password"); // skapade en NY defaultUser gandalf med bara constructor, funkade ej
+
+        defaultUser.Username = "gandalf"; // Settade props username och password, testar nu om min mainwindow förstår / hittar. 2022-10-25
+        defaultUser.Password = "password"; // funkar fortfarande inte 2022-10-25, så det har inte med propsen att göra.
 
         allUsers.Add(admin);
         allUsers.Add(defaultUser);
     }    
     
-    public List<IUser> GetAllUsers()
+    public List<IUser> GetAllUsers() // här står det Public List<IUser> GetAllUsers() - Kan det vara här det failar?
+                                     // Möjligen att själva metoden är fel. Vi testar med att ta 
     {
         return allUsers;
     }
@@ -35,7 +43,6 @@ public class UserManager
         User user = new(username, password);
 
         allUsers.Add(user);
-
 
     }
 

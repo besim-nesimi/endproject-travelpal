@@ -31,37 +31,46 @@ namespace slutproj_TravelPal
             InitializeComponent();
         }
 
+        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterWindow registerWindow = new(userManager); // Vi skickar userManager till RegisterWindow
+
+            registerWindow.Show();
+
+            Close();
+        }
+
         private void btnSignIn_Click(object sender, RoutedEventArgs e)
         {
             // Kolla om användaren finns
-            allUsers = userManager.GetAllUsers();
+            allUsers = userManager.GetAllUsers(); // funkar denna ens?
 
             string username = tbUsername.Text;
             string password = tbPassword.Text;
 
             bool isFoundUser = false;
 
-            foreach (IUser allUser in allUsers)
+            foreach (IUser thisUser in allUsers)
             {
 
-                if (allUser.Username == username && allUser.Password == password)
+                if (thisUser.Username == username && thisUser.Password == password)
                 {
                     // logga in
                     isFoundUser = true;
 
 
-                    if (allUser is User)
+                    if (thisUser is User)
                     {
-                        TravelWindow travelWindow = new(userManager, allUser); // vi skickar userManager till travelwindow
+                        TravelWindow travelWindow = new(userManager, thisUser, allUsers); // vi skickar userManager till travelwindow
 
                         travelWindow.Show();
 
                     }
-                    else if (allUser is Admin)
+                    else if (thisUser is Admin)
                     {
-                        AdminsWindow adminsWindow = new(userManager, allUser);
+                        TravelWindow travelWindow = new(userManager, thisUser, allUsers);
 
-                        adminsWindow.Show();
+                        travelWindow.Show();
                     }
                 }
 
@@ -70,15 +79,6 @@ namespace slutproj_TravelPal
             {
                 MessageBox.Show("Username or password is Incorrect", "Warning");
             }
-        }
-
-        private void btnRegister_Click(object sender, RoutedEventArgs e)
-        {
-            RegisterWindow registerWindow = new(userManager); // Vi skickar userManager till RegisterWindow
-
-            registerWindow.Show();
-
-            Close();
         }
     }
 }

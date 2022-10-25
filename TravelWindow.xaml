@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:slutproj_TravelPal"
         mc:Ignorable="d"
-        Title="TravelWindow" Height="450" Width="800">
+        Title="TravelWindow" Height="450" Width="800" Foreground="MediumSlateBlue" Background="MediumSlateBlue">
     <Grid Margin="10">
         <Grid Grid.Column="1" Margin="10">
             <Grid.ColumnDefinitions>
@@ -15,7 +15,18 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="5*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+            <Label
+                x:Name="lblUsernameDisplay"
+                Grid.Column="0"
+                Grid.Row="2"
+                Content="Gandalf"
+                Foreground="MintCream"
+                FontStyle="Italic"
+                FontWeight="Bold"
+                FontSize="32"
+                HorizontalContentAlignment="Center"/>
             <ListView
                 x:Name="lvEmployees"
                 Grid.Column="0"
@@ -25,14 +36,22 @@
                 x:Name="btnShowDetails"
                 Grid.Column="0"
                 Grid.Row="1"
-                Content="Show Details"
-                Margin="20" />
+                Content="Show Travel Details"
+                Margin="15" />
             <Button 
-                x:Name="btnRemove"
+                x:Name="btnAddTravel"
                 Grid.Column="1"
                 Grid.Row="1"
-                Content="Remove"
-                Margin="20"/>
+                Content="Add Travel"
+                Margin="15"/>
+            <Button 
+                x:Name="btnUserDetails"
+                Grid.Column="1"
+                Grid.Row="2"
+                Content="Show User Details"
+                Margin="15" 
+                Click="btnUserDetails_Click"
+                />
         </Grid>
     </Grid>
 </Window>
