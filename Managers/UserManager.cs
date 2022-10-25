@@ -19,10 +19,6 @@ public class UserManager
     {
         Admin admin = new("admin", "password");
 
-        admin.Username = "admin";
-        admin.Password = "password";
-        admin.isAdmin = true;
-
         User defaultUser = new("gandalf", "password"); // skapade en NY defaultUser gandalf med bara constructor, funkade ej
 
         defaultUser.Username = "gandalf"; // Settade props username och password, testar nu om min mainwindow förstår / hittar. 2022-10-25
@@ -33,18 +29,35 @@ public class UserManager
     }    
     
     public List<IUser> GetAllUsers() // här står det Public List<IUser> GetAllUsers() - Kan det vara här det failar?
-                                     // Möjligen att själva metoden är fel. Vi testar med att ta 
+                                     
     {
         return allUsers;
     }
 
-    public void AddUser(string username, string password)
+    public bool AddUser(string username, string password) // Ej färdig - Metoden avser lägga till users i allUsers.
     {
         User user = new(username, password);
-
         allUsers.Add(user);
+        return true;
 
     }
+
+    public bool UpdateUsername(IUser thisUser, string username) // Ej färdig - Metoden avser att låta user ändra username.
+    {
+        return false;
+    }
+
+    private bool ValidateUsername() // Ej färdig - Metoden ska validera ändring av username.
+    {
+        return false;
+    }
+
+    public bool SignedInUser(string username, string password) // Ej färdig
+    {
+        return true;
+    }
+
+
 
 
 }

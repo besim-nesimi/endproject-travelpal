@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:slutproj_TravelPal"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="286" ResizeMode="NoResize">
-    <Grid Background="MintCream">
+        Title="MainWindow" Height="450" Width="286" ResizeMode="NoResize" Background="MediumSlateBlue">
+    <Grid Background="MintCream" Margin="0,0,0,-31">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="*"/>
@@ -41,6 +41,7 @@
             FontFamily="Arial"
             FontWeight="Bold"
             FontStyle="Italic"
+            Foreground="MediumSlateBlue"
             HorizontalAlignment="Center" Width="165" RenderTransformOrigin="0.563,0.461"
             />
         <Label
@@ -51,14 +52,16 @@
             FontSize="20"
             FontWeight="Normal"
             FontStyle="Italic"
-            HorizontalAlignment="Center"/>
+            HorizontalAlignment="Center"
+            Foreground="MediumSlateBlue"/>
         <TextBox
             x:Name="tbUsername"
             Grid.Row="4"
             Grid.Column="2"
             Height="30"
             Width="200"
-            Margin="10"/>
+            Margin="10"
+            HorizontalContentAlignment="Center"/>
         <Label
             x:Name="lblPassWord"
             Content="Password"
@@ -68,6 +71,7 @@
             FontWeight="Normal"
             FontStyle="Italic"
             HorizontalAlignment="Center"
+            Foreground="MediumSlateBlue"
             />
         <TextBox
             x:Name="tbPassword"
@@ -75,7 +79,8 @@
             Grid.Column="2"
             Height="30"
             Width="200"
-            Margin="10"/>
+            Margin="10"
+            HorizontalContentAlignment="Center"/>
         <Button
             x:Name="btnSignIn"
             Content="Sign in"
