@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using slutproj_TravelPal.Enums;
 
 namespace slutproj_TravelPal
 {
@@ -22,6 +23,23 @@ namespace slutproj_TravelPal
         public AddTravelWindow()
         {
             InitializeComponent();
+
+            // Hämtar vår enum Countries och lägger det i en array
+            string[] countries = Enum.GetNames(typeof(Countries));
+
+            // Vi sätter ComboBoxens innehåll till vår enum countries
+            cbCountries.ItemsSource = countries;
+
+
+            // Hämtar vår enum typeOfTrips och lägger det i en array
+            string[] typeOfTrips = Enum.GetNames(typeof(TripTypes));
+
+            // Vi sätter ComboBoxens innehåll till vår enum tripTypes
+            cbTypeofTrip.ItemsSource = typeOfTrips;
+
+            string travellers = tbTravellers.Text;
+
+           /* int numOfTravellers = Convert.ToInt32(travellers); */// Funkar ej wtF? Exception Handling ? System.FormatException ?
         }
     }
 }

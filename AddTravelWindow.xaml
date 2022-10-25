@@ -55,13 +55,13 @@
                 FontSize="16"
                 VerticalAlignment="Center"/>
             <ComboBox 
-                x:Name="txtUsername"
+                x:Name="cbTypeofTrip"
                 Grid.Column="1"
                 Grid.Row="1"
                 Margin="4"
                 />
             <TextBox 
-                x:Name="txtPassword"
+                x:Name="tbTravellers"
                 Grid.Column="1"
                 Grid.Row="2"
                 Margin="4"

@@ -43,7 +43,7 @@
                 Grid.Column="1"
                 Grid.Row="1"
                 Content="Add Travel"
-                Margin="15"/>
+                Margin="15" Click="btnAddTravel_Click"/>
             <Button 
                 x:Name="btnUserDetails"
                 Grid.Column="1"

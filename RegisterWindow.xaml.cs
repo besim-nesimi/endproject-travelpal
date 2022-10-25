@@ -23,13 +23,11 @@ namespace slutproj_TravelPal
     /// </summary>
     public partial class RegisterWindow : Window
     {
-        private UserManager userManager;
+        
 
-        public RegisterWindow(UserManager userManager)
+        public RegisterWindow(UserManager userManager, List<IUser> allUsers)
         {
             InitializeComponent();
-
-            this.userManager = userManager;
             
             // Hämtar vår enum Countries och lägger det i en array
             string[] countries = Enum.GetNames(typeof(Countries)); 
@@ -87,12 +85,16 @@ namespace slutproj_TravelPal
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
 
-            MainWindow mainWindow = new(userManager);
+
+
+            MainWindow mainWindow = new(/*userManager*/); // Har endast skickat userManager genom constructorn till RegisterWindow
+                                                      // Vill skicka tillbaka den till MainWindow så att man nu kan logga in med ny användare. Har dock red squigg. Why?
 
             string username = txtUsername.Text;
             string password = txtPassword.Text;
+            // Lägg till country / enum
 
-            this.userManager.AddUser(username, password);
+            //this./*userManager*/.AddUser(username, password);
             
             mainWindow.Show();
 

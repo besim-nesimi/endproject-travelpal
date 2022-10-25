@@ -40,7 +40,7 @@ namespace slutproj_TravelPal
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-            RegisterWindow registerWindow = new(userManager); // Vi skickar userManager till RegisterWindow
+            RegisterWindow registerWindow = new(userManager, allUsers); // Vi skickar userManager till RegisterWindow
 
             registerWindow.Show();
 

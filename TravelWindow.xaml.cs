@@ -36,4 +36,11 @@ public partial class TravelWindow : Window
 
         userDetailsWindow.Show();
     }
+
+    private void btnAddTravel_Click(object sender, RoutedEventArgs e)
+    {
+        AddTravelWindow addTravelWindow = new();
+
+        addTravelWindow.Show();
+    }
 }
