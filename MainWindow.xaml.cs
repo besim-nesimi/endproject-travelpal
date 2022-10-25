@@ -29,6 +29,13 @@ namespace slutproj_TravelPal
         public MainWindow()
         {
             InitializeComponent();
+
+            userManager.DefaultUsers();
+        }
+
+        public MainWindow(UserManager userManager)
+        {
+            this.userManager = userManager;
         }
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
