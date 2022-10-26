@@ -5,8 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:slutproj_TravelPal"
         mc:Ignorable="d"
-        Title="UserDetailsWindow" Height="450" Width="800">
+        Title="UserDetailsWindow" Height="450" Width="500">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Label
+            Grid.Column="2"
+            Grid.Row="2"
+            FontSize="30"
+            Content="New Username"/>
+        <Label
+            Grid.Column="2"
+            Grid.Row="3"
+            FontSize="30"
+            Content="Confirm Username"/>
+        <Label
+            Grid.Column="2"
+            Grid.Row="4"
+            FontSize="30"
+            Content="New Password"/>
+        <Label
+            Grid.Column="2"
+            Grid.Row="5"
+            FontSize="30"
+            Content="Confirm Password"/>
     </Grid>
 </Window>

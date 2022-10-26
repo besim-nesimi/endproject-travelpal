@@ -18,12 +18,13 @@ public class User : IUser
     public Countries Location { get; set; }
     public bool isAdmin { get; set; }
 
-    public List<Travel> Travels { get; set; }
+    public List<Travel> Travels { get; set; } = new();
 
 
-    public User(string userName, string passWord)
+    public User(string userName, string passWord, Countries country)
     {
         Username = userName;
         Password = passWord;
+        Location = country;
     }
 }

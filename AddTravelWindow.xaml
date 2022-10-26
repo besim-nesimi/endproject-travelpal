@@ -76,8 +76,8 @@
                 x:Name="btnAddTravel"
                 Grid.Column="1"
                 Grid.Row="6"
-                Margin="4"
-                Content="Add Travel" />
+                Margin="4,4,4,0"
+                Content="Add Travel" Height="27" VerticalAlignment="Top" Click="btnAddTravel_Click" />
         </Grid>
     </Grid>
 </Window>

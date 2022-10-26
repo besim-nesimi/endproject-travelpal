@@ -13,33 +13,39 @@ public class UserManager
 {
     
     private List<IUser> allUsers = new(); // Alla våra users i travelapp, clienter och admins
-    private IUser signedInUser;
+    public IUser SignedInUser { get; set; }
 
     public void DefaultUsers()
     {
         Admin admin = new("admin", "password");
 
-        User defaultUser = new("gandalf", "password"); // skapade en NY defaultUser gandalf med bara constructor, funkade ej
+        User defaultUser = new("gandalf", "password", Countries.New_Zealand); // skapade en NY defaultUser gandalf med bara constructor, funkade ej
 
-        defaultUser.Username = "gandalf"; // Settade props username och password, testar nu om min mainwindow förstår / hittar. 2022-10-25
-        defaultUser.Password = "password"; // funkar fortfarande inte 2022-10-25, så det har inte med propsen att göra.
+        //defaultUser.Username = "gandalf"; // Settade props username och password, testar nu om min mainwindow förstår / hittar. 2022-10-25
+        //defaultUser.Password = "password"; // funkar fortfarande inte 2022-10-25, så det har inte med propsen att göra.
 
         allUsers.Add(admin);
         allUsers.Add(defaultUser);
     }    
     
-    public List<IUser> GetAllUsers() // här står det Public List<IUser> GetAllUsers() - Kan det vara här det failar?
+    public List<IUser> GetAllUsers() // Vår lista, som är tom ifall vi inte populerar den.
                                      
     {
         return allUsers;
     }
-
-    public bool AddUser(string username, string password) // Ej färdig - Metoden avser lägga till users i allUsers.
+    
+    // Metoden avser lägga till / populera users i allUsers.
+    public bool AddUser(string username, string password, Countries country) 
     {
-        User user = new(username, password);
-        allUsers.Add(user);
-        return true;
+        if(ValidateUsername(username))
+        {
+            User user = new(username, password, country);
+            allUsers.Add(user);
 
+            return true;
+        }
+
+        return false;
     }
 
     public bool UpdateUsername(IUser thisUser, string username) // Ej färdig - Metoden avser att låta user ändra username.
@@ -47,14 +53,24 @@ public class UserManager
         return false;
     }
 
-    private bool ValidateUsername() // Ej färdig - Metoden ska validera ändring av username.
-    {
-        return false;
-    }
-
-    public bool SignedInUser(string username, string password) // Ej färdig
+    private bool ValidateUsername(string username) // Ej färdig - Metoden ska validera ändring av username.
     {
         return true;
+    }
+
+    public bool SignInUser(string username, string password) // Färdig! ish.
+    {
+        foreach (IUser user in allUsers)
+        {
+            if(user.Username == username && user.Password == password)
+            {
+                SignedInUser = user;
+
+                return true;
+            }
+        }
+        return false;
+      
     }
 
 

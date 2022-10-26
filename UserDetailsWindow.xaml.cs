@@ -1,4 +1,5 @@
-﻿using System;
+﻿using slutproj_TravelPal.Managers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,18 @@ namespace slutproj_TravelPal
     /// </summary>
     public partial class UserDetailsWindow : Window
     {
+        private UserManager userManager;
+
         public UserDetailsWindow()
         {
             InitializeComponent();
+        }
+
+        public UserDetailsWindow(UserManager userManager)
+        {
+            InitializeComponent();
+
+            this.userManager = userManager;
         }
     }
 }

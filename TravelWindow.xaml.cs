@@ -22,25 +22,60 @@ namespace slutproj_TravelPal;
 /// </summary>
 public partial class TravelWindow : Window
 {
+    TravelManager travelManager;
 
-    public TravelWindow(UserManager userManager, IUser user, List<IUser> allUsers)
+    private UserManager userManager;
+
+    public TravelWindow(UserManager userManager)
     {
         InitializeComponent();
-       
+
+        this.userManager = userManager;
+        this.travelManager = new();
+
+        lblUsernameDisplay.Content = userManager.SignedInUser.Username;
+
+        // Vid knapptryck User details ska vi öppna upp UserDetailsWindow.
+    }
+
+    public TravelWindow(UserManager userManager, TravelManager travelManager)
+    {
+        InitializeComponent();
+
+        this.userManager = userManager;
+        this.travelManager = travelManager;
+
+        if(userManager.SignedInUser is User)
+        {
+            User signedInUser = userManager.SignedInUser as User;
+
+            foreach(Travel travel in signedInUser.Travels)
+            {
+                lvTravels.Items.Add(travel.Destination);
+            }
+        }
+
+        lblUsernameDisplay.Content = userManager.SignedInUser.Username;
+
         // Vid knapptryck User details ska vi öppna upp UserDetailsWindow.
     }
 
     private void btnUserDetails_Click(object sender, RoutedEventArgs e)
     {
-        UserDetailsWindow userDetailsWindow = new();
+        UserDetailsWindow userDetailsWindow = new(userManager);
 
         userDetailsWindow.Show();
     }
 
     private void btnAddTravel_Click(object sender, RoutedEventArgs e)
     {
-        AddTravelWindow addTravelWindow = new();
+        AddTravelWindow addTravelWindow = new(userManager, travelManager);
 
         addTravelWindow.Show();
+    }
+
+    private void btnSignOut_Click(object sender, RoutedEventArgs e)
+    {
+
     }
 }

@@ -20,15 +20,14 @@
             <Label
                 x:Name="lblUsernameDisplay"
                 Grid.Column="0"
-                Grid.Row="2"
-                Content="Gandalf"
+                Grid.Row="1"
                 Foreground="MintCream"
                 FontStyle="Italic"
                 FontWeight="Bold"
                 FontSize="32"
-                HorizontalContentAlignment="Center"/>
+                HorizontalContentAlignment="Left"/>
             <ListView
-                x:Name="lvEmployees"
+                x:Name="lvTravels"
                 Grid.Column="0"
                 Grid.Row="0"
                 Grid.ColumnSpan="2" />
@@ -36,22 +35,41 @@
                 x:Name="btnShowDetails"
                 Grid.Column="0"
                 Grid.Row="1"
+                Width="150"
+                HorizontalAlignment="Right"
                 Content="Show Travel Details"
+                Margin="15" />
+            <Button
+                x:Name="btnRemoveTravel"
+                Grid.Column="2"
+                Grid.Row="2"
+                Content="Remove travel"
                 Margin="15" />
             <Button 
                 x:Name="btnAddTravel"
                 Grid.Column="1"
                 Grid.Row="1"
                 Content="Add Travel"
-                Margin="15" Click="btnAddTravel_Click"/>
+                Margin="15" 
+                Click="btnAddTravel_Click"/>
             <Button 
                 x:Name="btnUserDetails"
-                Grid.Column="1"
+                Grid.Column="0"
                 Grid.Row="2"
+                Width="150"
                 Content="Show User Details"
+                HorizontalAlignment="Right"
                 Margin="15" 
                 Click="btnUserDetails_Click"
                 />
+            <Button
+                x:Name="btnSignOut"
+                Grid.Column="0"
+                Grid.Row="2"
+                Margin="15"
+                Content="Sign out"
+                Width="150"
+                HorizontalAlignment="Left" Click="btnSignOut_Click"/>
         </Grid>
     </Grid>
 </Window>

@@ -5,14 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:slutproj_TravelPal"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="286" ResizeMode="NoResize" Background="MediumSlateBlue">
+        Title="MainWindow" Height="474" Width="286" ResizeMode="NoResize" Background="MediumSlateBlue">
     <Grid Background="MintCream" Margin="0,0,0,-31">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
@@ -20,6 +17,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
@@ -61,6 +59,7 @@
             Height="30"
             Width="200"
             Margin="10"
+            VerticalContentAlignment="Center"
             HorizontalContentAlignment="Center"/>
         <Label
             x:Name="lblPassWord"
@@ -80,6 +79,7 @@
             Height="30"
             Width="200"
             Margin="10"
+            VerticalContentAlignment="Center"
             HorizontalContentAlignment="Center"/>
         <Button
             x:Name="btnSignIn"

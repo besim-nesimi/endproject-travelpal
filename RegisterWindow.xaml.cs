@@ -23,9 +23,9 @@ namespace slutproj_TravelPal
     /// </summary>
     public partial class RegisterWindow : Window
     {
-        
+        private UserManager userManager;
 
-        public RegisterWindow(UserManager userManager, List<IUser> allUsers)
+        public RegisterWindow(UserManager userManager)
         {
             InitializeComponent();
             
@@ -39,6 +39,8 @@ namespace slutproj_TravelPal
             // När appen startar ska knapparna vara avstängd
             // Detta gör att våra knappar Show Details och Remove är utgråade.
             btnRegister.IsEnabled = false;
+
+            this.userManager = userManager;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -55,11 +57,9 @@ namespace slutproj_TravelPal
             // Kollar så att allt är ifyllt
             string username = txtUsername.Text;
             string password = txtPassword.Text;
-            string email = txtEmail.Text;
-            string phoneNumber = txtPhoneNumber.Text;
             string country = cbCountries.SelectedItem as string;
 
-            string[] fields = new[] { username, password, email, phoneNumber, country };
+            string[] fields = new[] { username, password, country };
 
             foreach (string field in fields)
             {
@@ -81,27 +81,28 @@ namespace slutproj_TravelPal
             }
         }
 
-        // Knappens logik
+        // Register knappens logik
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
+            if(CheckInputs())
+            {
+                Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), cbCountries.SelectedItem.ToString());
 
+                if (userManager.AddUser(txtUsername.Text, txtPassword.Text, selectedCountry))
+                {
+                    // Lyckats skapa en user
 
+                    MainWindow mainWindow = new(userManager);
 
-            MainWindow mainWindow = new(/*userManager*/); // Har endast skickat userManager genom constructorn till RegisterWindow
-                                                      // Vill skicka tillbaka den till MainWindow så att man nu kan logga in med ny användare. Har dock red squigg. Why?
+                    mainWindow.Show();
 
-            string username = txtUsername.Text;
-            string password = txtPassword.Text;
-            // Lägg till country / enum
-
-            //this./*userManager*/.AddUser(username, password);
-            
-            mainWindow.Show();
-
-            Close();
-
-            // Efter att ha registrerat en user skickades jag till ett helt nytt o annat fönster.
-            
+                    Close();
+                }
+            }    
+            else
+            {
+                MessageBox.Show("Check your inputs!");
+            }
         }
     }
     
