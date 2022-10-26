@@ -43,8 +43,15 @@
             <Label 
                 x:Name="lblTravellers"
                 Grid.Column="0"
-                Grid.Row="2"
+                Grid.Row="3"
                 Content="Number of travellers"
+                FontSize="16"
+                VerticalAlignment="Center"/>
+            <Label 
+                x:Name="lblDestination"
+                Grid.Column="0"
+                Grid.Row="2"
+                Content="Destination"
                 FontSize="16"
                 VerticalAlignment="Center"/>
             <Label 
@@ -58,12 +65,21 @@
                 x:Name="cbTypeofTrip"
                 Grid.Column="1"
                 Grid.Row="1"
+                Width="300"
+                HorizontalAlignment="Left"
+                Margin="4"
+                />
+            <TextBox 
+                x:Name="tbDestination"
+                Grid.Column="1"
+                Grid.Row="2"
+                TextWrapping="Wrap"
                 Margin="4"
                 />
             <TextBox 
                 x:Name="tbTravellers"
                 Grid.Column="1"
-                Grid.Row="2"
+                Grid.Row="3"
                 Margin="4"
                 />
             <ComboBox

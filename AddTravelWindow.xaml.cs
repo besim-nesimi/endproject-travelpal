@@ -38,68 +38,60 @@ namespace slutproj_TravelPal
 
 
             // Hämtar vår enum typeOfTrips och lägger det i en array
-            string[] typeOfTrips = Enum.GetNames(typeof(TripTypes));
+            string[] travelTypes = Enum.GetNames(typeof(TravelTypes));
 
             // Vi sätter ComboBoxens innehåll till vår enum tripTypes
-            cbTypeofTrip.ItemsSource = typeOfTrips;
+            cbTypeofTrip.ItemsSource = travelTypes;
 
             string travellers = tbTravellers.Text;
             this.userManager = userManager;
             this.travelManager = travelManager;
 
-
-
-            /* int numOfTravellers = Convert.ToInt32(travellers); */// Funkar ej wtF? Exception Handling ? System.FormatException ?
+            /* int numOfTravellers = Convert.ToInt32(travellers); */// Funkar ej? Exception Handling ? System.FormatException ?
         }
 
-
-
-        private void AddTravel()
+        private void CheckInputsForTravel()
         {
-            //ListViewItem travels = new();
+            string travelType = cbTypeofTrip.SelectedItem as string;
 
-            //travels.Content = .GetInfo();
+            string destination = tbDestination.Text;
 
-            string tripType = cbTypeofTrip.SelectedItem as string;
+            int.TryParse(tbTravellers.Text, out int traveler);
 
-            bool v = int.TryParse(tbTravellers.Text, out int result);
-            int traveller = v;
+            Countries country = (Countries)Enum.Parse(typeof(Countries), cbCountries.SelectedItem.ToString());
 
-            try
-            {
-                //int travellers = Convert.ToInt32(tbTravellers.Text)
-                if (int.TryParse(tbTravellers.Text, out int travellers1))
-                {
-                    throw new ArgumentException("error");
-                }
+            AddTravelToList(travelType, destination, traveler, country); // Hur kan jag få denna till att funka?
+        }
+        
+        //Skapade två separata metoder som gör olika saker men hänger ihop. 
+        //CheckInputsForTravel skickar över infon till AddTravelToList
+        //På CheckInputsForTravel ska det finnas conditions för att Add Travel knappen ska bli klickbar.
+        private void AddTravelToList(string TravelType, string destination, int traveler, Countries country) 
+        {
+            // Vad är selectat? Trip eller Vacation?
+
+            if(TravelType == "Trip")
+            { 
+                Trip trip = new(TripTypes.Leisure, destination, country, traveler);
+
+                User signedInUser = userManager.SignedInUser as User;
+
+                signedInUser.Travels.Add(trip);
+                userManager.SignedInUser = signedInUser;
+
+                travelManager.Travels.Add(trip);
             }
-            catch(ArgumentException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-           
-
-            Countries country = ;
-            
-
-            Travel travel = new(tripType, country, traveller);
-
-            User signedInUser = userManager.SignedInUser as User;
-
-            signedInUser.Travels.Add(travel);
-            userManager.SignedInUser = signedInUser;
-
-            travelManager.Travels.Add(travel);
 
             TravelWindow travelWindow = new(userManager, travelManager);
 
             travelWindow.Show();
+
+            Close();
         }
 
         private void btnAddTravel_Click(object sender, RoutedEventArgs e)
         {
-            AddTravel();
+            CheckInputsForTravel();
         }
     }
 }

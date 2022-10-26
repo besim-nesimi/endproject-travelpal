@@ -17,6 +17,6 @@ public class Vacation : Travel
 
     public override string GetInfo()
     {
-        return base.GetInfo();
+        return $"Resa to {Country}";
     }
 }

@@ -45,19 +45,24 @@ public partial class TravelWindow : Window
         this.userManager = userManager;
         this.travelManager = travelManager;
 
-        if(userManager.SignedInUser is User)
-        {
-            User signedInUser = userManager.SignedInUser as User;
-
-            foreach(Travel travel in signedInUser.Travels)
-            {
-                lvTravels.Items.Add(travel.Destination);
-            }
-        }
+        SendTravelInfo();
 
         lblUsernameDisplay.Content = userManager.SignedInUser.Username;
 
         // Vid knapptryck User details ska vi öppna upp UserDetailsWindow.
+    }
+
+    private void SendTravelInfo()
+    {
+        if (userManager.SignedInUser is User)
+        {
+            User signedInUser = userManager.SignedInUser as User;
+
+            foreach (Travel travel in signedInUser.Travels)
+            {
+                lvTravels.Items.Add(travel.GetInfo());
+            }
+        }
     }
 
     private void btnUserDetails_Click(object sender, RoutedEventArgs e)
@@ -65,6 +70,8 @@ public partial class TravelWindow : Window
         UserDetailsWindow userDetailsWindow = new(userManager);
 
         userDetailsWindow.Show();
+
+        Close();
     }
 
     private void btnAddTravel_Click(object sender, RoutedEventArgs e)
@@ -72,10 +79,12 @@ public partial class TravelWindow : Window
         AddTravelWindow addTravelWindow = new(userManager, travelManager);
 
         addTravelWindow.Show();
+
+        Close();
     }
 
     private void btnSignOut_Click(object sender, RoutedEventArgs e)
     {
-
+        
     }
 }

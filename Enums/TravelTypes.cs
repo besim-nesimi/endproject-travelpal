@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace slutproj_TravelPal.Enums
 {
-    public enum TripTypes
+    public enum TravelTypes
     {
-        Leisure,
-        Work
+        Trip,
+        Vacation
     }
 }

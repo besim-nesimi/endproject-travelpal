@@ -19,15 +19,32 @@ public class UserManager
     {
         Admin admin = new("admin", "password");
 
-        User defaultUser = new("gandalf", "password", Countries.New_Zealand); // skapade en NY defaultUser gandalf med bara constructor, funkade ej
-
-        //defaultUser.Username = "gandalf"; // Settade props username och password, testar nu om min mainwindow förstår / hittar. 2022-10-25
-        //defaultUser.Password = "password"; // funkar fortfarande inte 2022-10-25, så det har inte med propsen att göra.
+        User defaultUser = new("gandalf", "password", Countries.New_Zealand);
 
         allUsers.Add(admin);
         allUsers.Add(defaultUser);
-    }    
-    
+
+        Travel travel1 = new("Mt Doom", Countries.New_Zealand, 9);
+        Travel travel2 = new("Imladris", Countries.New_Zealand, 1);
+
+        defaultUser.Travels.Add(travel1);
+        defaultUser.Travels.Add(travel2);
+    }
+
+    // Default resor som gandalf har.
+    //private void GandalfsTrip()
+    //{
+
+
+    //    Travel travel1 = new("Mt Doom", Countries.New_Zealand, 9);
+    //    Travel travel2 = new("Imladris", Countries.New_Zealand, 1);
+
+    //    defaultUser.Travels.Add(travel1);
+    //    defaultUser.Travels.Add(travel2);
+    //}
+
+
+
     public List<IUser> GetAllUsers() // Vår lista, som är tom ifall vi inte populerar den.
                                      
     {
