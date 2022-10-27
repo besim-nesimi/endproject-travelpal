@@ -117,13 +117,15 @@ namespace slutproj_TravelPal
         private void cbTypeofTravel_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            if (cbTypeofTravel.SelectedItem == "Vacation") // 
+            cbTypeofTravel.SelectedValue = Enum.GetValues(typeof(TravelTypes)); // Måste jag dela upp TravelTypes till lokala variabler som kan läsas i en if-sats? Hur?
+
+            if (cbTypeofTravel.SelectedValue == /*Enum.Parse(Enum.TravelType, value)*/ // varken selectedItem eller selectedValue funkar.
             {
                 lblAllInclusive.Visibility = Visibility.Visible;
                 cbxAllInc.Visibility = Visibility.Visible;
                 cbTypeOfTrip.Visibility = Visibility.Hidden;
             }
-            else if (cbTypeofTravel.SelectedItem == "Trip") // 
+            else if (cbTypeofTravel.SelectedValue == "Trip") // varken selectedItem eller selectedValue funkar.
             {
                 cbTypeOfTrip.Visibility = Visibility.Visible;
                 cbTypeOfTrip.IsEnabled = true;
