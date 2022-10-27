@@ -30,53 +30,46 @@ namespace slutproj_TravelPal
         {
             InitializeComponent();
 
-            // Hämtar vår enum Countries och lägger det i en array
-            string[] countries = Enum.GetNames(typeof(Countries));
+            this.userManager = userManager;
+            this.travelManager = travelManager;
+            string travellers = tbTravellers.Text;
 
-            // Vi sätter ComboBoxens innehåll till vår enum countries
+            /* int numOfTravellers = Convert.ToInt32(travellers); */// Funkar ej? Exception Handling ? System.FormatException ? 
+
+            // Hämtar vår enum Countries och lägger det i en array & sätter ComboBoxens innehåll till vår enum countries
+            string[] countries = Enum.GetNames(typeof(Countries));
             cbCountries.ItemsSource = countries;
 
 
-            // Hämtar vår enum travelTypes (vacation / trip) och lägger det i en array
+            // Hämtar vår enum travelTypes (vacation / trip) och lägger det i en array & sätter ComboBoxens innehåll till vår enum travelTypes
             string[] travelTypes = Enum.GetNames(typeof(TravelTypes));
-
-            // Vi sätter ComboBoxens innehåll till vår enum travelTypes
             cbTypeofTravel.ItemsSource = travelTypes;
 
-            string travellers = tbTravellers.Text;
-            this.userManager = userManager;
-            this.travelManager = travelManager;
 
-            /* int numOfTravellers = Convert.ToInt32(travellers); */// Funkar ej? Exception Handling ? System.FormatException ?
+            // Hämtar vår enum tripTypes (leisure / work) och lägger det i en array & sätter ComboBoxens innehåll till vår enum tripTypes
+            string[] tripTypes = Enum.GetNames(typeof(TripTypes));
+            cbTypeOfTrip.ItemsSource = tripTypes;
+
+           
         }
+
+        //Skapade två separata metoder som gör olika saker men hänger ihop. 
+        //CheckInputsForTravel skickar över infon till AddTravelToList
+        //På CheckInputsForTravel ska det finnas conditions för att Add Travel knappen ska bli klickbar.
 
         private void CheckInputsForTravel()
         {
             string travelType = cbTypeofTravel.SelectedItem as string;
-
-            if (travelType == "Trip") // Funkar ej, flyttat den från AddTravelToList hit, funkar fortfarande inte
-            {
-                cbTypeOfTrip.IsEnabled = true;
-                string[] tripTypes = Enum.GetNames(typeof(TripTypes));
-                cbTypeOfTrip.ItemsSource = tripTypes;
-
-            }
-            else if (travelType == "Vacation") // Funkar ej, flyttat den från AddTravelToList
-            {
-                cbxAllInc.Visibility = Visibility.Visible;
-                lblAllInclusive.Visibility = Visibility.Visible;
-            }
+            string[] tripTypes = Enum.GetNames(typeof(TripTypes));
+            cbTypeOfTrip.ItemsSource = tripTypes;
             string destination = tbDestination.Text;
             int.TryParse(tbTravellers.Text, out int traveller);
             Countries country = (Countries)Enum.Parse(typeof(Countries), cbCountries.SelectedItem.ToString());
 
-            AddTravelToList(travelType, destination, traveller, country);
+            AddTravelToList(travelType, destination, traveller, country); // nödvändigt ens?
         }
         
-        //Skapade två separata metoder som gör olika saker men hänger ihop. 
-        //CheckInputsForTravel skickar över infon till AddTravelToList
-        //På CheckInputsForTravel ska det finnas conditions för att Add Travel knappen ska bli klickbar.
-        private void AddTravelToList(string travelType, string destination, int traveller, Countries country) 
+        private void AddTravelToList(string travelType, string destination, int traveller, Countries country) // Nödvändigt ?? Kan jag inte bara lägga selectionChanged på listview itemet?
         {
             // Vad är selectat? Trip eller Vacation?
             
@@ -118,11 +111,53 @@ namespace slutproj_TravelPal
         private void btnAddTravel_Click(object sender, RoutedEventArgs e)
         {
             CheckInputsForTravel();
+                
+        }
+
+        private void cbTypeofTravel_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            if (cbTypeofTravel.SelectedItem == "Vacation") // 
+            {
+                lblAllInclusive.Visibility = Visibility.Visible;
+                cbxAllInc.Visibility = Visibility.Visible;
+                cbTypeOfTrip.Visibility = Visibility.Hidden;
+            }
+            else if (cbTypeofTravel.SelectedItem == "Trip") // 
+            {
+                cbTypeOfTrip.Visibility = Visibility.Visible;
+                cbTypeOfTrip.IsEnabled = true;
+                lblAllInclusive.Visibility = Visibility.Hidden;
+                cbxAllInc.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void tbTravellers_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void tbDestination_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void cbCountries_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbCountries.SelectedItem != null)
+            {
+                cbTypeofTravel.IsEnabled = true;
+            }
+        }
+
+        private void cbTypeOfTrip_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
 
         //private void GandalfTrips()
         //{
-            
+
         //}
     }
 }

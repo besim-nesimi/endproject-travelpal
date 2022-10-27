@@ -56,27 +56,31 @@ namespace slutproj_TravelPal
             string password = pbPassword.Password;
             bool isFoundUser = userManager.SignInUser(username, password);
 
-            //foreach (IUser thisUser in allUsers)
-            //{
+            foreach (IUser thisUser in allUsers)
+            {
 
-            //if (thisUser.Username == username && thisUser.Password == password)
-            //{
-            //    // logga in
-
+                if (thisUser.Username == username && thisUser.Password == password)
+                {
+                    // logga in
                     isFoundUser = true;
 
 
-                    if (isFoundUser)
+                    if (thisUser is User)
                     {
                         TravelWindow travelWindow = new(userManager); // vi skickar userManager till travelwindow
 
                         travelWindow.Show();
 
-                        Close();
-
                     }
+                    else if (thisUser is Admin)
+                    {
+                        TravelWindow travelWindow = new(userManager);
 
-            
+                        travelWindow.Show();
+                    }
+                }
+
+            }
             if (!isFoundUser)
             {
                 MessageBox.Show("Username or password is Incorrect", "Warning");
