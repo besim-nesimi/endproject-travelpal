@@ -32,6 +32,8 @@ namespace slutproj_TravelPal
             InitializeComponent();
 
             this.userManager = userManager;
+
+            lblLoggedInUser.Content = userManager.SignedInUser.Username;
         }
     }
 }

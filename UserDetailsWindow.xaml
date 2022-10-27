@@ -5,47 +5,108 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:slutproj_TravelPal"
         mc:Ignorable="d"
-        Title="UserDetailsWindow" Height="450" Width="500">
+        Title="UserDetailsWindow" Height="450" Width="500" Background="MediumSlateBlue">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
+        <Grid Margin="10" Background="MintCream">
+            <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="20"/>
-        </Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0*"/>
+            </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="20"/>
-        </Grid.RowDefinitions>
-        <Label
-            Grid.Column="2"
-            Grid.Row="2"
-            FontSize="30"
-            Content="New Username"/>
-        <Label
-            Grid.Column="2"
-            Grid.Row="3"
-            FontSize="30"
-            Content="Confirm Username"/>
-        <Label
-            Grid.Column="2"
-            Grid.Row="4"
-            FontSize="30"
-            Content="New Password"/>
-        <Label
-            Grid.Column="2"
-            Grid.Row="5"
-            FontSize="30"
-            Content="Confirm Password"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label 
+                x:Name="lblUserHeader"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Content="Logged in as: "
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                FontSize="24"
+                FontWeight="Bold"
+                FontFamily="Arial"
+                Margin="4"
+                />
+            <Label
+                x:Name="lblLoggedInUser"
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontSize="24"
+                FontWeight="Bold"
+                FontFamily="Arial" 
+                Margin="4"/>
+            <Label 
+                x:Name="lblNewUsername"
+                Grid.Column="0"
+                Grid.Row="1"
+                Content="New username"
+                FontSize="14"
+                VerticalAlignment="Center"
+                Margin="4"/>
+            <Label 
+                x:Name="lblNewPassword"
+                Grid.Column="0"
+                Grid.Row="3"
+                Content="Password"
+                FontSize="14"
+                VerticalAlignment="Center"
+                Margin="4"/>
+            <Label 
+                x:Name="lblConfPassword"
+                Grid.Column="0"
+                Grid.Row="4"
+                Content="Confirm password"
+                FontSize="14"
+                VerticalAlignment="Center"
+                Margin="4"/>
+            <Label 
+                x:Name="lblCountries"
+                Grid.Column="0"
+                Grid.Row="5"
+                Content="Country"
+                FontSize="16"
+                VerticalAlignment="Center"/>
+            <TextBox 
+                x:Name="txtUsername"
+                Grid.Column="1"
+                Grid.Row="1"
+                Margin="7"
+                Grid.ColumnSpan="2"/>
+            <PasswordBox 
+                x:Name="pbPassword"
+                Grid.Column="1"
+                Grid.Row="3"
+                Margin="7" Grid.ColumnSpan="2"/>
+            <PasswordBox 
+                x:Name="pbConfirmPassword"
+                Grid.Column="1"
+                Grid.Row="4"
+                Margin="7" Grid.ColumnSpan="2"/>
+            <ComboBox
+                x:Name="cbCountries"
+                Grid.Column="1"
+                Grid.Row="5"
+                Margin="7" 
+                Grid.ColumnSpan="2"
+                />
+            <Button
+                x:Name="btnSave"
+                Grid.Column="1"
+                Grid.Row="6"
+                Margin="7"
+                Content="Save" 
+                Grid.ColumnSpan="2" 
+                />
+        </Grid>
     </Grid>
 </Window>

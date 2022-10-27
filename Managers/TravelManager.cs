@@ -11,7 +11,7 @@ namespace slutproj_TravelPal.Managers
     {
         public List<Travel> Travels { get; set; } = new();
 
-        public void ShowDetails(Travel? selectedTravel)
+        public void ShowDetails(Travel? selectedTravel) // visa detaljer för resan som klickats på listview ?
         {
             throw new NotImplementedException();
         }
