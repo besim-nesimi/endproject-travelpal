@@ -28,7 +28,7 @@ namespace slutproj_TravelPal
         {
             InitializeComponent();
 
-            userManager.DefaultUsers();
+            //userManager.DefaultUsers();
         }
 
         public MainWindow(UserManager userManager)
@@ -53,9 +53,7 @@ namespace slutproj_TravelPal
             List<IUser> allUsers = userManager.GetAllUsers();
 
             string username = tbUsername.Text;
-            string password = tbPassword.Text;
-
-           
+            string password = pbPassword.Password;
             bool isFoundUser = userManager.SignInUser(username, password);
 
             //foreach (IUser thisUser in allUsers)

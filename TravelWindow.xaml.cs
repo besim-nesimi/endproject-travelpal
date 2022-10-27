@@ -52,6 +52,8 @@ public partial class TravelWindow : Window
         // Vid knapptryck User details ska vi öppna upp UserDetailsWindow.
     }
 
+
+    // Lägger till resan som man lagt till på add travel window till travelwindows lista.
     private void SendTravelInfo()
     {
         if (userManager.SignedInUser is User)
@@ -60,10 +62,15 @@ public partial class TravelWindow : Window
 
             foreach (Travel travel in signedInUser.Travels)
             {
-                lvTravels.Items.Add(travel.GetInfo());
+                ListViewItem item = new();
+                item.Tag = travel;
+                item.Content = travel.GetInfo();
+                lvTravels.Items.Add(item);
             }
         }
     }
+
+    // Öppnar user details window, funkar som den ska.
 
     private void btnUserDetails_Click(object sender, RoutedEventArgs e)
     {
@@ -74,6 +81,7 @@ public partial class TravelWindow : Window
         Close();
     }
 
+    // Öppnar add travel window, funkar som den ska.
     private void btnAddTravel_Click(object sender, RoutedEventArgs e)
     {
         AddTravelWindow addTravelWindow = new(userManager, travelManager);
@@ -83,8 +91,32 @@ public partial class TravelWindow : Window
         Close();
     }
 
+    // Loggar ut usern / admin. Färdig metod.
     private void btnSignOut_Click(object sender, RoutedEventArgs e)
     {
-        
+        userManager.SignedInUser = null;
+
+        MainWindow mainWindow = new(userManager);
+
+        mainWindow.Show();
+
+        Close();
+    }
+
+
+    //Ska visa resan i detalj - Är ej färdig.
+    private void btnShowDetails_Click(object sender, RoutedEventArgs e)
+    {
+        ListViewItem selectedItem = lvTravels.SelectedItem as ListViewItem;
+
+        Travel selectedTravel = selectedItem.Tag as Travel;
+
+        travelManager.ShowDetails(selectedTravel);
+
+        TravelDetailsWindow travelDetailsWindow = new(userManager, travelManager);
+
+        travelDetailsWindow.Show();
+
+        Close();
     }
 }

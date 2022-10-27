@@ -7,6 +7,43 @@
         mc:Ignorable="d"
         Title="TravelDetailsWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label
+            x:Name="lblCountry"
+            Grid.Column="0"
+            Grid.Row="0"
+            FontSize="40"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="test"
+            />
+        <Label
+            x:Name="lblDestination"
+            Grid.Column="1"
+            Grid.Row="0"
+            FontSize="40"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="test"
+            />
+        <Label
+            x:Name="lblTravellers"
+            Grid.Column="2"
+            Grid.Row="0"
+            FontSize="40"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="test"
+            />
     </Grid>
 </Window>

@@ -32,7 +32,8 @@
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 FontSize="24"
-                FontWeight="Bold"/>
+                FontWeight="Bold"
+                Foreground="MediumSlateBlue"/>
             <Label 
                 x:Name="lblTypeofTravel"
                 Grid.Column="0"
@@ -40,6 +41,14 @@
                 Content="Type of travel"
                 FontSize="16"
                 VerticalAlignment="Center"/>
+            <Label
+                x:Name="lblAllInclusive"
+                Grid.Column="1"
+                Grid.Row="1"
+                Content="Check if All inclusive"
+                HorizontalAlignment="Center"
+                Margin="4"
+                Visibility="Hidden"/>
             <Label 
                 x:Name="lblTravellers"
                 Grid.Column="0"
@@ -50,7 +59,7 @@
             <Label 
                 x:Name="lblDestination"
                 Grid.Column="0"
-                Grid.Row="2"
+                Grid.Row="4"
                 Content="Destination"
                 FontSize="16"
                 VerticalAlignment="Center"/>
@@ -61,19 +70,43 @@
                 Content="Country"
                 FontSize="16"
                 VerticalAlignment="Center"/>
+            <Label
+                x:Name="lblTypeOfTrip"
+                Grid.Row="2"
+                Grid.Column="0"
+                Content="Type of trip"
+                FontSize="16"
+                Visibility="Hidden"/>
+            <ComboBox
+                x:Name="cbTypeOfTrip"
+                Grid.Row="2"
+                Grid.Column="1"
+                Margin="4"
+                IsEnabled="False"
+                Width="150"
+                HorizontalAlignment="Left"/>
             <ComboBox 
-                x:Name="cbTypeofTrip"
+                x:Name="cbTypeofTravel"
                 Grid.Column="1"
                 Grid.Row="1"
-                Width="300"
+                Width="150"
                 HorizontalAlignment="Left"
                 Margin="4"
+                />
+            <CheckBox
+                x:Name="cbxAllInc"
+                Grid.Column="1"
+                Grid.Row="1"
+                HorizontalAlignment="Right"
+                Margin="0,10,327,32" 
+                Grid.RowSpan="2"
+                Visibility="Hidden"
                 />
             <TextBox 
                 x:Name="tbDestination"
                 Grid.Column="1"
-                Grid.Row="2"
-                TextWrapping="Wrap"
+                Grid.Row="4"
+               TextWrapping="Wrap"
                 Margin="4"
                 />
             <TextBox 

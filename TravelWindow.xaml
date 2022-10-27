@@ -38,7 +38,7 @@
                 Width="150"
                 HorizontalAlignment="Right"
                 Content="Show Travel Details"
-                Margin="15" />
+                Margin="15" Click="btnShowDetails_Click" />
             <Button
                 x:Name="btnRemoveTravel"
                 Grid.Column="2"

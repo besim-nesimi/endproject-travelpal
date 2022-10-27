@@ -10,5 +10,10 @@ namespace slutproj_TravelPal.Managers
     public class TravelManager
     {
         public List<Travel> Travels { get; set; } = new();
+
+        public void ShowDetails(Travel? selectedTravel)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

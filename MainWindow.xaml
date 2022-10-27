@@ -72,8 +72,8 @@
             HorizontalAlignment="Center"
             Foreground="MediumSlateBlue"
             />
-        <TextBox
-            x:Name="tbPassword"
+        <PasswordBox
+            x:Name="pbPassword"
             Grid.Row="6"
             Grid.Column="2"
             Height="30"

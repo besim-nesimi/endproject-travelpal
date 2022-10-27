@@ -37,11 +37,11 @@ namespace slutproj_TravelPal
             cbCountries.ItemsSource = countries;
 
 
-            // Hämtar vår enum typeOfTrips och lägger det i en array
+            // Hämtar vår enum travelTypes (vacation / trip) och lägger det i en array
             string[] travelTypes = Enum.GetNames(typeof(TravelTypes));
 
-            // Vi sätter ComboBoxens innehåll till vår enum tripTypes
-            cbTypeofTrip.ItemsSource = travelTypes;
+            // Vi sätter ComboBoxens innehåll till vår enum travelTypes
+            cbTypeofTravel.ItemsSource = travelTypes;
 
             string travellers = tbTravellers.Text;
             this.userManager = userManager;
@@ -52,27 +52,41 @@ namespace slutproj_TravelPal
 
         private void CheckInputsForTravel()
         {
-            string travelType = cbTypeofTrip.SelectedItem as string;
+            string travelType = cbTypeofTravel.SelectedItem as string;
 
+            if (travelType == "Trip") // Funkar ej, flyttat den från AddTravelToList hit, funkar fortfarande inte
+            {
+                cbTypeOfTrip.IsEnabled = true;
+                string[] tripTypes = Enum.GetNames(typeof(TripTypes));
+                cbTypeOfTrip.ItemsSource = tripTypes;
+
+            }
+            else if (travelType == "Vacation") // Funkar ej, flyttat den från AddTravelToList
+            {
+                cbxAllInc.Visibility = Visibility.Visible;
+                lblAllInclusive.Visibility = Visibility.Visible;
+            }
             string destination = tbDestination.Text;
-
-            int.TryParse(tbTravellers.Text, out int traveler);
-
+            int.TryParse(tbTravellers.Text, out int traveller);
             Countries country = (Countries)Enum.Parse(typeof(Countries), cbCountries.SelectedItem.ToString());
 
-            AddTravelToList(travelType, destination, traveler, country); // Hur kan jag få denna till att funka?
+            AddTravelToList(travelType, destination, traveller, country);
         }
         
         //Skapade två separata metoder som gör olika saker men hänger ihop. 
         //CheckInputsForTravel skickar över infon till AddTravelToList
         //På CheckInputsForTravel ska det finnas conditions för att Add Travel knappen ska bli klickbar.
-        private void AddTravelToList(string TravelType, string destination, int traveler, Countries country) 
+        private void AddTravelToList(string travelType, string destination, int traveller, Countries country) 
         {
             // Vad är selectat? Trip eller Vacation?
+            
 
-            if(TravelType == "Trip")
-            { 
-                Trip trip = new(TripTypes.Leisure, destination, country, traveler);
+            if (travelType == "Trip") // Trip är selectat
+            {
+
+                // ändra så att det blir det som selectas på triptypes
+
+                Trip trip = new(TripTypes.Leisure, destination, country, traveller); // Är det work eller leisure?
 
                 User signedInUser = userManager.SignedInUser as User;
 
@@ -80,6 +94,18 @@ namespace slutproj_TravelPal
                 userManager.SignedInUser = signedInUser;
 
                 travelManager.Travels.Add(trip);
+            }
+            else if (travelType == "Vacation") // Checkbox för allinc ska kunna dyka upp, funkar ännu inte
+            {
+
+                Vacation vacation = new(TravelTypes.Vacation, destination, country, traveller); // ska finnas vacation
+                
+                User signedInUser = userManager.SignedInUser as User;
+
+                signedInUser.Travels.Add(vacation);
+                userManager.SignedInUser = signedInUser;
+
+                travelManager.Travels.Add(vacation);
             }
 
             TravelWindow travelWindow = new(userManager, travelManager);
@@ -93,5 +119,10 @@ namespace slutproj_TravelPal
         {
             CheckInputsForTravel();
         }
+
+        //private void GandalfTrips()
+        //{
+            
+        //}
     }
 }

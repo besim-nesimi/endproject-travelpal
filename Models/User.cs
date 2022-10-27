@@ -21,10 +21,10 @@ public class User : IUser
     public List<Travel> Travels { get; set; } = new();
 
 
-    public User(string userName, string passWord, Countries country)
+    public User(string username, string password, Countries country)
     {
-        Username = userName;
-        Password = passWord;
+        Username = username;
+        Password = password;
         Location = country;
     }
 }

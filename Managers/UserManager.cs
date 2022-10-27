@@ -11,36 +11,42 @@ namespace slutproj_TravelPal.Managers;
 
 public class UserManager
 {
+
     
-    private List<IUser> allUsers = new(); // Alla våra users i travelapp, clienter och admins
+    private List<IUser> allUsers = new(); // Alla våra users i travelapp, users och admins
     public IUser SignedInUser { get; set; }
 
-    public void DefaultUsers()
+    public UserManager()
     {
         Admin admin = new("admin", "password");
 
         User defaultUser = new("gandalf", "password", Countries.New_Zealand);
 
+        Trip trip1 = new(TripTypes.Work, "Mt Doom", Countries.New_Zealand, 9);
+        Trip trip2 = new(TripTypes.Leisure, "Imladris", Countries.New_Zealand, 1);
+
+        defaultUser.Travels.Add(trip1);
+        defaultUser.Travels.Add(trip2);
+
         allUsers.Add(admin);
         allUsers.Add(defaultUser);
-
-        Travel travel1 = new("Mt Doom", Countries.New_Zealand, 9);
-        Travel travel2 = new("Imladris", Countries.New_Zealand, 1);
-
-        defaultUser.Travels.Add(travel1);
-        defaultUser.Travels.Add(travel2);
     }
 
-    // Default resor som gandalf har.
-    //private void GandalfsTrip()
+    //public void DefaultUsers()
     //{
+    //    Admin admin = new("admin", "password");
 
+    //    User defaultUser = new("gandalf", "password", Countries.New_Zealand);
 
-    //    Travel travel1 = new("Mt Doom", Countries.New_Zealand, 9);
-    //    Travel travel2 = new("Imladris", Countries.New_Zealand, 1);
+    //    allUsers.Add(admin);
 
-    //    defaultUser.Travels.Add(travel1);
-    //    defaultUser.Travels.Add(travel2);
+    //    allUsers.Add(defaultUser);
+
+    //    Trip trip1 = new(TripTypes.Work, "Mt Doom", Countries.New_Zealand, 9);
+    //    Trip trip2 = new(TripTypes.Leisure, "Imladris", Countries.New_Zealand, 1);
+
+    //    defaultUser.Travels.Add(trip1);
+    //    defaultUser.Travels.Add(trip2);
     //}
 
 

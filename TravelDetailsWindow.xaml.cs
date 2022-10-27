@@ -1,4 +1,5 @@
-﻿using System;
+﻿using slutproj_TravelPal.Managers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,10 +20,20 @@ namespace slutproj_TravelPal;
 /// </summary>
 public partial class TravelDetailsWindow : Window
 {
+    private UserManager userManager;
+    private TravelManager travelManager;
     public TravelDetailsWindow()
     {
         InitializeComponent();
 
         // vi ska kunna se information om resan.
+    }
+
+    public TravelDetailsWindow(UserManager userManager, TravelManager travelManager)
+    {
+        InitializeComponent();
+
+        this.userManager = userManager;
+        this.travelManager = travelManager;
     }
 }

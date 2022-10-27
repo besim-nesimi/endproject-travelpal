@@ -37,12 +37,13 @@ namespace slutproj_TravelPal
 
             // Enable & disable buttons
             // När appen startar ska knapparna vara avstängd
-            // Detta gör att våra knappar Show Details och Remove är utgråade.
             btnRegister.IsEnabled = false;
 
             this.userManager = userManager;
         }
 
+
+        // Gör så att knappen Register blir klickbar om allt är ifyllt.
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (CheckInputs())
@@ -56,10 +57,11 @@ namespace slutproj_TravelPal
 
             // Kollar så att allt är ifyllt
             string username = txtUsername.Text;
-            string password = txtPassword.Text;
+            string password = pbPassword.Password;
+            string confirmPassword = pbConfirmPassword.Password;
             string country = cbCountries.SelectedItem as string;
 
-            string[] fields = new[] { username, password, country };
+            string[] fields = new[] { username, password, confirmPassword, country };
 
             foreach (string field in fields)
             {
@@ -88,7 +90,9 @@ namespace slutproj_TravelPal
             {
                 Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), cbCountries.SelectedItem.ToString());
 
-                if (userManager.AddUser(txtUsername.Text, txtPassword.Text, selectedCountry))
+
+
+                if (userManager.AddUser(txtUsername.Text, pbPassword.Password, selectedCountry))
                 {
                     // Lyckats skapa en user
 
@@ -103,6 +107,7 @@ namespace slutproj_TravelPal
             {
                 MessageBox.Show("Check your inputs!");
             }
+
         }
     }
     
