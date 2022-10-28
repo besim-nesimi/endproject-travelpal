@@ -101,12 +101,22 @@
                 />
             <Button
                 x:Name="btnSave"
-                Grid.Column="1"
+                Grid.Column="2"
                 Grid.Row="6"
                 Margin="7"
                 Content="Save" 
-                Grid.ColumnSpan="2" 
+                Grid.ColumnSpan="1"
+                Width="130"
+                HorizontalAlignment="center"
                 />
+            <Button
+                x:Name="btnCancel"
+                Grid.Column="1"
+                Grid.Row="6"
+                Margin="7"
+                Content="Cancel"
+                Width="130"
+                HorizontalAlignment="Center" Click="btnCancel_Click"/>
         </Grid>
     </Grid>
 </Window>

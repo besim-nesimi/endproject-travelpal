@@ -32,7 +32,7 @@ namespace slutproj_TravelPal
 
             this.userManager = userManager;
             this.travelManager = travelManager;
-            string travellers = tbTravellers.Text;
+           
 
             /* int numOfTravellers = Convert.ToInt32(travellers); */// Funkar ej? Exception Handling ? System.FormatException ? 
 
@@ -61,6 +61,10 @@ namespace slutproj_TravelPal
         {
             string travelType = cbTypeofTravel.SelectedItem as string;
             string[] tripTypes = Enum.GetNames(typeof(TripTypes));
+            string travellers = tbTravellers.Text;
+
+            int numOfTravellers = Convert.ToInt32(travellers);
+
             cbTypeOfTrip.ItemsSource = tripTypes;
             string destination = tbDestination.Text;
             int.TryParse(tbTravellers.Text, out int traveller);
@@ -117,15 +121,15 @@ namespace slutproj_TravelPal
         private void cbTypeofTravel_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            cbTypeofTravel.SelectedValue = Enum.GetValues(typeof(TravelTypes)); // Måste jag dela upp TravelTypes till lokala variabler som kan läsas i en if-sats? Hur?
+            cbTypeofTravel.SelectedItem = Enum.GetNames(typeof(TravelTypes)); // Måste jag dela upp TravelTypes till lokala variabler som kan läsas i en if-sats? Hur?
 
-            if (cbTypeofTravel.SelectedValue == /*Enum.Parse(Enum.TravelType, value)*/ // varken selectedItem eller selectedValue funkar.
+            if (cbTypeofTravel.SelectedItem.ToString().Equals("Vacation")) /*Enum.Parse(Enum.TravelType, value)*/ // varken selectedItem eller selectedValue funkar.
             {
                 lblAllInclusive.Visibility = Visibility.Visible;
                 cbxAllInc.Visibility = Visibility.Visible;
                 cbTypeOfTrip.Visibility = Visibility.Hidden;
             }
-            else if (cbTypeofTravel.SelectedValue == "Trip") // varken selectedItem eller selectedValue funkar.
+            else if (cbTypeofTravel.SelectedItem.ToString().Equals("Trip")) // varken selectedItem eller selectedValue funkar.
             {
                 cbTypeOfTrip.Visibility = Visibility.Visible;
                 cbTypeOfTrip.IsEnabled = true;

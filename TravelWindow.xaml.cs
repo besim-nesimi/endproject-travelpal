@@ -91,7 +91,7 @@ public partial class TravelWindow : Window
         Close();
     }
 
-    // Loggar ut usern / admin. Färdig metod.
+    // Loggar ut usern / admin. Färdig.
     private void btnSignOut_Click(object sender, RoutedEventArgs e)
     {
         userManager.SignedInUser = null;
@@ -104,7 +104,7 @@ public partial class TravelWindow : Window
     }
 
 
-    //Ska visa resan i detalj - Är ej färdig.
+    //Ska visa resan i detalj - knappen/klicket gör vad den ska - TravelDetailsWindow behöver göras klart.
     private void btnShowDetails_Click(object sender, RoutedEventArgs e)
     {
         ListViewItem selectedItem = lvTravels.SelectedItem as ListViewItem;

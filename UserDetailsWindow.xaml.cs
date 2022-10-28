@@ -35,5 +35,14 @@ namespace slutproj_TravelPal
 
             lblLoggedInUser.Content = userManager.SignedInUser.Username;
         }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            TravelWindow travelWindow = new(userManager);
+
+            travelWindow.Show();
+
+            Close();
+        }
     }
 }

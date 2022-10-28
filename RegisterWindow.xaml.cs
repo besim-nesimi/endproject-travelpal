@@ -90,8 +90,6 @@ namespace slutproj_TravelPal
             {
                 Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), cbCountries.SelectedItem.ToString());
 
-
-
                 if (userManager.AddUser(txtUsername.Text, pbPassword.Password, selectedCountry))
                 {
                     // Lyckats skapa en user
@@ -102,10 +100,15 @@ namespace slutproj_TravelPal
 
                     Close();
                 }
+
+                else
+                {
+                    MessageBox.Show("Username already exists!", "Error!");
+                }
             }    
             else
             {
-                MessageBox.Show("Check your inputs!");
+                MessageBox.Show("Check your inputs!", "Error!");
             }
 
         }
