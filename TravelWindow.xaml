@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:slutproj_TravelPal"
         mc:Ignorable="d"
-        Title="TravelWindow" Height="450" Width="800" Foreground="MediumSlateBlue" Background="MediumSlateBlue">
+        Title="TravelWindow" Height="450" Width="800" Foreground="MintCream" Background="MintCream">
     <Grid Margin="10">
         <Grid Grid.Column="1" Margin="10">
             <Grid.ColumnDefinitions>
@@ -21,7 +21,7 @@
                 x:Name="lblUsernameDisplay"
                 Grid.Column="0"
                 Grid.Row="1"
-                Foreground="MintCream"
+                Foreground="MediumSlateBlue"
                 FontStyle="Italic"
                 FontWeight="Bold"
                 FontSize="32"

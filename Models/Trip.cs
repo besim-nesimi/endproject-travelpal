@@ -20,6 +20,6 @@ public class Trip : Travel
 
     public override string GetInfo()
     {
-        return $"{base.Destination} and {base.Country}";
+        return $"You have a trip to {base.Country}";
     }
 }

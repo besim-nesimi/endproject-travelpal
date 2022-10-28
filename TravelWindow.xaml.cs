@@ -22,8 +22,7 @@ namespace slutproj_TravelPal;
 /// </summary>
 public partial class TravelWindow : Window
 {
-    TravelManager travelManager;
-
+    private TravelManager travelManager;
     private UserManager userManager;
 
     public TravelWindow(UserManager userManager)
@@ -32,6 +31,8 @@ public partial class TravelWindow : Window
 
         this.userManager = userManager;
         this.travelManager = new();
+
+        SendTravelInfo();
 
         lblUsernameDisplay.Content = userManager.SignedInUser.Username;
 

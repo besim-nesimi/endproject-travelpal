@@ -23,8 +23,8 @@ namespace slutproj_TravelPal
     /// </summary>
     public partial class AddTravelWindow : Window
     {
-        private readonly UserManager userManager;
-        private readonly TravelManager travelManager;
+        private UserManager userManager;
+        private TravelManager travelManager;
 
         public AddTravelWindow(UserManager userManager, TravelManager travelManager)
         {
@@ -32,10 +32,13 @@ namespace slutproj_TravelPal
 
             this.userManager = userManager;
             this.travelManager = travelManager;
-           
 
-            /* int numOfTravellers = Convert.ToInt32(travellers); */// Funkar ej? Exception Handling ? System.FormatException ? 
+            AddSources();
 
+        }
+
+        private void AddSources()
+        {
             // Hämtar vår enum Countries och lägger det i en array & sätter ComboBoxens innehåll till vår enum countries
             string[] countries = Enum.GetNames(typeof(Countries));
             cbCountries.ItemsSource = countries;
@@ -49,58 +52,53 @@ namespace slutproj_TravelPal
             // Hämtar vår enum tripTypes (leisure / work) och lägger det i en array & sätter ComboBoxens innehåll till vår enum tripTypes
             string[] tripTypes = Enum.GetNames(typeof(TripTypes));
             cbTypeOfTrip.ItemsSource = tripTypes;
-
-           
         }
+
+        //public void DefaultAddTravel()
+        //{
+        //    AddTravelToList();
+        //}
 
         //Skapade två separata metoder som gör olika saker men hänger ihop. 
         //CheckInputsForTravel skickar över infon till AddTravelToList
         //På CheckInputsForTravel ska det finnas conditions för att Add Travel knappen ska bli klickbar.
 
+
         private void CheckInputsForTravel()
         {
             string travelType = cbTypeofTravel.SelectedItem as string;
             string[] tripTypes = Enum.GetNames(typeof(TripTypes));
-            string travellers = tbTravellers.Text;
-
-            int numOfTravellers = Convert.ToInt32(travellers);
-
             cbTypeOfTrip.ItemsSource = tripTypes;
+
+            string travellers = tbTravellers.Text;
+            int numOfTravellers = Convert.ToInt32(travellers);
             string destination = tbDestination.Text;
-            int.TryParse(tbTravellers.Text, out int traveller);
+
             Countries country = (Countries)Enum.Parse(typeof(Countries), cbCountries.SelectedItem.ToString());
 
-            AddTravelToList(travelType, destination, traveller, country); // nödvändigt ens?
+            AddTravelToList(travelType, destination, numOfTravellers, country);
         }
         
         private void AddTravelToList(string travelType, string destination, int traveller, Countries country) // Nödvändigt ?? Kan jag inte bara lägga selectionChanged på listview itemet?
         {
             // Vad är selectat? Trip eller Vacation?
-            
+
+            User signedInUser = userManager.SignedInUser as User;
 
             if (travelType == "Trip") // Trip är selectat
             {
+                TripTypes tripType = (TripTypes)Enum.Parse(typeof(TripTypes), cbTypeOfTrip.SelectedItem.ToString());
 
-                // ändra så att det blir det som selectas på triptypes
-
-                Trip trip = new(TripTypes.Leisure, destination, country, traveller); // Är det work eller leisure?
-
-                User signedInUser = userManager.SignedInUser as User;
-
+                Trip trip = new(tripType, destination, country, traveller); // Är det work eller leisure?
                 signedInUser.Travels.Add(trip);
-                userManager.SignedInUser = signedInUser;
-
                 travelManager.Travels.Add(trip);
+
             }
             else if (travelType == "Vacation") // Checkbox för allinc ska kunna dyka upp, funkar ännu inte
             {
 
-                Vacation vacation = new(TravelTypes.Vacation, destination, country, traveller); // ska finnas vacation
-                
-                User signedInUser = userManager.SignedInUser as User;
-
+                Vacation vacation = new(destination, country, traveller); // ska finnas vacation
                 signedInUser.Travels.Add(vacation);
-                userManager.SignedInUser = signedInUser;
 
                 travelManager.Travels.Add(vacation);
             }

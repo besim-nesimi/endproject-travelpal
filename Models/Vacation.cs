@@ -10,15 +10,15 @@ namespace slutproj_TravelPal.Models;
 
 public class Vacation : Travel
 {
-
-    public Vacation(TravelTypes vacation, string destination, Countries country, int traveller) : base(destination, country, traveller)
+    public Vacation(string destination, Countries country, int traveller) : base(destination, country, traveller)
     {
         Destination = destination;
         Country = country;
+        
     }
 
     public override string GetInfo()
     {
-        return $"Resa to {Country}";
+        return $"Your travel itinerary for your vacation to {Country}";
     }
 }

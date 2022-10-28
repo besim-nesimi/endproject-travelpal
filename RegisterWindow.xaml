@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:slutproj_TravelPal"
         mc:Ignorable="d"
-        Title="RegisterWindow" Height="450" Width="397" Background="MediumSlateBlue">
+        Title="RegisterWindow" Height="450" Width="397" Background="MintCream">
     <Grid>
         <Grid Grid.Column="0" Margin="10">
             <Grid.ColumnDefinitions>
@@ -28,6 +28,7 @@
                 Grid.Column="0"
                 Grid.Row="0"
                 Grid.ColumnSpan="2"
+                Foreground="MediumSlateBlue"
                 Content="Welcome to TravelPal!"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
@@ -35,23 +36,26 @@
                 FontWeight="Bold"
                 />
             <Label 
-                x:Name="lblNull"
+                x:Name="lblUsername"
                 Grid.Column="0"
                 Grid.Row="1"
+                Foreground="MediumSlateBlue"
                 Content="Username"
-                FontSize="16"
+                FontSize="14"
                 VerticalAlignment="Center"/>
             <Label 
-                x:Name="lblNull2"
+                x:Name="lblPassword"
                 Grid.Column="0"
                 Grid.Row="2"
+                Foreground="MediumSlateBlue"
                 Content="Password"
                 FontSize="14"
                 VerticalAlignment="Center"/>
             <Label 
-                x:Name="lblNul"
+                x:Name="lblConfirmPassword"
                 Grid.Column="0"
                 Grid.Row="3"
+                Foreground="MediumSlateBlue"
                 Content="Confirm password"
                 FontSize="14"
                 VerticalAlignment="Center"/>
@@ -59,6 +63,7 @@
                 x:Name="lblCountries"
                 Grid.Column="0"
                 Grid.Row="5"
+                Foreground="MediumSlateBlue"
                 Content="Country"
                 FontSize="16"
                 VerticalAlignment="Center"/>

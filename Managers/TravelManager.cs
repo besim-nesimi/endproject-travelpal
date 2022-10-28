@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace slutproj_TravelPal.Managers
 {
@@ -13,7 +14,17 @@ namespace slutproj_TravelPal.Managers
 
         public void ShowDetails(Travel? selectedTravel) // visa detaljer för resan som klickats på listview ?
         {
-            throw new NotImplementedException();
+            
+        }
+
+        public void RemoveTravel()
+        {
+
+        }
+
+        public void AdminDisplayTravels()
+        {
+            Travels.AddRange(Travels); // Ska visa alla travels på listan på admins listview
         }
     }
 }
