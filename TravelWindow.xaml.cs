@@ -53,7 +53,7 @@ public partial class TravelWindow : Window
         // Vid knapptryck User details ska vi öppna upp UserDetailsWindow.
     }
 
-
+    // Adds the travel into the travelwindow 
     // Lägger till resan som man lagt till på add travel window till travelwindows lista.
     private void SendTravelInfo()
     {

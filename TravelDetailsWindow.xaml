@@ -5,45 +5,90 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:slutproj_TravelPal"
         mc:Ignorable="d"
-        Title="TravelDetailsWindow" Height="450" Width="800">
-    <Grid>
+        Title="TravelDetailsWindow" Height="450" Width="400">
+    <Grid Margin="10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Label
-            x:Name="lblCountry"
+            x:Name="lblHeader"
             Grid.Column="0"
             Grid.Row="0"
-            FontSize="40"
+            Content="Travel details"
+            FontSize="42"
+            FontFamily="Arial"
+            FontWeight="Bold"
+            Foreground="MediumSlateBlue"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Content="test"
             />
+        <Label
+            x:Name="lblCountry"
+            Grid.Column="0"
+            Grid.Row="1"
+            FontFamily="Arial"
+            FontSize="24"
+            Content="test"
+            Margin="10"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"/>
         <Label
             x:Name="lblDestination"
-            Grid.Column="1"
-            Grid.Row="0"
-            FontSize="40"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
+            Grid.Column="0"
+            Grid.Row="2"
+            FontFamily="Arial"
+            FontSize="24"
             Content="test"
-            />
+            Margin="10"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"/>
         <Label
             x:Name="lblTravellers"
-            Grid.Column="2"
-            Grid.Row="0"
-            FontSize="40"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
+            Grid.Column="0"
+            Grid.Row="3"
+            FontFamily="Arial"
+            FontSize="24"
             Content="test"
+            Margin="10"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"/>
+        <TextBox
+            x:Name="tbCountry"
+            Grid.Column="0"
+            Grid.Row="1"
+            FontSize="30"
+            Width="150"
+            Margin="10"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            />
+        <TextBox
+            x:Name="tbDestination"
+            Grid.Column="0"
+            Grid.Row="2"
+            FontSize="30"
+            Width="150"
+            Margin="10"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            />
+        <TextBox
+            x:Name="tbTravellers"
+            Grid.Column="0"
+            Grid.Row="3"
+            Margin="10"
+            FontSize="30"
+            Width="150"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
             />
     </Grid>
 </Window>
