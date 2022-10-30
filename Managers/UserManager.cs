@@ -83,7 +83,7 @@ public List<IUser> GetAllUsers()
     }
 
     // Method that checks if the chosen username is not in use already.
-    private bool ValidateUsername(string username)
+    public bool ValidateUsername(string username)
     {
         foreach (IUser user in allUsers)
         {

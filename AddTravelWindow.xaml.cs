@@ -66,17 +66,28 @@ namespace slutproj_TravelPal
 
         private void CheckInputsForTravel()
         {
+            int numOfTravellers = 0;
+            string travellers = tbTravellers.Text;
+
+            try
+            {
+                numOfTravellers = Convert.ToInt32(travellers);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please write numbers in the traveller box", "Warning!");
+                return;
+            }
+
             string travelType = cbTypeofTravel.SelectedItem as string;
             string[] tripTypes = Enum.GetNames(typeof(TripTypes));
             cbTypeOfTrip.ItemsSource = tripTypes;
 
-            string travellers = tbTravellers.Text;
-            int numOfTravellers = Convert.ToInt32(travellers);
             string destination = tbDestination.Text;
 
             Countries country = (Countries)Enum.Parse(typeof(Countries), cbCountries.SelectedItem.ToString());
 
-            AddTravelToList(travelType, destination, numOfTravellers, country);
+            AddTravelToList(travelType, destination, numOfTravellers!, country);
         }
         
         private void AddTravelToList(string travelType, string destination, int traveller, Countries country) // Nödvändigt ?? Kan jag inte bara lägga selectionChanged på listview itemet?
@@ -87,9 +98,9 @@ namespace slutproj_TravelPal
 
             if (travelType == "Trip") // Trip är selectat
             {
-                TripTypes tripType = (TripTypes)Enum.Parse(typeof(TripTypes), cbTypeOfTrip.SelectedItem.ToString());
+                TripTypes tripType = (TripTypes)Enum.Parse(typeof(TripTypes), cbTypeOfTrip.SelectedItem.ToString()); // Gör så att våra TripTypes "Leisure" och "Work" blir valbara i comboboxen.
 
-                Trip trip = new(tripType, destination, country, traveller); // Är det work eller leisure?
+                Trip trip = new(tripType, destination, country, traveller); // Lägg till "Trip" med samtliga parametrar ifyllda.
                 signedInUser.Travels.Add(trip);
                 travelManager.Travels.Add(trip);
 
@@ -136,10 +147,14 @@ namespace slutproj_TravelPal
             }
         }
 
+        // behövs denna till något?
+
         private void tbTravellers_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
+
+        // behövs denna till något?
 
         private void tbDestination_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -154,14 +169,12 @@ namespace slutproj_TravelPal
             }
         }
 
+        // Behövs denna till något?
+
         private void cbTypeOfTrip_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
 
-        //private void GandalfTrips()
-        //{
-
-        //}
     }
 }

@@ -133,7 +133,8 @@
                 Grid.Row="1"
                 Margin="4"
                 Width="150"
-                HorizontalAlignment="Left" SelectionChanged="cbCountries_SelectionChanged"
+                HorizontalAlignment="Left" 
+                SelectionChanged="cbCountries_SelectionChanged"
                 />
             <Button
                 x:Name="btnAddTravel"

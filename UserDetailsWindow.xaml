@@ -114,7 +114,7 @@
                 Content="Save" 
                 Grid.ColumnSpan="1"
                 Width="130"
-                HorizontalAlignment="center"
+                HorizontalAlignment="center" Click="btnSave_Click"
                 />
             <Button
                 x:Name="btnCancel"

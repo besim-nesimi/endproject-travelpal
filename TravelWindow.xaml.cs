@@ -69,6 +69,22 @@ public partial class TravelWindow : Window
                 lvTravels.Items.Add(item);
             }
         }
+        else if (userManager.SignedInUser is Admin)
+        {
+            var nonAdminUsers = userManager.GetAllUsers().Where(x => x.isAdmin != true);
+
+            foreach (User user in nonAdminUsers)
+            {
+                foreach (Travel travel in user.Travels)
+                {
+                    ListViewItem item = new();
+                    item.Tag = travel;
+                    item.Content = travel.GetInfo();
+                    lvTravels.Items.Add(item);
+                }
+
+            }
+        }
     }
 
     // Öppnar user details window, funkar som den ska.
@@ -106,6 +122,8 @@ public partial class TravelWindow : Window
 
 
     //Ska visa resan i detalj - knappen/klicket gör vad den ska - TravelDetailsWindow behöver göras klart.
+
+    // Är nedan metod korrekt ?
     private void btnShowDetails_Click(object sender, RoutedEventArgs e)
     {
         ListViewItem selectedItem = lvTravels.SelectedItem as ListViewItem;
@@ -116,8 +134,15 @@ public partial class TravelWindow : Window
 
         TravelDetailsWindow travelDetailsWindow = new(userManager, travelManager);
 
+        travelDetailsWindow.lbllCountry.Content = selectedTravel.Country.ToString(); // Vi sätter egenskaperna på TravelDetailsWindow såhär, Jozo GOAT.
+
         travelDetailsWindow.Show();
 
         Close();
+    }
+
+    private void btnRemoveTravel_Click(object sender, RoutedEventArgs e)
+    {
+        throw new NotImplementedException();
     }
 }

@@ -44,7 +44,7 @@
                 Grid.Column="2"
                 Grid.Row="2"
                 Content="Remove travel"
-                Margin="15" />
+                Margin="15" Click="btnRemoveTravel_Click" />
             <Button 
                 x:Name="btnAddTravel"
                 Grid.Column="1"

@@ -60,8 +60,8 @@
             Margin="10"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"/>
-        <TextBox
-            x:Name="tbCountry"
+        <Label
+            x:Name="lbllCountry"
             Grid.Column="0"
             Grid.Row="1"
             FontSize="30"
@@ -79,6 +79,7 @@
             Margin="10"
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
+            IsEnabled="False"
             />
         <TextBox
             x:Name="tbTravellers"
@@ -89,6 +90,7 @@
             Width="150"
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
+            IsEnabled="False"
             />
     </Grid>
 </Window>

@@ -47,5 +47,23 @@ namespace slutproj_TravelPal
 
             Close();
         }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            if (userManager.ValidateUsername(txtUsername.Text))
+            {
+                userManager.SignedInUser.Username = txtUsername.Text;
+
+                TravelWindow travelWindow = new(userManager);
+
+                travelWindow.Show();
+
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Username already exists!", "Error!");
+            }
+        }
     }
 }
