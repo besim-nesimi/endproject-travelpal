@@ -61,7 +61,9 @@ namespace slutproj_TravelPal
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
 
-            Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), cbCountries.SelectedItem.ToString());
+            // Need to fix app breaking if selectedCountry is null.
+
+            Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), cbCountries.SelectedItem.ToString()); 
 
             if (userManager.ValidateUsername(txtUsername.Text))
             {
@@ -89,7 +91,7 @@ namespace slutproj_TravelPal
                 return;
             }
 
-
+            // Don't want the TravelWindow to open up if errored out of its mind.
 
             TravelWindow travelWindow = new(userManager);
 
@@ -112,6 +114,8 @@ namespace slutproj_TravelPal
             return true;
         }
 
+
+        // Method makes sure the passwords are the same in both input boxes.
         private bool ConfirmNewPassword(string pass, string confirm)
         {
             string newPassword = pbPassword.Password;
