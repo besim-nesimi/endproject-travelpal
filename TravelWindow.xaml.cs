@@ -35,6 +35,7 @@ public partial class TravelWindow : Window
         SendTravelInfo();
 
         lblUsernameDisplay.Content = userManager.SignedInUser.Username;
+        lblUserLocationDisplay.Content = userManager.SignedInUser.Location;
 
         // Vid knapptryck User details ska vi öppna upp UserDetailsWindow.
     }
@@ -49,6 +50,7 @@ public partial class TravelWindow : Window
         SendTravelInfo();
 
         lblUsernameDisplay.Content = userManager.SignedInUser.Username;
+        lblUserLocationDisplay.Content = userManager.SignedInUser.Location;
 
         // Vid knapptryck User details ska vi öppna upp UserDetailsWindow.
     }
@@ -158,6 +160,7 @@ public partial class TravelWindow : Window
     }
 
 
+    // If a user is signed in, they can remove the travel by clicking on it and then RemoveTravel button.
     private void btnRemoveTravel_Click(object sender, RoutedEventArgs e)
     {
 
@@ -166,7 +169,7 @@ public partial class TravelWindow : Window
         ListViewItem selectedItem = lvTravels.SelectedItem as ListViewItem; // Vad har vi klickat på i själva listviewet?
 
         Travel selectedTravel = selectedItem.Tag as Travel;
-        
+
         user.Travels.Remove(selectedTravel);
 
         lvTravels.Items.Clear();
@@ -179,5 +182,18 @@ public partial class TravelWindow : Window
     private void SelectForInfo()
     {
         MessageBox.Show("You need to select a travel to see any details!", "Warning!");
+    }
+
+    private void btnInfo_Click(object sender, RoutedEventArgs e)
+    {
+        string welcomeAboutMessage = "Welcome to TravelPal!" +
+            "\nThe button 'Show User Details' lets you change your user information such as username, password and country of origin.\n" +
+            "\nThe button 'Add Travel' will send you to a new window where you can add travel information and then view it in the travel window.\n" +
+            "\nThe button 'Remove Travel' lets you remove a travel from your view.\n" +
+            "\nThe button 'Show Travel Details' will send you to a new window where you can see all information of the specific trip you chose from the list view.\n" + 
+            "\nThank you for using TravelPal for your future travels!\n";
+
+        MessageBox.Show(welcomeAboutMessage, "Welcome to TravelPal!");
+        return;
     }
 }

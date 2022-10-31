@@ -1,4 +1,5 @@
 ﻿using slutproj_TravelPal.Enums;
+using slutproj_TravelPal.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,6 @@ public class Vacation : Travel
 
     public override string GetInfo()
     {
-        return $"Your travel itinerary for your vacation to {Country}";
+        return $"Travel itinerary to {Country}";
     }
 }

@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:slutproj_TravelPal"
         mc:Ignorable="d"
-        Title="RegisterWindow" Height="450" Width="397" Background="MintCream">
-    <Grid>
+        Title="RegisterWindow" Height="450" Width="397" Background="MediumSlateBlue">
+    <Grid Margin="10" Background="MintCream">
         <Grid Grid.Column="0" Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:slutproj_TravelPal"
         mc:Ignorable="d"
         Title="MainWindow" Height="474" Width="286" ResizeMode="NoResize" Background="MediumSlateBlue">
-    <Grid Background="MintCream" Margin="0,0,0,-31">
+    <Grid Background="MintCream" Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="*"/>

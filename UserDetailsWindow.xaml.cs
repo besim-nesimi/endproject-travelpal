@@ -1,4 +1,5 @@
-﻿using slutproj_TravelPal.Managers;
+﻿using slutproj_TravelPal.Enums;
+using slutproj_TravelPal.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,10 @@ namespace slutproj_TravelPal
         public UserDetailsWindow()
         {
             InitializeComponent();
+
+            string[] countries = Enum.GetNames(typeof(Countries));
+
+            cbCountries.ItemsSource = countries;
         }
 
         public UserDetailsWindow(UserManager userManager)
@@ -34,6 +39,11 @@ namespace slutproj_TravelPal
             this.userManager = userManager;
 
             lblLoggedInUser.Content = userManager.SignedInUser.Username;
+            lblLoggedInCountry.Content = userManager.SignedInUser.Location;
+
+            string[] countries = Enum.GetNames(typeof(Countries));
+
+            cbCountries.ItemsSource = countries;
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -48,10 +58,13 @@ namespace slutproj_TravelPal
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), cbCountries.SelectedItem.ToString());
+
             if (userManager.ValidateUsername(txtUsername.Text) && CheckNewPassword())
             {
                 userManager.SignedInUser.Username = txtUsername.Text;
                 userManager.SignedInUser.Password = pbPassword.Password;
+                userManager.SignedInUser.Location = selectedCountry;
 
                 TravelWindow travelWindow = new(userManager);
 

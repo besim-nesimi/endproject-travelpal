@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="UserDetailsWindow" Height="450" Width="500" Background="MediumSlateBlue">
     <Grid>
-        <Grid Margin="5" Background="MintCream">
+        <Grid Margin="10" Background="MintCream">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="*"/>
@@ -43,10 +43,21 @@
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 Foreground="MediumSlateBlue"
-                FontSize="24"
+                FontSize="20"
                 FontWeight="Bold"
                 FontFamily="Arial" 
                 Margin="5"/>
+            <Label
+                x:Name="lblLoggedInCountry"
+                Grid.Column="2"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                HorizontalAlignment="Center"
+                FontSize="20"
+                FontWeight="Bold"
+                FontFamily="Arial"
+                Margin="5"
+                />
             <Label 
                 x:Name="lblNewUsername"
                 Grid.Column="0"

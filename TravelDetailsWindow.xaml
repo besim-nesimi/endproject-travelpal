@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:slutproj_TravelPal"
         mc:Ignorable="d"
-        Title="TravelDetailsWindow" Height="450" Width="400">
-    <Grid Margin="10">
+        Title="TravelDetailsWindow" Height="450" Width="400" Background="MediumSlateBlue">
+    <Grid Margin="10" Background="MintCream">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -89,6 +89,7 @@
             FontSize="14"
             Width="220"
             Margin="10"
+            HorizontalContentAlignment="Right"
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
             />
@@ -99,6 +100,7 @@
             FontSize="14"
             Width="150"
             Margin="10"
+            HorizontalContentAlignment="Right"
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
             />
@@ -109,6 +111,7 @@
             FontSize="14"
             Width="220"
             Margin="10"
+            HorizontalContentAlignment="Right"
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
             />
