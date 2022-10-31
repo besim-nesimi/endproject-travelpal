@@ -13,7 +13,7 @@ public class Trip : Travel
     private int traveller;
 
     public TripTypes Type { get; set; }
-    public Trip(TripTypes type, string destination, Countries country, int travellers) : base(destination, country, travellers)
+    public Trip(TripTypes type, string destination, Countries country, int travellers, string userID) : base(destination, country, travellers, userID)
     {
         this.Type = type;
     }

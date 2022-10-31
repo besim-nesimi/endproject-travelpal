@@ -14,10 +14,11 @@ namespace slutproj_TravelPal.Models
         public string Password { get; set; }
         public Countries Location { get; set; }
         public bool isAdmin { get; set; } = true;
-        public Admin(string username, string password)
+        public Admin(string username, string password, Countries location)
         {
             Username = username;
             Password = password;
+            Location = location;
         }
     }
 }

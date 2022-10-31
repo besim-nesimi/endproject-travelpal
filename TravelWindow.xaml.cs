@@ -37,6 +37,14 @@ public partial class TravelWindow : Window
         lblUsernameDisplay.Content = userManager.SignedInUser.Username;
         lblUserLocationDisplay.Content = userManager.SignedInUser.Location;
 
+        if (userManager.SignedInUser.isAdmin)
+        {
+            btnUserDetails.Visibility = Visibility.Hidden;
+            btnAddTravel.Visibility = Visibility.Hidden;
+            btnInfo.Visibility = Visibility.Hidden;
+            return;
+        }
+
         // Vid knapptryck User details ska vi öppna upp UserDetailsWindow.
     }
 
@@ -51,6 +59,13 @@ public partial class TravelWindow : Window
 
         lblUsernameDisplay.Content = userManager.SignedInUser.Username;
         lblUserLocationDisplay.Content = userManager.SignedInUser.Location;
+
+        if (userManager.SignedInUser.isAdmin)
+        {
+            btnUserDetails.Visibility = Visibility.Hidden;
+            btnAddTravel.Visibility = Visibility.Hidden;
+            return;
+        }
 
         // Vid knapptryck User details ska vi öppna upp UserDetailsWindow.
     }
@@ -93,6 +108,7 @@ public partial class TravelWindow : Window
 
     private void btnUserDetails_Click(object sender, RoutedEventArgs e)
     {
+
         UserDetailsWindow userDetailsWindow = new(userManager);
 
         userDetailsWindow.Show();
@@ -164,17 +180,35 @@ public partial class TravelWindow : Window
     private void btnRemoveTravel_Click(object sender, RoutedEventArgs e)
     {
 
-        User user = userManager.SignedInUser as User;
+        if(userManager.SignedInUser is User)
+        {
+            User user = userManager.SignedInUser as User;
 
-        ListViewItem selectedItem = lvTravels.SelectedItem as ListViewItem; // Vad har vi klickat på i själva listviewet?
+            ListViewItem selectedItem = lvTravels.SelectedItem as ListViewItem; // Vad har vi klickat på i själva listviewet?
 
-        Travel selectedTravel = selectedItem.Tag as Travel;
+            Travel selectedTravel = selectedItem.Tag as Travel;
 
-        user.Travels.Remove(selectedTravel);
+            user.Travels.Remove(selectedTravel); // <- Här smäller koden eftersom vi saknar user vid radering. Admin ser endast listan.
 
-        lvTravels.Items.Clear();
+            lvTravels.Items.Clear();
 
-        SendTravelInfo();
+            SendTravelInfo();
+        }
+        else if (userManager.SignedInUser is Admin)
+        {
+
+            ListViewItem selectedItem = lvTravels.SelectedItem as ListViewItem;
+
+            Travel selectedTravel = selectedItem.Tag as Travel;
+
+            User user = userManager.GetUser(selectedTravel.userID);
+
+            user.Travels.Remove(selectedTravel);
+
+            lvTravels.Items.Clear();
+
+            SendTravelInfo();
+        }
 
     }
 

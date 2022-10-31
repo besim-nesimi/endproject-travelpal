@@ -53,7 +53,7 @@
             <Button
                 x:Name="btnShowDetails"
                 Grid.Column="0"
-                Grid.Row="1"
+                Grid.Row="2"
                 Width="150"
                 HorizontalAlignment="Right"
                 Content="Show Travel Details"
@@ -88,7 +88,7 @@
             <Button 
                 x:Name="btnUserDetails"
                 Grid.Column="0"
-                Grid.Row="2"
+                Grid.Row="1"
                 Width="150"
                 Content="Show User Details"
                 HorizontalAlignment="Right"

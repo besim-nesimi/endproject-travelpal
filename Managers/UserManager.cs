@@ -26,16 +26,16 @@ public class UserManager
 
     public void DefaultUsers()
     {
-        Admin admin = new("admin", "password");
+        Admin admin = new("admin", "password", Countries.Sweden);
 
         User defaultUser = new("Gandalf", "password", Countries.New_Zealand);
 
         List<Travel> Travels = new();
 
-        Trip trip = new(TripTypes.Work, "Mt Doom", Countries.New_Zealand, 9);
+        Trip trip = new(TripTypes.Work, "Mt Doom", Countries.New_Zealand, 9, "Gandalf");
         defaultUser.Travels.Add(trip);
 
-        Vacation vacation = new("Imladris", Countries.New_Zealand, 1);
+        Vacation vacation = new("Imladris", Countries.New_Zealand, 1, "Gandalf");
         defaultUser.Travels.Add(vacation);
 
         allUsers.Add(admin);
@@ -108,6 +108,20 @@ public List<IUser> GetAllUsers()
         }
         return false;
       
+    }
+
+
+    // Method that returns user by its username.
+    public User GetUser(string username)
+    {
+        foreach (IUser user in allUsers)
+        {
+            if (user.Username == username && !user.isAdmin)
+            {
+                return user as User;
+            }
+        }
+        return null;
     }
 
 

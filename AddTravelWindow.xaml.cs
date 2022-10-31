@@ -123,7 +123,7 @@ namespace slutproj_TravelPal
                 else
                 {
                     TripTypes tripType = (TripTypes)Enum.Parse(typeof(TripTypes), cbTypeOfTrip.SelectedItem.ToString());
-                    Trip trip = new(tripType, destination, country, traveller); // Lägg till "Trip" med samtliga parametrar ifyllda.
+                    Trip trip = new(tripType, destination, country, traveller, userManager.SignedInUser.Username); // Lägg till "Trip" med samtliga parametrar ifyllda.
                     signedInUser.Travels.Add(trip);
                     travelManager.Travels.Add(trip);
                 }
@@ -132,7 +132,8 @@ namespace slutproj_TravelPal
             else if (travelType == "Vacation") // Checkbox för allinc ska kunna dyka upp, funkar ännu inte
             {
 
-                Vacation vacation = new(destination, country, traveller); // ska finnas vacation
+                Vacation vacation = new(destination, country, traveller, userManager.SignedInUser.Username); // ska finnas vacation
+
                 signedInUser.Travels.Add(vacation);
 
                 travelManager.Travels.Add(vacation);

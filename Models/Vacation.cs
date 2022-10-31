@@ -11,7 +11,7 @@ namespace slutproj_TravelPal.Models;
 
 public class Vacation : Travel
 {
-    public Vacation(string destination, Countries country, int traveller) : base(destination, country, traveller)
+    public Vacation(string destination, Countries country, int traveller, string userID) : base(destination, country, traveller, userID)
     {
         Destination = destination;
         Country = country;
