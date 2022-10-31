@@ -67,10 +67,10 @@
                 FontSize="16"
                 VerticalAlignment="Center" Grid.ColumnSpan="2"/>
             <Label 
-                x:Name="lblDestination"
+                x:Name="lblPurposeOfVisit"
                 Grid.Column="0"
                 Grid.Row="5"
-                Content="Destination"
+                Content="Purpose of visit"
                 FontSize="16"
                 VerticalAlignment="Center" Grid.ColumnSpan="2"/>
             <Label 
@@ -140,8 +140,18 @@
                 x:Name="btnAddTravel"
                 Grid.Column="2"
                 Grid.Row="6"
-                Margin="4,0,4,0"
+                Margin="4"
+                Width="200"
+                HorizontalAlignment="Right"
                 Content="Add Travel" Height="27" VerticalAlignment="Center" Click="btnAddTravel_Click" />
+            <Button
+                x:Name="btnCancelReturn"
+                Grid.Column="2"
+                Grid.Row="6"
+                Margin="4"
+                Width="200"
+                HorizontalAlignment="Left"
+                Content="Cancel" Click="btnCancelReturn_Click"/>
         </Grid>
     </Grid>
 </Window>

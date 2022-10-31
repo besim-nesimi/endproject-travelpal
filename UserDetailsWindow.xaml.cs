@@ -43,16 +43,15 @@ namespace slutproj_TravelPal
 
             travelWindow.Show();
 
-
-
             Close();
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            if (userManager.ValidateUsername(txtUsername.Text))
+            if (userManager.ValidateUsername(txtUsername.Text) && CheckNewPassword())
             {
                 userManager.SignedInUser.Username = txtUsername.Text;
+                userManager.SignedInUser.Password = pbPassword.Password;
 
                 TravelWindow travelWindow = new(userManager);
 
@@ -62,7 +61,23 @@ namespace slutproj_TravelPal
             }
             else
             {
-                MessageBox.Show("Username already exists!", "Error!");
+                MessageBox.Show("Username already exists or passwords don't match!", "Error!");
+            }
+        }
+
+        private bool CheckNewPassword()
+        {
+
+            string newPassword = pbPassword.Password;
+            string confirmPassword = pbConfirmPassword.Password;
+
+            if (newPassword == confirmPassword)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

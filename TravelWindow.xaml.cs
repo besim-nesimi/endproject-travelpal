@@ -122,27 +122,62 @@ public partial class TravelWindow : Window
 
 
     //Ska visa resan i detalj - knappen/klicket gör vad den ska - TravelDetailsWindow behöver göras klart.
-
-    // Är nedan metod korrekt ?
     private void btnShowDetails_Click(object sender, RoutedEventArgs e)
     {
+
         ListViewItem selectedItem = lvTravels.SelectedItem as ListViewItem;
 
-        Travel selectedTravel = selectedItem.Tag as Travel;
+        if(selectedItem == null)
+        {
+            SelectForInfo();
+        }
+        else
+        {
+            Travel selectedTravel = selectedItem.Tag as Travel;
 
-        travelManager.ShowDetails(selectedTravel);
+            travelManager.ShowDetails(selectedTravel);
 
-        TravelDetailsWindow travelDetailsWindow = new(userManager, travelManager);
+            TravelDetailsWindow travelDetailsWindow = new(userManager, travelManager);
 
-        travelDetailsWindow.lbllCountry.Content = selectedTravel.Country.ToString(); // Vi sätter egenskaperna på TravelDetailsWindow såhär, Jozo GOAT.
+            // Vi sätter egenskaperna på TravelDetailsWindow såhär.
 
-        travelDetailsWindow.Show();
+            travelDetailsWindow.lblCountryShow.Content = selectedTravel.Country.ToString();
+            travelDetailsWindow.lblPurposeShow.Content = selectedTravel.Destination.ToString();
+            travelDetailsWindow.lblTravellersShow.Content = selectedTravel.Travellers.ToString();
 
-        Close();
+            // Om det är en trip så vill jag att det dyker upp på sidan
+            //travelDetailsWindow.lblTripTypeShow.Visibilty.Visible.Content = selectedTravel.Type
+
+            // Om det är en vacay så vill jag att det dyker upp på traveldetails om 
+            
+
+            travelDetailsWindow.Show();
+
+            Close();
+        }
     }
+
 
     private void btnRemoveTravel_Click(object sender, RoutedEventArgs e)
     {
-        throw new NotImplementedException();
+
+        User user = userManager.SignedInUser as User;
+
+        ListViewItem selectedItem = lvTravels.SelectedItem as ListViewItem; // Vad har vi klickat på i själva listviewet?
+
+        Travel selectedTravel = selectedItem.Tag as Travel;
+        
+        user.Travels.Remove(selectedTravel);
+
+        lvTravels.Items.Clear();
+
+        SendTravelInfo();
+
+    }
+
+    // Default method that screams if you have not clicked on a travel item.
+    private void SelectForInfo()
+    {
+        MessageBox.Show("You need to select a travel to see any details!", "Warning!");
     }
 }

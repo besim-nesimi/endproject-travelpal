@@ -32,11 +32,11 @@ public class UserManager
 
         List<Travel> Travels = new();
 
-        Trip trip1 = new(TripTypes.Work, "Mt Doom", Countries.New_Zealand, 9);
-        defaultUser.Travels.Add(trip1);
+        Trip trip = new(TripTypes.Work, "Mt Doom", Countries.New_Zealand, 9);
+        defaultUser.Travels.Add(trip);
 
-        Trip trip2 = new(TripTypes.Leisure, "Imladris", Countries.New_Zealand, 1);
-        defaultUser.Travels.Add(trip2);
+        Vacation vacation = new("Imladris", Countries.New_Zealand, 1);
+        defaultUser.Travels.Add(vacation);
 
         allUsers.Add(admin);
         allUsers.Add(defaultUser);
@@ -66,20 +66,18 @@ public List<IUser> GetAllUsers()
     }
 
 
-    // Method that enables users to change their username, password and country. It will also check if username is not in use, and also that passwords match.
-    public bool UpdateUser(IUser thisUser, string username, string password, Countries country) // Ej färdig - Metoden avser att låta user ändra info.
+    // Method that enables users to change their password. Password has to be same as confirm password.
+    public bool ValidatePassword(string password) // Ej färdig - Metoden avser att låta user ändra info.
     {
-        if (ValidateUsername(username))
+        foreach (IUser user in allUsers)
         {
-            thisUser.Username = username; 
-            thisUser.Password = password; 
-            thisUser.Location = country;
-
-
-           
+            if (user.Password == password)
+            {
+                return true;
+            }
         }
+        return true;
 
-        return false;
     }
 
     // Method that checks if the chosen username is not in use already.

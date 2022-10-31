@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -54,40 +55,56 @@ namespace slutproj_TravelPal
             cbTypeOfTrip.ItemsSource = tripTypes;
         }
 
-        //public void DefaultAddTravel()
-        //{
-        //    AddTravelToList();
-        //}
-
         //Skapade två separata metoder som gör olika saker men hänger ihop. 
         //CheckInputsForTravel skickar över infon till AddTravelToList
         //På CheckInputsForTravel ska det finnas conditions för att Add Travel knappen ska bli klickbar.
 
 
-        private void CheckInputsForTravel()
+        private bool CheckInputsForTravel()
         {
             int numOfTravellers = 0;
             string travellers = tbTravellers.Text;
 
+            if (cbCountries.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a country!", "Warning");
+                return false;
+            }
+
+            if (cbTypeofTravel.SelectedItem == null)
+            {
+                MessageBox.Show("Please select type of travel!", "Warning!");
+                return false;
+            }
+
             try
             {
                 numOfTravellers = Convert.ToInt32(travellers);
+
+                if (numOfTravellers <= 0)
+                {
+                    return false;
+                }
             }
-            catch (Exception ex)
+            catch (FormatException ex)
             {
                 MessageBox.Show("Please write numbers in the traveller box", "Warning!");
-                return;
+                return false;
+            }
+            catch (OverflowException ex)
+            {
+                MessageBox.Show(ex.Message, "Warning!");
+                return false;
             }
 
-            string travelType = cbTypeofTravel.SelectedItem as string;
-            string[] tripTypes = Enum.GetNames(typeof(TripTypes));
-            cbTypeOfTrip.ItemsSource = tripTypes;
+            if(string.IsNullOrEmpty(tbDestination.Text))
+            {
+                MessageBox.Show("Please add purpose of visit", "Warning!");
 
-            string destination = tbDestination.Text;
+                return false;
+            }
 
-            Countries country = (Countries)Enum.Parse(typeof(Countries), cbCountries.SelectedItem.ToString());
-
-            AddTravelToList(travelType, destination, numOfTravellers!, country);
+            return true;
         }
         
         private void AddTravelToList(string travelType, string destination, int traveller, Countries country) // Nödvändigt ?? Kan jag inte bara lägga selectionChanged på listview itemet?
@@ -98,11 +115,18 @@ namespace slutproj_TravelPal
 
             if (travelType == "Trip") // Trip är selectat
             {
-                TripTypes tripType = (TripTypes)Enum.Parse(typeof(TripTypes), cbTypeOfTrip.SelectedItem.ToString()); // Gör så att våra TripTypes "Leisure" och "Work" blir valbara i comboboxen.
-
-                Trip trip = new(tripType, destination, country, traveller); // Lägg till "Trip" med samtliga parametrar ifyllda.
-                signedInUser.Travels.Add(trip);
-                travelManager.Travels.Add(trip);
+                if (cbTypeOfTrip.SelectedItem == null)
+                {
+                    MessageBox.Show("You have not chosen type of trip!", "Warning!");
+                    return;
+                }
+                else
+                {
+                    TripTypes tripType = (TripTypes)Enum.Parse(typeof(TripTypes), cbTypeOfTrip.SelectedItem.ToString());
+                    Trip trip = new(tripType, destination, country, traveller); // Lägg till "Trip" med samtliga parametrar ifyllda.
+                    signedInUser.Travels.Add(trip);
+                    travelManager.Travels.Add(trip);
+                }
 
             }
             else if (travelType == "Vacation") // Checkbox för allinc ska kunna dyka upp, funkar ännu inte
@@ -123,8 +147,20 @@ namespace slutproj_TravelPal
 
         private void btnAddTravel_Click(object sender, RoutedEventArgs e)
         {
-            CheckInputsForTravel();
-                
+            if(CheckInputsForTravel())
+            {
+                string travellers = tbTravellers.Text;
+
+                int numOfTravellers = Convert.ToInt32(travellers);
+
+                string travelType = cbTypeofTravel.SelectedItem as string;
+
+                string destination = tbDestination.Text;
+
+                Countries country = (Countries)Enum.Parse(typeof(Countries), cbCountries.SelectedItem.ToString());
+
+                AddTravelToList(travelType, destination, numOfTravellers, country);
+            }
         }
 
         private void cbTypeofTravel_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -175,6 +211,19 @@ namespace slutproj_TravelPal
         {
 
         }
+
+        // Returns you to travelwindow.
+        private void btnCancelReturn_Click(object sender, RoutedEventArgs e)
+        {
+          
+            TravelWindow travelWindow = new(userManager);
+
+            travelWindow.Show();
+
+            Close();
+        }
+
+        // En metod där knappen Add travel är enabled, men en messagebox dyker upp om något saknas.
 
     }
 }

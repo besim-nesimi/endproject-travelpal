@@ -71,8 +71,7 @@
                 x:Name="txtUsername"
                 Grid.Column="1"
                 Grid.Row="1"
-                Margin="4"
-                TextChanged="TextBox_TextChanged"/>
+                Margin="4"/>
             <PasswordBox 
                 x:Name="pbPassword"
                 Grid.Column="1"
@@ -88,7 +87,6 @@
                 Grid.Column="1"
                 Grid.Row="5"
                 Margin="4"
-                SelectionChanged="cbCountries_SelectionChanged"
                 />
             <Button
                 x:Name="btnRegister"

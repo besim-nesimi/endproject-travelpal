@@ -28,28 +28,14 @@ namespace slutproj_TravelPal
         public RegisterWindow(UserManager userManager)
         {
             InitializeComponent();
-            
-            // Hämtar vår enum Countries och lägger det i en array
-            string[] countries = Enum.GetNames(typeof(Countries)); 
-            
-            // Vi sätter ComboBoxens innehåll till vår enum countries
-            cbCountries.ItemsSource = countries; 
 
-            // Enable & disable buttons
-            // När appen startar ska knapparna vara avstängd
-            btnRegister.IsEnabled = false;
+            // Hämtar vår enum Countries och lägger det i en array
+            string[] countries = Enum.GetNames(typeof(Countries));
+
+            // Vi sätter ComboBoxens innehåll till vår enum countries
+            cbCountries.ItemsSource = countries;
 
             this.userManager = userManager;
-        }
-
-
-        // Gör så att knappen Register blir klickbar om allt är ifyllt.
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (CheckInputs())
-            {
-                btnRegister.IsEnabled = true;
-            }
         }
 
         private bool CheckInputs()
@@ -63,30 +49,41 @@ namespace slutproj_TravelPal
 
             string[] fields = new[] { username, password, confirmPassword, country };
 
+
             foreach (string field in fields)
+
             {
                 if (string.IsNullOrEmpty(field))
                 {
+                    MessageBox.Show("You have not entered all your informations.", "Warning!");
+                    return false;
+                }
+                else if (password != confirmPassword)
+                {
+                    MessageBox.Show("Your passwords are not matching!", "Warning!");
+                    return false;
+                }
+                else if (cbCountries.SelectedItem == null)
+                {
+                    MessageBox.Show("You have not chosen a country of origin!", "Warning!");
                     return false;
                 }
             }
 
+            // Funkar ej
+            //if (password.Length > 5)
+            //{
+            //    MessageBox.Show("Your password is too short", "Warning!");
+            //    return false;
+            //}
+            //return true;
             return true;
+
         }
 
-        // Kollar så att ett land är valt innan knappen blir klickbar.
-        private void cbCountries_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (CheckInputs())
-            {
-                    btnRegister.IsEnabled = true;
-            }
-        }
-
-        // Register knappens logik
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-            if(CheckInputs())
+            if (CheckInputs())
             {
                 Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), cbCountries.SelectedItem.ToString());
 
@@ -105,13 +102,7 @@ namespace slutproj_TravelPal
                 {
                     MessageBox.Show("Username already exists!", "Error!");
                 }
-            }    
-            else
-            {
-                MessageBox.Show("Check your inputs!", "Error!");
             }
-
         }
     }
-    
 }
