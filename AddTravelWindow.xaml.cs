@@ -64,6 +64,7 @@ namespace slutproj_TravelPal
         {
             int numOfTravellers = 0;
             string travellers = tbTravellers.Text;
+            bool allIncCheck = true;
 
             if (cbCountries.SelectedItem == null)
             {
@@ -75,15 +76,6 @@ namespace slutproj_TravelPal
             {
                 MessageBox.Show("Please select type of travel!", "Warning!");
                 return false;
-            }
-
-            if (cbxAllInc_Checked == null) /// ????????
-            {
-                vacation.All_Inclusive = false;
-            }
-            else if (cbxAllInc_Checked != null)
-            {
-                vacation.All_Inclusive = true;
             }
 
             try
@@ -141,8 +133,16 @@ namespace slutproj_TravelPal
             }
             else if (travelType == "Vacation") // Vacation is selected
             {
-
                 Vacation vacation = new(destination, country, traveller, userManager.SignedInUser.Username); // Creates the vacation.
+
+                if (cbxAllInc_Checked == null) /// ????????
+                {
+                    vacation.All_Inclusive = false;
+                }
+                else if (cbxAllInc_Checked != null)
+                {
+                    vacation.All_Inclusive = true;
+                }
 
                 signedInUser.Travels.Add(vacation); // Add the vacation to the signed in user list of travels.
 
