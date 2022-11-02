@@ -29,19 +29,19 @@ namespace slutproj_TravelPal
         {
             InitializeComponent();
 
-            // Hämtar vår enum Countries och lägger det i en array
+            // Get our enum and put it in an array
             string[] countries = Enum.GetNames(typeof(Countries));
 
-            // Vi sätter ComboBoxens innehåll till vår enum countries
+            // Set the combobox content to countries, our enum with countries.
             cbCountries.ItemsSource = countries;
 
             this.userManager = userManager;
         }
 
+        // Checks if all user informations are in.
         private bool CheckInputs()
         {
 
-            // Kollar så att allt är ifyllt
             string username = txtUsername.Text;
             string password = pbPassword.Password;
             string confirmPassword = pbConfirmPassword.Password;
@@ -70,17 +70,12 @@ namespace slutproj_TravelPal
                 }
             }
 
-            // Funkar ej
-            //if (password.Length > 5)
-            //{
-            //    MessageBox.Show("Your password is too short", "Warning!");
-            //    return false;
-            //}
-            //return true;
             return true;
 
         }
 
+
+        // If inputs are valid, creates a new user.
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             if (CheckInputs())
@@ -89,7 +84,6 @@ namespace slutproj_TravelPal
 
                 if (userManager.AddUser(txtUsername.Text, pbPassword.Password, selectedCountry))
                 {
-                    // Lyckats skapa en user
 
                     MainWindow mainWindow = new(userManager);
 

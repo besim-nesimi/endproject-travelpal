@@ -146,6 +146,8 @@ namespace slutproj_TravelPal
             Close();
         }
 
+
+        // Adds the travel to the listview.
         private void btnAddTravel_Click(object sender, RoutedEventArgs e)
         {
             if(CheckInputsForTravel())
@@ -164,6 +166,8 @@ namespace slutproj_TravelPal
             }
         }
 
+
+        // Checks if its vacation or trip, then hides relevant buttons/labels and displays relevant buttons/labels.
         private void cbTypeofTravel_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -198,6 +202,8 @@ namespace slutproj_TravelPal
 
         }
 
+
+
         private void cbCountries_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cbCountries.SelectedItem != null)
@@ -223,8 +229,6 @@ namespace slutproj_TravelPal
 
             Close();
         }
-
-        // En metod där knappen Add travel är enabled, men en messagebox dyker upp om något saknas.
 
     }
 }

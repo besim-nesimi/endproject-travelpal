@@ -37,6 +37,7 @@ public partial class TravelDetailsWindow : Window
         this.travelManager = travelManager;
     }
 
+    // Return to TravelWindow.
     private void Button_Click(object sender, RoutedEventArgs e)
     {
         TravelWindow travelWindow = new(userManager);

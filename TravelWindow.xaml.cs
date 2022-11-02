@@ -60,6 +60,10 @@ public partial class TravelWindow : Window
         lblUsernameDisplay.Content = userManager.SignedInUser.Username;
         lblUserLocationDisplay.Content = userManager.SignedInUser.Location;
 
+
+        // Hid user details and adding travel if admin is logged in. Admin does not need these buttons. 
+        // Admin does not need to change name or travel. 
+        // Admin has no confirmation needs.
         if (userManager.SignedInUser.isAdmin)
         {
             btnUserDetails.Visibility = Visibility.Hidden;
@@ -67,11 +71,9 @@ public partial class TravelWindow : Window
             return;
         }
 
-        // Vid knapptryck User details ska vi öppna upp UserDetailsWindow.
     }
 
     // Adds the travel into the travelwindow 
-    // Lägger till resan som man lagt till på add travel window till travelwindows lista.
     private void SendTravelInfo()
     {
         if (userManager.SignedInUser is User)
@@ -104,7 +106,7 @@ public partial class TravelWindow : Window
         }
     }
 
-    // Öppnar user details window, funkar som den ska.
+    // Opens user details window.
 
     private void btnUserDetails_Click(object sender, RoutedEventArgs e)
     {
@@ -116,7 +118,7 @@ public partial class TravelWindow : Window
         Close();
     }
 
-    // Öppnar add travel window, funkar som den ska.
+    // Opens up the add travel window.
     private void btnAddTravel_Click(object sender, RoutedEventArgs e)
     {
         AddTravelWindow addTravelWindow = new(userManager, travelManager);
@@ -126,7 +128,7 @@ public partial class TravelWindow : Window
         Close();
     }
 
-    // Loggar ut usern / admin. Färdig.
+    // Signs the user / admin out.
     private void btnSignOut_Click(object sender, RoutedEventArgs e)
     {
         userManager.SignedInUser = null;
@@ -139,7 +141,7 @@ public partial class TravelWindow : Window
     }
 
 
-    //Ska visa resan i detalj - knappen/klicket gör vad den ska - TravelDetailsWindow behöver göras klart.
+    // Shows the travel in detail.
     private void btnShowDetails_Click(object sender, RoutedEventArgs e)
     {
 
@@ -157,7 +159,7 @@ public partial class TravelWindow : Window
 
             TravelDetailsWindow travelDetailsWindow = new(userManager, travelManager);
 
-            // Vi sätter egenskaperna på TravelDetailsWindow såhär.
+            // Setting the contents of travel details window.
 
             travelDetailsWindow.lblCountryShow.Content = selectedTravel.Country.ToString();
             travelDetailsWindow.lblPurposeShow.Content = selectedTravel.Destination.ToString();
@@ -184,17 +186,17 @@ public partial class TravelWindow : Window
         {
             User user = userManager.SignedInUser as User;
 
-            ListViewItem selectedItem = lvTravels.SelectedItem as ListViewItem; // Vad har vi klickat på i själva listviewet?
+            ListViewItem selectedItem = lvTravels.SelectedItem as ListViewItem;
 
             Travel selectedTravel = selectedItem.Tag as Travel;
 
-            user.Travels.Remove(selectedTravel); // <- Här smäller koden eftersom vi saknar user vid radering. Admin ser endast listan.
+            user.Travels.Remove(selectedTravel);
 
             lvTravels.Items.Clear();
 
             SendTravelInfo();
         }
-        else if (userManager.SignedInUser is Admin)
+        else if (userManager.SignedInUser is Admin) // If an admin is logged in, the admin can view and remove any selected travel.
         {
 
             ListViewItem selectedItem = lvTravels.SelectedItem as ListViewItem;
@@ -218,6 +220,8 @@ public partial class TravelWindow : Window
         MessageBox.Show("You need to select a travel to see any details!", "Warning!");
     }
 
+
+    // In case of doubt, follow your nose.
     private void btnInfo_Click(object sender, RoutedEventArgs e)
     {
         string welcomeAboutMessage = "Welcome to TravelPal!" +
