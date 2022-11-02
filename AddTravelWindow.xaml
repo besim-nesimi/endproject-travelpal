@@ -105,14 +105,13 @@
                 SelectionChanged="cbTypeofTravel_SelectionChanged"
                 />
             <CheckBox
-                x:Name="cbxAllInc"
+                x:Name="xbAllInclusive"
                 Grid.Column="2"
                 Grid.Row="3"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 Margin="4"
-                Visibility="Hidden" 
-                Checked="cbxAllInc_Checked"
+                Visibility="Hidden" Checked="xbAllInclusive_Checked"
                 />
             <TextBox 
                 x:Name="tbDestination"
@@ -146,9 +145,7 @@
                 Margin="4"
                 Width="200"
                 HorizontalAlignment="Right"
-                Content="Add Travel" 
-                Height="27" 
-                VerticalAlignment="Center" 
+                Content="Add Travel"
                 Click="btnAddTravel_Click" />
             <Button
                 x:Name="btnCancelReturn"

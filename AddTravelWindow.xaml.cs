@@ -64,7 +64,6 @@ namespace slutproj_TravelPal
         {
             int numOfTravellers = 0;
             string travellers = tbTravellers.Text;
-            bool allIncCheck = true;
 
             if (cbCountries.SelectedItem == null)
             {
@@ -134,15 +133,6 @@ namespace slutproj_TravelPal
             else if (travelType == "Vacation") // Vacation is selected
             {
                 Vacation vacation = new(destination, country, traveller, userManager.SignedInUser.Username); // Creates the vacation.
-
-                if (cbxAllInc_Checked == null) /// ????????
-                {
-                    vacation.All_Inclusive = false;
-                }
-                else if (cbxAllInc_Checked != null)
-                {
-                    vacation.All_Inclusive = true;
-                }
 
                 signedInUser.Travels.Add(vacation); // Add the vacation to the signed in user list of travels.
 
@@ -223,9 +213,17 @@ namespace slutproj_TravelPal
 
 
         // Send info about all inclusive. If the checkbox is checked, method AllInc returns true. Does not work!!!
-        private void cbxAllInc_Checked(object sender, RoutedEventArgs e)
+        private void xbAllInclusive_Checked(object sender, RoutedEventArgs e)
         {
-            return;
+            if (xbAllInclusive.Checked) /////////////// WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            {
+                vacation.All_Inclusive = true;
+            }
+            else
+            {
+                vacation.All_Inclusive = false;
+            }
         }
+
     }
 }
