@@ -7,6 +7,7 @@ using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace slutproj_TravelPal.Managers;
 
@@ -65,9 +66,23 @@ public List<IUser> GetAllUsers()
         return false;
     }
 
+    // Method that checks if the chosen username is not in use already.
+    public bool ValidateUsername(string username)
+    {
+        foreach (IUser user in allUsers)
+        {
+            if (user.Username == username)
+            {
+                MessageBox.Show("That username is already in use!", "Warning!");
+                return false;
+            }
+        }
+        return true;
+    }
 
-    // Method that enables users to change their password. Password has to be same as confirm password.
-    public bool ValidatePassword(string password) // Ej färdig - Metoden avser att låta user ändra info.
+
+    // Password has to be same as confirm password. This method is for already signed up users.
+    public bool ValidatePassword(string password)
     {
         foreach (IUser user in allUsers)
         {
@@ -80,17 +95,39 @@ public List<IUser> GetAllUsers()
 
     }
 
-    // Method that checks if the chosen username is not in use already.
-    public bool ValidateUsername(string username)
+    // Username lenght check.
+    public bool CheckUserLenght(string newName)
     {
-        foreach (IUser user in allUsers)
+
+        if (newName.Length < 3 || newName.Length > 10)
         {
-            if (user.Username == username)
-            {
-                return false;
-            }
+            MessageBox.Show("The username must be between 3 and 10 characters long!", "Warning");
+            return false;
         }
         return true;
+    }
+
+    // Password length check.
+    public bool CheckNewPasswordLength(string pass)
+    {
+
+        if (pass.Length < 5 || pass.Length > 16)
+        {
+            MessageBox.Show("Password needs to be between 5 and 16 characters.", "Warning!");
+            return false;
+        }
+        return true;
+    }
+
+    // Confirms password. This method is intended for new users.
+    public bool ConfirmNewPassword(string pass, string confirm)
+    {
+        if (pass == confirm)
+        {
+            return true;
+        }
+        MessageBox.Show("Your password does not match.", "Warning!");
+        return false;
     }
 
 

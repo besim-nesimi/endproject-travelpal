@@ -11,6 +11,8 @@ namespace slutproj_TravelPal.Models;
 
 public class Vacation : Travel
 {
+    public bool AllInclusive { get; set; }
+
     public Vacation(string destination, Countries country, int traveller, string userID) : base(destination, country, traveller, userID)
     {
         Destination = destination;
@@ -20,6 +22,11 @@ public class Vacation : Travel
 
     public override string GetInfo()
     {
-        return $"Travel itinerary to {Country}";
+        return $"Vacation destination: {Country}";
+    }
+
+    public bool AllInc()
+    {
+        return true;
     }
 }

@@ -31,21 +31,20 @@ namespace slutproj_TravelPal
             string[] countries = Enum.GetNames(typeof(Countries));
 
             cbCountries.ItemsSource = countries;
+            cbCountries.Text = userManager.SignedInUser.Location.ToString();
         }
 
         public UserDetailsWindow(UserManager userManager)
         {
-
             InitializeComponent();
-
             this.userManager = userManager;
 
             lblLoggedInUser.Content = userManager.SignedInUser.Username;
             lblLoggedInCountry.Content = userManager.SignedInUser.Location;
 
             string[] countries = Enum.GetNames(typeof(Countries));
-
             cbCountries.ItemsSource = countries;
+            cbCountries.Text = userManager.SignedInUser.Location.ToString(); // Makes sure that the country combobox within UserDetailsWindow is already at users current location.
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -58,90 +57,29 @@ namespace slutproj_TravelPal
             Close();
         }
 
+        // Save new user details.
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
 
-            // Need to fix app breaking if selectedCountry is null.
-
             Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), cbCountries.SelectedItem.ToString()); 
 
-            if (userManager.ValidateUsername(txtUsername.Text))
+            if (userManager.ValidateUsername(txtUsername.Text) && userManager.ConfirmNewPassword(pbPassword.Password, pbConfirmPassword.Password) && userManager.CheckNewPasswordLength(pbPassword.Password))
             {
-                if (CheckUserLenght(txtUsername.Text))
-                {
-                    userManager.SignedInUser.Username = txtUsername.Text;
-                }
+                userManager.SignedInUser.Username = txtUsername.Text;
+                userManager.SignedInUser.Password = pbPassword.Password;
             }
             else
             {
-                MessageBox.Show("That username is already in use.", "Warning");
                 return;
             }
 
-            if(ConfirmNewPassword(pbPassword.Password, pbConfirmPassword.Password) && CheckNewPasswordLength(pbPassword.Password))
-            {
-                userManager.SignedInUser.Password = pbPassword.Password;
-            }
-
-            selectedCountry = userManager.SignedInUser.Location;
-
-            if(selectedCountry == null)
-            {
-                MessageBox.Show("You need to pick a country of origin.");
-                return;
-            }
-
-            // Don't want the TravelWindow to open up if errored out of its mind.
+            userManager.SignedInUser.Location = selectedCountry;
 
             TravelWindow travelWindow = new(userManager);
 
             travelWindow.Show();
 
             Close();
-        }
-
-
-        // Method makes sure the username length is between 3 and 10 characters.
-        private bool CheckUserLenght(string newName)
-        {
-            string newUsername = txtUsername.Text;
-
-            if(newUsername.Length < 3 || newUsername.Length > 10)
-            {
-                MessageBox.Show("The username must be between 3 and 10 characters long!", "Warning");
-                return false;
-            }
-            return true;
-        }
-
-
-        // Method makes sure the passwords are the same in both input boxes.
-        private bool ConfirmNewPassword(string pass, string confirm)
-        {
-            string newPassword = pbPassword.Password;
-            string confirmPassword = pbConfirmPassword.Password;
-
-            if(newPassword == confirmPassword)
-            {
-                return true;
-            }
-            MessageBox.Show("Your password does not match.", "Warning!");
-            return false;
-        }
-
-
-        // Are the new passwords the same & longer than 5 characters/digits?
-        private bool CheckNewPasswordLength(string pass)
-        {
-
-            string newPassword = pbPassword.Password;
-
-            if (newPassword.Length < 5 || newPassword.Length > 16)
-            {
-                MessageBox.Show("Password needs to be between 5 and 16 characters.", "Warning!");
-                return false;
-            }
-            return true;
         }
     }
 }

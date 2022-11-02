@@ -24,6 +24,7 @@ public partial class TravelWindow : Window
 {
     private TravelManager travelManager;
     private UserManager userManager;
+    private Travel travel;
 
     public TravelWindow(UserManager userManager)
     {
@@ -155,21 +156,13 @@ public partial class TravelWindow : Window
         {
             Travel selectedTravel = selectedItem.Tag as Travel;
 
-            travelManager.ShowDetails(selectedTravel);
-
-            TravelDetailsWindow travelDetailsWindow = new(userManager, travelManager);
-
             // Setting the contents of travel details window.
+
+            TravelDetailsWindow travelDetailsWindow = new(userManager, travelManager, travel);
 
             travelDetailsWindow.lblCountryShow.Content = selectedTravel.Country.ToString();
             travelDetailsWindow.lblPurposeShow.Content = selectedTravel.Destination.ToString();
             travelDetailsWindow.lblTravellersShow.Content = selectedTravel.Travellers.ToString();
-
-            // Om det är en trip så vill jag att det dyker upp på sidan
-            //travelDetailsWindow.lblTripTypeShow.Visibilty.Visible.Content = selectedTravel.Type
-
-            // Om det är en vacay så vill jag att det dyker upp på traveldetails om 
-            
 
             travelDetailsWindow.Show();
 
@@ -182,11 +175,15 @@ public partial class TravelWindow : Window
     private void btnRemoveTravel_Click(object sender, RoutedEventArgs e)
     {
 
-        if(userManager.SignedInUser is User)
+        ListViewItem selectedItem = lvTravels.SelectedItem as ListViewItem;
+
+        if (selectedItem == null)
+        {
+            SelectForDelete();
+        }
+        else if(userManager.SignedInUser is User)
         {
             User user = userManager.SignedInUser as User;
-
-            ListViewItem selectedItem = lvTravels.SelectedItem as ListViewItem;
 
             Travel selectedTravel = selectedItem.Tag as Travel;
 
@@ -198,8 +195,6 @@ public partial class TravelWindow : Window
         }
         else if (userManager.SignedInUser is Admin) // If an admin is logged in, the admin can view and remove any selected travel.
         {
-
-            ListViewItem selectedItem = lvTravels.SelectedItem as ListViewItem;
 
             Travel selectedTravel = selectedItem.Tag as Travel;
 
@@ -218,6 +213,11 @@ public partial class TravelWindow : Window
     private void SelectForInfo()
     {
         MessageBox.Show("You need to select a travel to see any details!", "Warning!");
+    }
+
+    private void SelectForDelete()
+    {
+        MessageBox.Show("You need to select a travel you want to remove!", "Warning!");
     }
 
 

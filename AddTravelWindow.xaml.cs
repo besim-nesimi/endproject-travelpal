@@ -26,6 +26,7 @@ namespace slutproj_TravelPal
     {
         private UserManager userManager;
         private TravelManager travelManager;
+        private Vacation vacation;
 
         public AddTravelWindow(UserManager userManager, TravelManager travelManager)
         {
@@ -129,12 +130,12 @@ namespace slutproj_TravelPal
                 }
 
             }
-            else if (travelType == "Vacation") // Checkbox för allinc ska kunna dyka upp, funkar ännu inte
+            else if (travelType == "Vacation")
             {
 
                 Vacation vacation = new(destination, country, traveller, userManager.SignedInUser.Username); // ska finnas vacation
 
-                signedInUser.Travels.Add(vacation);
+                signedInUser.Travels.Add(vacation); 
 
                 travelManager.Travels.Add(vacation);
             }
@@ -171,13 +172,19 @@ namespace slutproj_TravelPal
         private void cbTypeofTravel_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            cbTypeofTravel.SelectedItem = Enum.GetNames(typeof(TravelTypes)); // Måste jag dela upp TravelTypes till lokala variabler som kan läsas i en if-sats? Hur?
+            cbTypeofTravel.SelectedItem = Enum.GetNames(typeof(TravelTypes));
 
-            if (cbTypeofTravel.SelectedItem.ToString().Equals("Vacation")) /*Enum.Parse(Enum.TravelType, value)*/ // varken selectedItem eller selectedValue funkar.
+            if (cbTypeofTravel.SelectedItem.ToString().Equals("Vacation"))
             {
+
                 lblAllInclusive.Visibility = Visibility.Visible;
-                cbxAllInc.Visibility = Visibility.Visible;
                 cbTypeOfTrip.Visibility = Visibility.Hidden;
+
+                if (cbxAllInc != null)
+                {
+                    
+                }
+
             }
             else if (cbTypeofTravel.SelectedItem.ToString().Equals("Trip")) // varken selectedItem eller selectedValue funkar.
             {

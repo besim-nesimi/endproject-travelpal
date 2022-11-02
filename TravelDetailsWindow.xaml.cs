@@ -1,4 +1,6 @@
-﻿using slutproj_TravelPal.Managers;
+﻿using slutproj_TravelPal.Enums;
+using slutproj_TravelPal.Managers;
+using slutproj_TravelPal.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,20 +24,26 @@ public partial class TravelDetailsWindow : Window
 {
     private UserManager userManager;
     private TravelManager travelManager;
+    private Travel travel;
     public TravelDetailsWindow()
     {
         InitializeComponent();
-
-        // vi ska kunna se information om resan.
     }
 
-    public TravelDetailsWindow(UserManager userManager, TravelManager travelManager)
+    public TravelDetailsWindow(UserManager userManager, TravelManager travelManager, Travel selectedTravel)
     {
         InitializeComponent();
 
         this.userManager = userManager;
         this.travelManager = travelManager;
+        this.travel = travel;
+
+
+        cbTripTypeShow.ItemsSource = Enum.GetNames(typeof(TripTypes));
+
     }
+
+
 
     // Return to TravelWindow.
     private void Button_Click(object sender, RoutedEventArgs e)

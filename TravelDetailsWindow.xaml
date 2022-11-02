@@ -73,7 +73,28 @@
             VerticalAlignment="Center"
             Visibility="Hidden"/>
         <Label
-            x:Name="lblTripTypeShow"
+            x:Name="lblAllincl"
+            Grid.Column="0"
+            Grid.Row="4"
+            FontFamily="Arial"
+            FontSize="14"
+            Content="All Inclusive?"
+            Margin="10"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Visibility="Hidden"/>
+        <ComboBox
+            x:Name="cbTripTypeShow"
+            Grid.Column="0"
+            Grid.Row="4"
+            FontFamily="Arial"
+            FontSize="14"
+            Margin="10"
+            Width="220"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"/>
+        <Label
+            x:Name="lblAllIncYesOrNo"
             Grid.Column="0"
             Grid.Row="4"
             FontFamily="Arial"
@@ -122,6 +143,7 @@
             Height="30"
             Margin="4"
             FontSize="10"
-            Content="Return to travel window" Click="Button_Click"/>
+            Content="Return to travel window" 
+            Click="Button_Click"/>
     </Grid>
 </Window>

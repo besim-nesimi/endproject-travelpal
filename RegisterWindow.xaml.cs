@@ -47,30 +47,30 @@ namespace slutproj_TravelPal
             string confirmPassword = pbConfirmPassword.Password;
             string country = cbCountries.SelectedItem as string;
 
+
+            userManager.CheckUserLenght(username);
+            userManager.CheckNewPasswordLength(password);
+            userManager.ConfirmNewPassword(password, confirmPassword);
+
+
             string[] fields = new[] { username, password, confirmPassword, country };
 
 
             foreach (string field in fields)
 
             {
-                if (string.IsNullOrEmpty(field))
+                if (!string.IsNullOrEmpty(field))
                 {
-                    MessageBox.Show("You have not entered all your informations.", "Warning!");
-                    return false;
+                    return true;
                 }
-                else if (password != confirmPassword)
+                else if (string.IsNullOrEmpty(country))
                 {
-                    MessageBox.Show("Your passwords are not matching!", "Warning!");
-                    return false;
-                }
-                else if (cbCountries.SelectedItem == null)
-                {
-                    MessageBox.Show("You have not chosen a country of origin!", "Warning!");
+                    MessageBox.Show("You need to select a country mon.", "Warning!");
                     return false;
                 }
             }
-
-            return true;
+            MessageBox.Show("You have not entered all your informations.", "Warning!");
+            return false;
 
         }
 
@@ -78,25 +78,39 @@ namespace slutproj_TravelPal
         // If inputs are valid, creates a new user.
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
+
             if (CheckInputs())
             {
-                Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), cbCountries.SelectedItem.ToString());
-
-                if (userManager.AddUser(txtUsername.Text, pbPassword.Password, selectedCountry))
+                if (cbCountries.SelectedItem != null)
                 {
+                    Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), cbCountries.SelectedItem.ToString());
 
-                    MainWindow mainWindow = new(userManager);
+                    if (userManager.AddUser(txtUsername.Text, pbPassword.Password, selectedCountry))
+                    {
+                        MainWindow mainWindow = new(userManager);
 
-                    mainWindow.Show();
+                        mainWindow.Show();
 
-                    Close();
+                        Close();
+                    }
                 }
-
                 else
                 {
-                    MessageBox.Show("Username already exists!", "Error!");
+                    MessageBox.Show("You need to choose a country mon.", "Warning!");
+                    return;
                 }
             }
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            userManager.SignedInUser = null;
+
+            MainWindow mainWindow = new(userManager);
+
+            mainWindow.Show();
+
+            Close();
         }
     }
 }

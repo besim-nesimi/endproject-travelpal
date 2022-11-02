@@ -93,8 +93,18 @@
                 Grid.Column="1"
                 Grid.Row="6"
                 Margin="4"
+                Width="150"
+                HorizontalAlignment="Right"
                 Content="Register" 
                 Click="btnRegister_Click"/>
+            <Button
+                x:Name="btnCancel"
+                Grid.Column="1"
+                Grid.Row="6"
+                Margin="4"
+                Content="Cancel"
+                Width="50"
+                HorizontalAlignment="Left" Click="btnCancel_Click"/>
         </Grid>
         
     </Grid>

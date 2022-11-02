@@ -1,4 +1,5 @@
-﻿using slutproj_TravelPal.Models;
+﻿using slutproj_TravelPal.Enums;
+using slutproj_TravelPal.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,23 +18,6 @@ namespace slutproj_TravelPal.Managers
         // Jag klickade på Show Details knappen inuti TravelWindow, skapade ett klickevent 
         public void ShowDetails(Travel? selectedTravel) // visa detaljer för resan som klickats på listview ?
         {
-            
-        }
-
-        // Ska ta bort en resa som finns på TravelWindow
-
-        //public void RemoveTravel()
-        //{
-        //    ListViewItem selectedTravel = new();
-
-        //    selectedTravel.Tag = 
-
-        //    Travels.Remove(selectedTravel);
-        //}
-        
-        public void AdminDisplayTravels()
-        {
-            Travels.AddRange(Travels); // Ska visa alla travels på listan på admins listview, är detta rätt?
         }
     }
 }
