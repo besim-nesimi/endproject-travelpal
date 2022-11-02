@@ -15,9 +15,10 @@ namespace slutproj_TravelPal.Managers
         private UserManager userManager;
 
 
-        // Jag klickade på Show Details knappen inuti TravelWindow, skapade ett klickevent 
+        // Jag dubbelklickade på Show Details knappen inuti TravelWindow, skapade ett klickevent 
         public void ShowDetails(Travel? selectedTravel) // visa detaljer för resan som klickats på listview ?
         {
+
         }
     }
 }

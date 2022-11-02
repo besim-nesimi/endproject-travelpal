@@ -47,17 +47,6 @@
                 FontWeight="Bold"
                 FontFamily="Arial" 
                 Margin="5"/>
-            <Label
-                x:Name="lblLoggedInCountry"
-                Grid.Column="2"
-                VerticalAlignment="Center"
-                HorizontalContentAlignment="Center"
-                HorizontalAlignment="Center"
-                FontSize="20"
-                FontWeight="Bold"
-                FontFamily="Arial"
-                Margin="5"
-                />
             <Label 
                 x:Name="lblNewUsername"
                 Grid.Column="0"
@@ -121,7 +110,7 @@
                 x:Name="btnSave"
                 Grid.Column="2"
                 Grid.Row="6"
-                Margin="5"
+                Margin="10"
                 Content="Save" 
                 Grid.ColumnSpan="1"
                 Width="130"
@@ -131,7 +120,7 @@
                 x:Name="btnCancel"
                 Grid.Column="1"
                 Grid.Row="6"
-                Margin="5"
+                Margin="10"
                 Content="Cancel"
                 Width="130"
                 HorizontalAlignment="Center" 

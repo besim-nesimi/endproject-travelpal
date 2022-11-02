@@ -69,9 +69,9 @@
             FontSize="14"
             Content="Trip type:"
             Margin="10"
+            Visibility="Hidden"
             HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            Visibility="Hidden"/>
+            VerticalAlignment="Center"/>
         <Label
             x:Name="lblAllincl"
             Grid.Column="0"
@@ -80,11 +80,11 @@
             FontSize="14"
             Content="All Inclusive?"
             Margin="10"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Visibility="Hidden"/>
-        <ComboBox
-            x:Name="cbTripTypeShow"
+        <Label
+            x:Name="lblTripTypeShow"
             Grid.Column="0"
             Grid.Row="4"
             FontFamily="Arial"

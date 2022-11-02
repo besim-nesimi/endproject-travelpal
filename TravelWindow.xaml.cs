@@ -46,7 +46,7 @@ public partial class TravelWindow : Window
             return;
         }
 
-        // Vid knapptryck User details ska vi öppna upp UserDetailsWindow.
+        
     }
 
     public TravelWindow(UserManager userManager, TravelManager travelManager)
@@ -129,7 +129,7 @@ public partial class TravelWindow : Window
         Close();
     }
 
-    // Signs the user / admin out.
+    // Signs off user / admin.
     private void btnSignOut_Click(object sender, RoutedEventArgs e)
     {
         userManager.SignedInUser = null;
@@ -163,6 +163,11 @@ public partial class TravelWindow : Window
             travelDetailsWindow.lblCountryShow.Content = selectedTravel.Country.ToString();
             travelDetailsWindow.lblPurposeShow.Content = selectedTravel.Destination.ToString();
             travelDetailsWindow.lblTravellersShow.Content = selectedTravel.Travellers.ToString();
+
+
+            // Har två labels till, som är hidden a.t.m. om det är Vacation som valts så ska allInc dyka upp, om det är Trip som valts, ska två labels (1.Trip type: 2. <triptype>) upp.
+            // Behöver jag skicka med selectedTravel till travelDetailsWindow.Show(selectedTravel) ?
+            // 
 
             travelDetailsWindow.Show();
 

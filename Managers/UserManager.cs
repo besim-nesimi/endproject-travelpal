@@ -14,7 +14,6 @@ namespace slutproj_TravelPal.Managers;
 public class UserManager
 {
 
-    
     private List<IUser> allUsers = new(); // Alla våra users i travelapp, users och admins
     public IUser SignedInUser { get; set; }
 
@@ -24,7 +23,6 @@ public class UserManager
     }
 
     // Two default users, one is an admin and one is named Gandalf. Gandalf has two default trips added to his travelwindow.
-
     public void DefaultUsers()
     {
         Admin admin = new("admin", "password", Countries.Sweden);
@@ -43,7 +41,6 @@ public class UserManager
         allUsers.Add(defaultUser);
 
     }
-
 
     // This is our method of returning the user list.
 public List<IUser> GetAllUsers()
@@ -99,9 +96,9 @@ public List<IUser> GetAllUsers()
     public bool CheckUserLenght(string newName)
     {
 
-        if (newName.Length < 3 || newName.Length > 10)
+        if (newName.Length < 5 || newName.Length > 10)
         {
-            MessageBox.Show("The username must be between 3 and 10 characters long!", "Warning");
+            MessageBox.Show("The username must be between 5 and 10 characters long!", "Warning");
             return false;
         }
         return true;
@@ -130,7 +127,6 @@ public List<IUser> GetAllUsers()
         return false;
     }
 
-
     // Method for signing in.
     public bool SignInUser(string username, string password)
     {
@@ -146,7 +142,6 @@ public List<IUser> GetAllUsers()
         return false;
       
     }
-
 
     // Method that returns user by its username.
     public User GetUser(string username)

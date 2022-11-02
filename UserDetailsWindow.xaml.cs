@@ -27,20 +27,22 @@ namespace slutproj_TravelPal
         public UserDetailsWindow()
         {
             InitializeComponent();
-
-            string[] countries = Enum.GetNames(typeof(Countries));
-
-            cbCountries.ItemsSource = countries;
-            cbCountries.Text = userManager.SignedInUser.Location.ToString();
+            ActiveUserInformations(userManager);
         }
 
         public UserDetailsWindow(UserManager userManager)
         {
             InitializeComponent();
+
             this.userManager = userManager;
 
+            ActiveUserInformations(userManager);
+        }
+
+        // Displaying the informations of the user that is logged in.
+        private void ActiveUserInformations(UserManager userManager)
+        {
             lblLoggedInUser.Content = userManager.SignedInUser.Username;
-            lblLoggedInCountry.Content = userManager.SignedInUser.Location;
 
             string[] countries = Enum.GetNames(typeof(Countries));
             cbCountries.ItemsSource = countries;

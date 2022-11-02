@@ -58,7 +58,6 @@ namespace slutproj_TravelPal
 
         //Skapade två separata metoder som gör olika saker men hänger ihop. 
         //CheckInputsForTravel skickar över infon till AddTravelToList
-        //På CheckInputsForTravel ska det finnas conditions för att Add Travel knappen ska bli klickbar.
 
 
         private bool CheckInputsForTravel()
@@ -108,13 +107,12 @@ namespace slutproj_TravelPal
             return true;
         }
         
-        private void AddTravelToList(string travelType, string destination, int traveller, Countries country) // Nödvändigt ?? Kan jag inte bara lägga selectionChanged på listview itemet?
+        private void AddTravelToList(string travelType, string destination, int traveller, Countries country)
         {
-            // Vad är selectat? Trip eller Vacation?
 
             User signedInUser = userManager.SignedInUser as User;
 
-            if (travelType == "Trip") // Trip är selectat
+            if (travelType == "Trip") // Trip is selected
             {
                 if (cbTypeOfTrip.SelectedItem == null)
                 {
@@ -123,21 +121,21 @@ namespace slutproj_TravelPal
                 }
                 else
                 {
-                    TripTypes tripType = (TripTypes)Enum.Parse(typeof(TripTypes), cbTypeOfTrip.SelectedItem.ToString());
-                    Trip trip = new(tripType, destination, country, traveller, userManager.SignedInUser.Username); // Lägg till "Trip" med samtliga parametrar ifyllda.
-                    signedInUser.Travels.Add(trip);
-                    travelManager.Travels.Add(trip);
+                    TripTypes tripType = (TripTypes)Enum.Parse(typeof(TripTypes), cbTypeOfTrip.SelectedItem.ToString()); // What kind of trip is chosen? Leisure or Work?
+                    Trip trip = new(tripType, destination, country, traveller, userManager.SignedInUser.Username); // Create the trip.
+                    signedInUser.Travels.Add(trip); // Add the trip to the signed in user list of travels.
+                    travelManager.Travels.Add(trip); // Add the trip to the travelManager list of travels (this is only accessible by the admin).
                 }
 
             }
-            else if (travelType == "Vacation")
+            else if (travelType == "Vacation") // Vacation is selected
             {
 
-                Vacation vacation = new(destination, country, traveller, userManager.SignedInUser.Username); // ska finnas vacation
+                Vacation vacation = new(destination, country, traveller, userManager.SignedInUser.Username); // Creates the vacation.
 
-                signedInUser.Travels.Add(vacation); 
+                signedInUser.Travels.Add(vacation); // Add the vacation to the signed in user list of travels.
 
-                travelManager.Travels.Add(vacation);
+                travelManager.Travels.Add(vacation); // Add the vacation to the travelManager list of travels (this is only accessible by the admin).
             }
 
             TravelWindow travelWindow = new(userManager, travelManager);
@@ -168,7 +166,7 @@ namespace slutproj_TravelPal
         }
 
 
-        // Checks if its vacation or trip, then hides relevant buttons/labels and displays relevant buttons/labels.
+        // Checks if its vacation or trip, then hides relevant buttons/labels and displays relevant buttons/labels. NOT WORKING
         private void cbTypeofTravel_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -178,12 +176,8 @@ namespace slutproj_TravelPal
             {
 
                 lblAllInclusive.Visibility = Visibility.Visible;
+                cbxAllInc.Visibility = Visibility.Visible;
                 cbTypeOfTrip.Visibility = Visibility.Hidden;
-
-                if (cbxAllInc != null)
-                {
-                    
-                }
 
             }
             else if (cbTypeofTravel.SelectedItem.ToString().Equals("Trip")) // varken selectedItem eller selectedValue funkar.
@@ -195,21 +189,6 @@ namespace slutproj_TravelPal
             }
         }
 
-        // behövs denna till något?
-
-        private void tbTravellers_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        // behövs denna till något?
-
-        private void tbDestination_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-
 
         private void cbCountries_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -219,7 +198,7 @@ namespace slutproj_TravelPal
             }
         }
 
-        // Behövs denna till något?
+        // Send info about trip type.
 
         private void cbTypeOfTrip_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -237,5 +216,11 @@ namespace slutproj_TravelPal
             Close();
         }
 
+
+        // Send info about all inclusive. If the checkbox is checked, method AllInc returns true. 
+        private void cbxAllInc_Checked(object sender, RoutedEventArgs e)
+        {
+            vacation.AllInc(); // Breaks. Why?
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace slutproj_TravelPal.Models;
 
 public class Vacation : Travel
 {
-    public bool AllInclusive { get; set; }
+    public bool All_Inclusive { get; set; }
 
     public Vacation(string destination, Countries country, int traveller, string userID) : base(destination, country, traveller, userID)
     {
@@ -20,13 +20,15 @@ public class Vacation : Travel
         
     }
 
+    // Returns and overrides base method GetInfo to view in listview (TravelWindow) for Vacation type.
     public override string GetInfo()
     {
         return $"Vacation destination: {Country}";
     }
 
+    // 
     public bool AllInc()
     {
-        return true;
+        return All_Inclusive = true;
     }
 }

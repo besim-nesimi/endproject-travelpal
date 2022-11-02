@@ -30,7 +30,7 @@ public partial class TravelDetailsWindow : Window
         InitializeComponent();
     }
 
-    public TravelDetailsWindow(UserManager userManager, TravelManager travelManager, Travel selectedTravel)
+    public TravelDetailsWindow(UserManager userManager, TravelManager travelManager, Travel selectedTravel) // Hela klassen Travel och specifikt selectedTravel skickas med
     {
         InitializeComponent();
 
@@ -39,8 +39,13 @@ public partial class TravelDetailsWindow : Window
         this.travel = travel;
 
 
-        cbTripTypeShow.ItemsSource = Enum.GetNames(typeof(TripTypes));
+        
+        // Denna kod visar såklart själva string[]array, såklart inte vilket utav dem selectedTravel är.
+        /*lblTripTypeShow.Content = Enum.GetNames(typeof(TripTypes));*/ 
 
+        //lblAllincl.Visibili
+        
+        // Hur gör jag en if-sats där om selectedTravel.TripTypes == Leisure så ska Content vara Leisure, och om det är work, så blir det work istället?
     }
 
 

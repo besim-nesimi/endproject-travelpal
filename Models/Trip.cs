@@ -18,8 +18,14 @@ public class Trip : Travel
         this.Type = type;
     }
 
+    // Returns and overrides base method GetInfo to view in listview (TravelWindow) for Trip type.
     public override string GetInfo()
     {
         return $"Trip destination: {base.Country}";
+    }
+
+    public string WorkOrLeisure()
+    {
+        return $"{Type}";
     }
 }

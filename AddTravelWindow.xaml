@@ -108,7 +108,7 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 Margin="4"
-                Visibility="Hidden"
+                Visibility="Hidden" Checked="cbxAllInc_Checked"
                 />
             <TextBox 
                 x:Name="tbDestination"
@@ -116,7 +116,7 @@
                 Grid.Row="5"
                 TextWrapping="Wrap"
                 HorizontalContentAlignment="Left"
-                Margin="4,4,4,4" TextChanged="tbDestination_TextChanged"
+                Margin="4,4,4,4" 
                 />
             <TextBox 
                 x:Name="tbTravellers"
@@ -125,7 +125,7 @@
                 Width="150"
                 Margin="4,4,4,4" 
                 HorizontalAlignment="Left"
-                TextChanged="tbTravellers_TextChanged"
+                
                 />
             <ComboBox
                 x:Name="cbCountries"

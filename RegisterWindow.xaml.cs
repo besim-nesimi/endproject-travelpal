@@ -4,6 +4,7 @@ using slutproj_TravelPal.Managers;
 using slutproj_TravelPal.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,43 +26,48 @@ namespace slutproj_TravelPal
     {
         private UserManager userManager;
 
+
         public RegisterWindow(UserManager userManager)
         {
             InitializeComponent();
 
-            // Get our enum and put it in an array
-            string[] countries = Enum.GetNames(typeof(Countries));
-
-            // Set the combobox content to countries, our enum with countries.
-            cbCountries.ItemsSource = countries;
+            SeedCountriesToBox();
 
             this.userManager = userManager;
+
+            void SeedCountriesToBox()
+            {
+                // Get our enum and put it in an array
+                string[] countries = Enum.GetNames(typeof(Countries));
+
+                // Set the combobox content to countries, our enum with countries.
+                cbCountries.ItemsSource = countries;
+            }
         }
 
-        // Checks if all user informations are in.
+        // Checks if all user informations are in and validate username, password & country (availability, length, matching passwords and such)
         private bool CheckInputs()
         {
 
             string username = txtUsername.Text;
             string password = pbPassword.Password;
-            string confirmPassword = pbConfirmPassword.Password;
             string country = cbCountries.SelectedItem as string;
 
-
-            userManager.CheckUserLenght(username);
-            userManager.CheckNewPasswordLength(password);
-            userManager.ConfirmNewPassword(password, confirmPassword);
-
-
-            string[] fields = new[] { username, password, confirmPassword, country };
+            string[] fields = new[] { username, password, country };
 
 
             foreach (string field in fields)
 
             {
-                if (!string.IsNullOrEmpty(field))
+                if (string.IsNullOrEmpty(username))
                 {
-                    return true;
+                    MessageBox.Show("Check your username or password.", "Warning!");
+                    return false;
+                }
+                else if (string.IsNullOrEmpty(password))
+                {
+                    MessageBox.Show("Check your username or password.", "Warning!");
+                    return false;
                 }
                 else if (string.IsNullOrEmpty(country))
                 {
@@ -69,8 +75,7 @@ namespace slutproj_TravelPal
                     return false;
                 }
             }
-            MessageBox.Show("You have not entered all your informations.", "Warning!");
-            return false;
+            return true;
 
         }
 
@@ -81,7 +86,12 @@ namespace slutproj_TravelPal
 
             if (CheckInputs())
             {
-                if (cbCountries.SelectedItem != null)
+                if (cbCountries.SelectedItem == null)
+                {
+                    MessageBox.Show("You need to choose a country mon.", "Warning!");
+                    return;
+                }
+                else
                 {
                     Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), cbCountries.SelectedItem.ToString());
 
@@ -94,14 +104,10 @@ namespace slutproj_TravelPal
                         Close();
                     }
                 }
-                else
-                {
-                    MessageBox.Show("You need to choose a country mon.", "Warning!");
-                    return;
-                }
             }
         }
-
+        
+        // Cancel and sends you back to main window. Nice to have if you already a user but wrongly clicked "Register" instead of sign in.
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             userManager.SignedInUser = null;
