@@ -26,9 +26,16 @@ public class Vacation : Travel
         return $"Vacation destination: {Country}";
     }
 
-    // 
-    public bool AllInc()
+    // Might come in handy, just need to know how.
+    public string AllInclusive()
     {
-        return All_Inclusive = true;
+        if (All_Inclusive == true)
+        {
+            return $"Vacation is all inclusive";
+        }
+        else
+        {
+            return $"Vacation is not all inclusive";
+        }
     }
 }

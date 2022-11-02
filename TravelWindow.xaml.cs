@@ -152,22 +152,11 @@ public partial class TravelWindow : Window
         {
             SelectForInfo();
         }
-        else
+        else if (selectedItem.Tag != null)
         {
-            Travel selectedTravel = selectedItem.Tag as Travel;
-
-            // Setting the contents of travel details window.
+            Travel travel = selectedItem.Tag as Travel;
 
             TravelDetailsWindow travelDetailsWindow = new(userManager, travelManager, travel);
-
-            travelDetailsWindow.lblCountryShow.Content = selectedTravel.Country.ToString();
-            travelDetailsWindow.lblPurposeShow.Content = selectedTravel.Destination.ToString();
-            travelDetailsWindow.lblTravellersShow.Content = selectedTravel.Travellers.ToString();
-
-
-            // Har två labels till, som är hidden a.t.m. om det är Vacation som valts så ska allInc dyka upp, om det är Trip som valts, ska två labels (1.Trip type: 2. <triptype>) upp.
-            // Behöver jag skicka med selectedTravel till travelDetailsWindow.Show(selectedTravel) ?
-            // 
 
             travelDetailsWindow.Show();
 

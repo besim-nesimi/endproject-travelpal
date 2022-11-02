@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:slutproj_TravelPal"
         mc:Ignorable="d"
-        Title="TravelDetailsWindow" Height="450" Width="400" Background="MediumSlateBlue">
+        Title="TravelDetailsWindow" Height="450" Width="400" Background="MediumSlateBlue" ResizeMode="NoResize">
     <Grid Margin="10" Background="MintCream">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -24,7 +26,7 @@
             Grid.Column="0"
             Grid.Row="0"
             Content="Travel details"
-            FontSize="42"
+            FontSize="32"
             FontFamily="Arial"
             FontWeight="Bold"
             Foreground="MediumSlateBlue"
@@ -32,29 +34,29 @@
             VerticalAlignment="Center"
             />
         <Label
-            x:Name="lblCountryToVisit"
+            x:Name="lblHeaderTravelType"
             Grid.Column="0"
             Grid.Row="1"
             FontFamily="Arial"
             FontSize="14"
-            Content="Country to visit:"
+            Content="Travel type:"
             Margin="10"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"/>
         <Label
-            x:Name="lblPurposeOfVisit"
-            Grid.Column="0"
-            Grid.Row="2"
-            FontFamily="Arial"
-            FontSize="14"
-            Content="Purpose or destination: "
-            Margin="10"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"/>
-        <Label
-            x:Name="lblNumberOfTravellers"
+            x:Name="lblHeaderDestination"
             Grid.Column="0"
             Grid.Row="3"
+            FontFamily="Arial"
+            FontSize="14"
+            Content="Destination: "
+            Margin="10"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"/>
+        <Label
+            x:Name="lblHeaderTraveller"
+            Grid.Column="0"
+            Grid.Row="5"
             FontFamily="Arial"
             FontSize="14"
             Content="Travellers:"
@@ -62,9 +64,19 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Center"/>
         <Label
-            x:Name="lblTripType"
+            x:Name="lblHeaderCountry"
             Grid.Column="0"
             Grid.Row="4"
+            FontFamily="Arial"
+            FontSize="14"
+            Content="Country: "
+            Margin="10"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"/>
+        <Label
+            x:Name="lblHeaderTripType"
+            Grid.Column="0"
+            Grid.Row="2"
             FontFamily="Arial"
             FontSize="14"
             Content="Trip type:"
@@ -72,77 +84,104 @@
             Visibility="Hidden"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"/>
-        <Label
-            x:Name="lblAllincl"
+        <CheckBox
+            x:Name="xbAllInclusive"
             Grid.Column="0"
-            Grid.Row="4"
+            Grid.Row="2"
+            Margin="262,0,0,0"
+            Visibility="Hidden"
+            HorizontalContentAlignment="Center"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            />
+        <Label
+            x:Name="lblHeaderAllInclusive"
+            Grid.Column="0"
+            Grid.Row="2"
             FontFamily="Arial"
             FontSize="14"
             Content="All Inclusive?"
             Margin="10"
-            HorizontalAlignment="Center"
+            HorizontalAlignment="Left"
             VerticalAlignment="Center"
             Visibility="Hidden"/>
         <Label
-            x:Name="lblTripTypeShow"
+            x:Name="lblHeaderTypeOfTrip"
             Grid.Column="0"
-            Grid.Row="4"
+            Grid.Row="2"
             FontFamily="Arial"
+            Content="Type of trip: "
+            Visibility="Hidden"
             FontSize="14"
             Margin="10"
-            Width="220"
-            HorizontalAlignment="Right"
+            Width="200"
+            HorizontalAlignment="Left"
             VerticalAlignment="Center"/>
         <Label
-            x:Name="lblAllIncYesOrNo"
-            Grid.Column="0"
-            Grid.Row="4"
-            FontFamily="Arial"
-            FontSize="14"
-            Margin="10"
-            Width="220"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Center"/>
-        <Label
-            x:Name="lblCountryShow"
+            x:Name="lblTravelType"
             Grid.Column="0"
             Grid.Row="1"
             FontSize="14"
-            Width="220"
+            Width="200"
             Margin="10"
-            HorizontalContentAlignment="Right"
+            HorizontalContentAlignment="Center"
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
             />
         <Label
-            x:Name="lblPurposeShow"
+            x:Name="lblCountry"
+            Grid.Column="0"
+            Grid.Row="4"
+            FontSize="14"
+            FontFamily="Arial"
+            Width="200"
+            Margin="10"
+            HorizontalContentAlignment="Center"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"/>
+        <Label
+            x:Name="lblTripType"
             Grid.Column="0"
             Grid.Row="2"
             FontSize="14"
-            Width="150"
+            FontFamily="Arial"
+            Width="200"
             Margin="10"
-            HorizontalContentAlignment="Right"
+            HorizontalContentAlignment="Center"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"/>
+        <Label
+            x:Name="lblDestination"
+            Grid.Column="0"
+            Grid.Row="3"
+            FontSize="14"
+            FontFamily="Arial"
+            Width="200"
+            Margin="10"
+            HorizontalContentAlignment="Center"
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
             />
         <Label
-            x:Name="lblTravellersShow"
+            x:Name="lblTravellers"
             Grid.Column="0"
-            Grid.Row="3"
+            Grid.Row="5"
             FontSize="14"
-            Width="220"
+            FontFamily="Arial"
+            Width="200"
             Margin="10"
-            HorizontalContentAlignment="Right"
+            HorizontalContentAlignment="Center"
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
             />
         <Button
             Grid.Column="0"
-            Grid.Row="5"
+            Grid.Row="6"
             Width="150"
             Height="30"
+            FontFamily="Arial"
             Margin="4"
-            FontSize="10"
+            FontSize="12"
             Content="Return to travel window" 
             Click="Button_Click"/>
     </Grid>

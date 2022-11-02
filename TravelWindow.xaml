@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:slutproj_TravelPal"
         mc:Ignorable="d"
-        Title="TravelWindow" Height="450" Width="800" Foreground="MintCream" Background="MediumSlateBlue">
+        Title="TravelWindow" Height="450" Width="800" Foreground="MintCream" Background="MediumSlateBlue" ResizeMode="NoResize">
     <Grid Margin="10" Background="MintCream">
         <Grid Grid.Column="1" Margin="10">
             <Grid.ColumnDefinitions>

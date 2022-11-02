@@ -39,6 +39,8 @@ namespace slutproj_TravelPal
 
         }
 
+
+        // Adds the arrays of enums countries, traveltypes and triptypes to their respective comboboxes.
         private void AddSources()
         {
             // Hämtar vår enum Countries och lägger det i en array & sätter ComboBoxens innehåll till vår enum countries
@@ -56,10 +58,8 @@ namespace slutproj_TravelPal
             cbTypeOfTrip.ItemsSource = tripTypes;
         }
 
-        //Skapade två separata metoder som gör olika saker men hänger ihop. 
-        //CheckInputsForTravel skickar över infon till AddTravelToList
 
-
+        // Method to check and catch exceptions of the users input before sending the formatted and correct input to add travel.
         private bool CheckInputsForTravel()
         {
             int numOfTravellers = 0;
@@ -75,6 +75,15 @@ namespace slutproj_TravelPal
             {
                 MessageBox.Show("Please select type of travel!", "Warning!");
                 return false;
+            }
+
+            if (cbxAllInc_Checked == null) /// ????????
+            {
+                vacation.All_Inclusive = false;
+            }
+            else if (cbxAllInc_Checked != null)
+            {
+                vacation.All_Inclusive = true;
             }
 
             try
@@ -107,6 +116,8 @@ namespace slutproj_TravelPal
             return true;
         }
         
+
+        // Takes the formatted input from CheckInputsForTravel and creates a travel
         private void AddTravelToList(string travelType, string destination, int traveller, Countries country)
         {
 
@@ -190,19 +201,13 @@ namespace slutproj_TravelPal
         }
 
 
+        // If no country has been chosen, travel type will not be enabled to pick.
         private void cbCountries_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cbCountries.SelectedItem != null)
             {
                 cbTypeofTravel.IsEnabled = true;
             }
-        }
-
-        // Send info about trip type.
-
-        private void cbTypeOfTrip_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
 
         // Returns you to travelwindow.
@@ -217,10 +222,10 @@ namespace slutproj_TravelPal
         }
 
 
-        // Send info about all inclusive. If the checkbox is checked, method AllInc returns true. 
+        // Send info about all inclusive. If the checkbox is checked, method AllInc returns true. Does not work!!!
         private void cbxAllInc_Checked(object sender, RoutedEventArgs e)
         {
-            vacation.AllInc(); // Breaks. Why?
+            return;
         }
     }
 }

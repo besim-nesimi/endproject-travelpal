@@ -30,7 +30,7 @@ public partial class TravelDetailsWindow : Window
         InitializeComponent();
     }
 
-    public TravelDetailsWindow(UserManager userManager, TravelManager travelManager, Travel selectedTravel) // Hela klassen Travel och specifikt selectedTravel skickas med
+    public TravelDetailsWindow(UserManager userManager, TravelManager travelManager, Travel travel)
     {
         InitializeComponent();
 
@@ -38,14 +38,37 @@ public partial class TravelDetailsWindow : Window
         this.travelManager = travelManager;
         this.travel = travel;
 
+        if(travel is Trip)
+        {
+            Trip trip = travel as Trip;
+            lblTravelType.Content = "Trip";
 
-        
-        // Denna kod visar såklart själva string[]array, såklart inte vilket utav dem selectedTravel är.
-        /*lblTripTypeShow.Content = Enum.GetNames(typeof(TripTypes));*/ 
+            string tripType = trip.Type.ToString();
 
-        //lblAllincl.Visibili
-        
-        // Hur gör jag en if-sats där om selectedTravel.TripTypes == Leisure så ska Content vara Leisure, och om det är work, så blir det work istället?
+
+            lblTripType.Visibility = Visibility.Visible;
+            lblHeaderTypeOfTrip.Visibility = Visibility.Visible;
+            lblTripType.Content = tripType;
+            lblDestination.Content = trip.Destination.ToString();
+            lblTravellers.Content = trip.Travellers.ToString();
+            lblCountry.Content = trip.Country.ToString();
+        }
+        else if (travel is Vacation)
+        {
+            Vacation vacation = travel as Vacation;
+
+            lblTravelType.Content = "Vacation";
+
+            xbAllInclusive.Visibility = Visibility.Visible;
+            lblHeaderAllInclusive.Visibility = Visibility.Visible;
+            xbAllInclusive.IsChecked = vacation.All_Inclusive;
+            xbAllInclusive.IsEnabled = false;
+            lblDestination.Content = vacation.Destination.ToString();
+            lblTravellers.Content = vacation.Travellers.ToString();
+            lblCountry.Content = vacation.Country.ToString();
+        }
+
+
     }
 
 

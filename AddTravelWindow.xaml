@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:slutproj_TravelPal"
         mc:Ignorable="d"
-        Title="AddTravelWindow" Height="450" Width="800">
+        Title="AddTravelWindow" Height="450" Width="800" ResizeMode="NoResize">
     <Grid>
         <Grid Grid.Column="0" Margin="10" Background="MintCream">
             <Grid.ColumnDefinitions>
@@ -33,14 +33,16 @@
                 HorizontalAlignment="Left"
                 FontSize="24"
                 FontWeight="Bold"
-                Foreground="MediumSlateBlue" Margin="13,0,0,0"/>
+                Foreground="MediumSlateBlue" 
+                Margin="13,0,0,0"/>
             <Label 
                 x:Name="lblTypeofTravel"
                 Grid.Column="0"
                 Grid.Row="2"
                 Content="Type of travel"
                 FontSize="16"
-                VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+                VerticalAlignment="Center" 
+                Grid.ColumnSpan="2"/>
             <Label
                 x:Name="lblAllInclusive"
                 Grid.Column="1"
@@ -65,21 +67,24 @@
                 Grid.Row="4"
                 Content="Number of travellers"
                 FontSize="16"
-                VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+                VerticalAlignment="Center" 
+                Grid.ColumnSpan="2"/>
             <Label 
                 x:Name="lblPurposeOfVisit"
                 Grid.Column="0"
                 Grid.Row="5"
                 Content="Purpose of visit"
                 FontSize="16"
-                VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+                VerticalAlignment="Center" 
+                Grid.ColumnSpan="2"/>
             <Label 
                 x:Name="lblCountries"
                 Grid.Column="0"
                 Grid.Row="1"
                 Content="Country"
                 FontSize="16"
-                VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+                VerticalAlignment="Center" 
+                Grid.ColumnSpan="2"/>
             <ComboBox
                 x:Name="cbTypeOfTrip"
                 Grid.Row="3"
@@ -88,9 +93,7 @@
                 IsEnabled="False"
                 Width="150"
                 HorizontalAlignment="Left" 
-                Visibility="Hidden"
-                SelectionChanged="cbTypeOfTrip_SelectionChanged"
-               />
+                Visibility="Hidden"/>
             <ComboBox 
                 x:Name="cbTypeofTravel"
                 IsEnabled="false"
@@ -108,7 +111,8 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 Margin="4"
-                Visibility="Hidden" Checked="cbxAllInc_Checked"
+                Visibility="Hidden" 
+                Checked="cbxAllInc_Checked"
                 />
             <TextBox 
                 x:Name="tbDestination"
@@ -133,9 +137,8 @@
                 Grid.Row="1"
                 Margin="4"
                 Width="150"
-                HorizontalAlignment="Left" 
-                SelectionChanged="cbCountries_SelectionChanged"
-                />
+                HorizontalAlignment="Left"
+                SelectionChanged="cbCountries_SelectionChanged" />
             <Button
                 x:Name="btnAddTravel"
                 Grid.Column="2"
@@ -143,7 +146,10 @@
                 Margin="4"
                 Width="200"
                 HorizontalAlignment="Right"
-                Content="Add Travel" Height="27" VerticalAlignment="Center" Click="btnAddTravel_Click" />
+                Content="Add Travel" 
+                Height="27" 
+                VerticalAlignment="Center" 
+                Click="btnAddTravel_Click" />
             <Button
                 x:Name="btnCancelReturn"
                 Grid.Column="2"
@@ -151,7 +157,8 @@
                 Margin="4"
                 Width="200"
                 HorizontalAlignment="Left"
-                Content="Cancel" Click="btnCancelReturn_Click"/>
+                Content="Cancel" 
+                Click="btnCancelReturn_Click"/>
         </Grid>
     </Grid>
 </Window>
