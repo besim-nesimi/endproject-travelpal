@@ -196,9 +196,9 @@
             Foreground="MediumSlateBlue"
             BorderBrush="MediumSlateBlue"
             BorderThickness="2"
-            Margin="120,10,0,11"
+            Margin="5"
             FontSize="12"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Content="Return to travel window" 
             Click="Button_Click"/>
         <Image Margin="20,1,313,51" Grid.RowSpan="2" Source="/Images/Map.png" Stretch="Fill"/>

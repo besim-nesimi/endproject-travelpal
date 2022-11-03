@@ -26,17 +26,4 @@ public class Vacation : Travel
     {
         return $"Vacation destination: {Country}";
     }
-
-    // Method never used, and is superflous. Yet lets just leave it here, in case the app becomes bigger and better and whatnot. Might want to return a string or something.
-    public string AllInclusive()
-    {
-        if (All_Inclusive == true)
-        {
-            return $"Vacation is all inclusive";
-        }
-        else
-        {
-            return $"Vacation is not all inclusive";
-        }
-    }
 }

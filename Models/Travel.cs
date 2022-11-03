@@ -24,6 +24,8 @@ namespace slutproj_TravelPal.Models
             this.userID = userID;
         }
 
+
+        // Overriding this method with GetInfo from subclasses. Printing into listview field.
         public virtual string GetInfo()
         {
             return "";

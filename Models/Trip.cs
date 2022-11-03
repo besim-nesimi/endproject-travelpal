@@ -23,9 +23,4 @@ public class Trip : Travel
     {
         return $"Trip destination: {base.Country}";
     }
-
-    public string WorkOrLeisure()
-    {
-        return $"{Type}";
-    }
 }

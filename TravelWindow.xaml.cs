@@ -105,7 +105,7 @@ public partial class TravelWindow : Window
         }
         else if (userManager.SignedInUser is Admin)
         {
-            var nonAdminUsers = userManager.GetAllUsers().Where(x => x.isAdmin != true);
+            var nonAdminUsers = userManager.GetAllUsers().Where(x => x.isAdmin != true); 
 
             foreach (User user in nonAdminUsers)
             {

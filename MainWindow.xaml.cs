@@ -27,8 +27,6 @@ namespace slutproj_TravelPal
         public MainWindow()
         {
             InitializeComponent();
-
-            //userManager.DefaultUsers();
         }
 
         public MainWindow(UserManager userManager)
@@ -47,9 +45,11 @@ namespace slutproj_TravelPal
             Close();
         }
 
+
+        // Signs in the user.
         private void btnSignIn_Click(object sender, RoutedEventArgs e)
         {
-            // Kolla om användaren finns
+            
             List<IUser> allUsers = userManager.GetAllUsers();
 
             string username = tbUsername.Text;

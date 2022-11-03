@@ -31,6 +31,8 @@ namespace slutproj_TravelPal
         {
             InitializeComponent();
 
+
+            // Setting the combobox to an enum with countries.
             SeedCountriesToBox();
 
             this.userManager = userManager;
@@ -45,7 +47,7 @@ namespace slutproj_TravelPal
             }
         }
 
-        // Checks if all user informations are in and validate username, password & country (availability, length, matching passwords and such)
+        // Checks if all user informations are in.
         private bool CheckInputs()
         {
 

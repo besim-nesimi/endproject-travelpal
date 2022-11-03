@@ -27,6 +27,8 @@ namespace slutproj_TravelPal
         public UserDetailsWindow()
         {
             InitializeComponent();
+
+            // Displaying the informations of the user that is logged in.
             ActiveUserInformations(userManager);
         }
 
@@ -49,6 +51,7 @@ namespace slutproj_TravelPal
             cbCountries.Text = userManager.SignedInUser.Location.ToString(); // Makes sure that the country combobox within UserDetailsWindow is already at users current location.
         }
 
+        // Back to TravelWindow
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             
