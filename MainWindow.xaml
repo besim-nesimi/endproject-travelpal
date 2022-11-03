@@ -8,31 +8,21 @@
         Title="MainWindow" Height="474" Width="286" ResizeMode="NoResize" Background="MediumSlateBlue">
     <Grid Background="MintCream" Margin="10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Label 
             x:Name="lblHeader"
             Content="TravelPal"
-            Grid.Row="1"
+            Grid.Row="0"
             Grid.Column="2"
             Grid.ColumnSpan="5"
             FontSize="30"
@@ -40,62 +30,79 @@
             FontWeight="Bold"
             FontStyle="Italic"
             Foreground="MediumSlateBlue"
-            HorizontalAlignment="Center" Width="165" RenderTransformOrigin="0.563,0.461"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center" Width="165"
             />
         <Label
             x:Name="lblUserName"
             Content="Username"
-            Grid.Row="3"
+            Grid.Row="1"
             Grid.Column="2"
             FontSize="20"
+            FontFamily="Arial"
             FontWeight="Normal"
-            FontStyle="Italic"
             HorizontalAlignment="Center"
+            VerticalAlignment="Center"
             Foreground="MediumSlateBlue"/>
         <TextBox
             x:Name="tbUsername"
-            Grid.Row="4"
+            Grid.Row="2"
             Grid.Column="2"
+            Foreground="MediumSlateBlue"
+            BorderThickness="2"
             Height="30"
+            BorderBrush="MediumSlateBlue"
             Width="200"
             Margin="10"
+            HorizontalAlignment="Center"
             VerticalContentAlignment="Center"
             HorizontalContentAlignment="Center"/>
         <Label
             x:Name="lblPassWord"
             Content="Password"
-            Grid.Row="5"
+            Grid.Row="3"
             Grid.Column="2"
             FontSize="20"
             FontWeight="Normal"
-            FontStyle="Italic"
+            VerticalAlignment="Center"
+            FontFamily="Arial"
             HorizontalAlignment="Center"
             Foreground="MediumSlateBlue"
             />
         <PasswordBox
             x:Name="pbPassword"
-            Grid.Row="6"
+            Grid.Row="4"
             Grid.Column="2"
+            BorderBrush="MediumSlateBlue"
+            BorderThickness="2"
             Height="30"
             Width="200"
             Margin="10"
+            HorizontalAlignment="Center"
             VerticalContentAlignment="Center"
             HorizontalContentAlignment="Center"/>
         <Button
             x:Name="btnSignIn"
             Content="Sign in"
-            Grid.Row="8"
-            Grid.Column="2"
+            Foreground="MediumSlateBlue"
+            BorderBrush="MediumSlateBlue"
+            BorderThickness="2"
+            Grid.Row="5"
+            Height="30"
             Width="60"
-            HorizontalAlignment="Right" Margin="10" Click="btnSignIn_Click"
+            HorizontalAlignment="Left" Margin="156,11,0,21" Click="btnSignIn_Click"
             />
         <Button
             x:Name="btnRegister"
             Content="Register"
-            Grid.Row="8"
-            Grid.Column="2"
+            Grid.Row="5"
+            Foreground="MediumSlateBlue"
+            BorderBrush="MediumSlateBlue"
+            BorderThickness="2"
+            Height="30"
             Width="60"
             HorizontalAlignment="Left"
-            Margin="10" Click="btnRegister_Click"/>
+            Margin="33,10,0,22" Click="btnRegister_Click"/>
+        <Image Margin="98,55,98,0" Grid.Row="5" Source="/Images/Map.png" Stretch="Fill" Grid.RowSpan="2"/>
     </Grid>
 </Window>

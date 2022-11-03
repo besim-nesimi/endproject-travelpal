@@ -23,7 +23,10 @@
                 Grid.Row="1"
                 Foreground="MediumSlateBlue"
                 FontStyle="Italic"
+                BorderBrush="MintCream"
+                BorderThickness="2"
                 FontWeight="Bold"
+                FontFamily="Arial"
                 FontSize="18"
                 Height="50"
                 Margin="5"
@@ -36,10 +39,13 @@
                 Grid.Column="2"
                 Grid.Row="2"
                 Foreground="MediumSlateBlue"
+                BorderBrush="MintCream"
+                BorderThickness="2"
                 FontStyle="Italic"
                 FontWeight="Bold"
                 Height="50"
                 FontSize="14"
+                FontFamily="Arial"
                 Margin="5"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
@@ -47,31 +53,48 @@
                 HorizontalContentAlignment="Center"/>
             <ListView
                 x:Name="lvTravels"
+                Background="MintCream"
+                FontFamily="Arial"
                 Grid.Column="0"
+                BorderBrush="MediumSlateBlue"
+                Foreground="MediumSlateBlue"
+                BorderThickness="2"
                 Grid.Row="0"
                 Grid.ColumnSpan="2" />
             <Button
                 x:Name="btnShowDetails"
+                FontFamily="Arial"
                 Grid.Column="0"
                 Grid.Row="2"
                 Width="150"
+                BorderThickness="2"
+                BorderBrush="MediumSlateBlue"
                 HorizontalAlignment="Right"
+                Foreground="MediumSlateBlue"
                 Content="Show Travel Details"
                 Margin="15" Click="btnShowDetails_Click" />
             <Button
                 x:Name="btnRemoveTravel"
                 Grid.Column="2"
+                FontFamily="Arial"
                 Grid.Row="2"
+                BorderThickness="2"
                 Width="200"
                 HorizontalAlignment="Left"
+                BorderBrush="MediumSlateBlue"
+                Foreground="MediumSlateBlue"
                 Content="Remove travel"
                 Margin="15" Click="btnRemoveTravel_Click" />
             <Button
                 x:Name="btnInfo"
                 Grid.Column="0"
                 Grid.Row="1"
+                FontFamily="Arial"
+                BorderBrush="MediumSlateBlue"
                 Width="40"
                 Height="20"
+                BorderThickness="2"
+                Foreground="MediumSlateBlue"
                 Content="Info"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
@@ -81,28 +104,43 @@
                 Grid.Column="1"
                 Grid.Row="1"
                 Content="Add Travel"
+                BorderThickness="2"
+                FontFamily="Arial"
                 Margin="15" 
                 Width="200"
+                BorderBrush="MediumSlateBlue"
                 HorizontalAlignment="Left"
+                Foreground="MediumSlateBlue"
                 Click="btnAddTravel_Click"/>
             <Button 
                 x:Name="btnUserDetails"
                 Grid.Column="0"
                 Grid.Row="1"
+                FontFamily="Arial"
                 Width="150"
+                BorderThickness="2"
                 Content="Show User Details"
+                Foreground="MediumSlateBlue"
                 HorizontalAlignment="Right"
                 Margin="15" 
+                BorderBrush="MediumSlateBlue"
                 Click="btnUserDetails_Click"
                 />
             <Button
                 x:Name="btnSignOut"
                 Grid.Column="0"
                 Grid.Row="2"
+                FontFamily="Arial"
                 Margin="15"
+                BorderThickness="2"
+                Foreground="MediumSlateBlue"
+                BorderBrush="MediumSlateBlue"
                 Content="Sign out"
                 Width="150"
                 HorizontalAlignment="Left" Click="btnSignOut_Click"/>
+            <Image Margin="222,12,122,12" Source="/Images/Pil.png" Stretch="Fill" RenderTransformOrigin="0.112,0.463" Grid.Column="1" Grid.Row="1"/>
+            <Image Grid.Column="1" Margin="228,15,127,15" Grid.Row="2" Source="/Images/ettX.png" Stretch="Fill"/>
+            <Image Margin="90,281,222,56" Grid.RowSpan="3" Source="/Images/BetterFlyg.png" Stretch="Fill"/>
         </Grid>
     </Grid>
 </Window>

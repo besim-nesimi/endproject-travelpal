@@ -27,6 +27,7 @@ namespace slutproj_TravelPal
         private UserManager userManager;
         private TravelManager travelManager;
         private Vacation vacation;
+        bool isBoxChecked = false;
 
         public AddTravelWindow(UserManager userManager, TravelManager travelManager)
         {
@@ -35,6 +36,8 @@ namespace slutproj_TravelPal
             this.userManager = userManager;
             this.travelManager = travelManager;
 
+
+            // Adds the sources to the AddTravelWindow constructor body, no need now to call the sources within other functions. 
             AddSources();
 
         }
@@ -114,14 +117,16 @@ namespace slutproj_TravelPal
 
             User signedInUser = userManager.SignedInUser as User;
 
+            bool isBoxChecked = false;
+
             if (travelType == "Trip") // Trip is selected
             {
-                if (cbTypeOfTrip.SelectedItem == null)
+                if (cbTypeOfTrip.SelectedItem == null) // If no type of trip is chosen, warning will appear.
                 {
                     MessageBox.Show("You have not chosen type of trip!", "Warning!");
                     return;
                 }
-                else
+                else // Creates the trip.
                 {
                     TripTypes tripType = (TripTypes)Enum.Parse(typeof(TripTypes), cbTypeOfTrip.SelectedItem.ToString()); // What kind of trip is chosen? Leisure or Work?
                     Trip trip = new(tripType, destination, country, traveller, userManager.SignedInUser.Username); // Create the trip.
@@ -132,7 +137,17 @@ namespace slutproj_TravelPal
             }
             else if (travelType == "Vacation") // Vacation is selected
             {
-                Vacation vacation = new(destination, country, traveller, userManager.SignedInUser.Username); // Creates the vacation.
+                Vacation vacation = new(destination, country, traveller, userManager.SignedInUser.Username, isBoxChecked); // Creates the vacation.
+
+                if (xbAllInclusive.IsChecked == true) // If the checkbox is clicked, then it will set the boolean to true.
+                {
+                    isBoxChecked = true;
+                }
+
+                if (isBoxChecked == true) // If the boolean is true, it will set the property "All_Inclusive" to true within the Vacation class.
+                {
+                    vacation.All_Inclusive = true;
+                }
 
                 signedInUser.Travels.Add(vacation); // Add the vacation to the signed in user list of travels.
 
@@ -177,7 +192,7 @@ namespace slutproj_TravelPal
             {
 
                 lblAllInclusive.Visibility = Visibility.Visible;
-                cbxAllInc.Visibility = Visibility.Visible;
+                xbAllInclusive.Visibility = Visibility.Visible;
                 cbTypeOfTrip.Visibility = Visibility.Hidden;
 
             }
@@ -186,7 +201,7 @@ namespace slutproj_TravelPal
                 cbTypeOfTrip.Visibility = Visibility.Visible;
                 cbTypeOfTrip.IsEnabled = true;
                 lblAllInclusive.Visibility = Visibility.Hidden;
-                cbxAllInc.Visibility = Visibility.Hidden;
+                xbAllInclusive.Visibility = Visibility.Hidden;
             }
         }
 
@@ -209,20 +224,6 @@ namespace slutproj_TravelPal
             travelWindow.Show();
 
             Close();
-        }
-
-
-        // Send info about all inclusive. If the checkbox is checked, method AllInc returns true. Does not work!!!
-        private void xbAllInclusive_Checked(object sender, RoutedEventArgs e)
-        {
-            if (xbAllInclusive.Checked) /////////////// WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            {
-                vacation.All_Inclusive = true;
-            }
-            else
-            {
-                vacation.All_Inclusive = false;
-            }
         }
 
     }

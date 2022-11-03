@@ -34,7 +34,7 @@ public class UserManager
         Trip trip = new(TripTypes.Work, "Mt Doom", Countries.New_Zealand, 9, "Gandalf");
         defaultUser.Travels.Add(trip);
 
-        Vacation vacation = new("Imladris", Countries.New_Zealand, 1, "Gandalf");
+        Vacation vacation = new("Imladris", Countries.New_Zealand, 1, "Gandalf", true);
         defaultUser.Travels.Add(vacation);
 
         allUsers.Add(admin);

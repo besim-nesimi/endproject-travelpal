@@ -35,7 +35,7 @@
                 FontSize="24"
                 FontWeight="Bold"
                 FontFamily="Arial"
-                Margin="5"
+                Margin="5,0,0,0"
                 />
             <Label
                 x:Name="lblLoggedInUser"
@@ -80,30 +80,42 @@
                 Grid.Row="5"
                 Foreground="MediumSlateBlue"
                 Content="Country"
-                FontSize="16"
+                FontSize="14"
                 VerticalAlignment="Center"
                 Margin="5"/>
             <TextBox 
                 x:Name="txtUsername"
                 Grid.Column="1"
+                Foreground="MediumSlateBlue"
+                BorderBrush="MediumSlateBlue"
+                FontFamily="Arial"
+                BorderThickness="2"
                 Grid.Row="1"
-                Margin="5"
+                Margin="4"
                 Grid.ColumnSpan="2"/>
             <PasswordBox 
                 x:Name="pbPassword"
                 Grid.Column="1"
                 Grid.Row="3"
-                Margin="5" Grid.ColumnSpan="2"/>
+                BorderBrush="MediumSlateBlue"
+                BorderThickness="2"
+                Margin="4" Grid.ColumnSpan="2"/>
             <PasswordBox 
                 x:Name="pbConfirmPassword"
                 Grid.Column="1"
+                BorderBrush="MediumSlateBlue"
+                BorderThickness="2"
                 Grid.Row="4"
-                Margin="5" Grid.ColumnSpan="2"/>
+                Margin="4" Grid.ColumnSpan="2"/>
             <ComboBox
                 x:Name="cbCountries"
                 Grid.Column="1"
                 Grid.Row="5"
-                Margin="7" 
+                Foreground="MediumSlateBlue"
+                BorderBrush="MediumSlateBlue"
+                BorderThickness="2"
+                FontFamily="Arial"
+                Margin="4" 
                 Grid.ColumnSpan="2"
                 />
             <Button
@@ -112,6 +124,9 @@
                 Grid.Row="6"
                 Margin="10"
                 Content="Save" 
+                Foreground="MediumSlateBlue"
+                BorderBrush="MediumSlateBlue"
+                BorderThickness="2"
                 Grid.ColumnSpan="1"
                 Width="130"
                 HorizontalAlignment="center" Click="btnSave_Click"
@@ -120,11 +135,17 @@
                 x:Name="btnCancel"
                 Grid.Column="1"
                 Grid.Row="6"
+                Foreground="MediumSlateBlue"
+                BorderBrush="MediumSlateBlue"
+                BorderThickness="2"
                 Margin="10"
                 Content="Cancel"
                 Width="130"
                 HorizontalAlignment="Center" 
                 Click="btnCancel_Click"/>
+            <Image Margin="58,23,58,25" Source="/Images/anvandare.png" Stretch="Fill" Grid.RowSpan="2" Grid.Row="6"/>
+
+            <Image Margin="80,41,39,41" Source="/Images/person.png" Stretch="Fill" RenderTransformOrigin="0.433,0.55" Grid.Column="2"/>
         </Grid>
     </Grid>
 </Window>

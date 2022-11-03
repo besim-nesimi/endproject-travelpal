@@ -13,10 +13,11 @@ public class Vacation : Travel
 {
     public bool All_Inclusive { get; set; }
 
-    public Vacation(string destination, Countries country, int traveller, string userID) : base(destination, country, traveller, userID)
+    public Vacation(string destination, Countries country, int traveller, string userID, bool isBoxChecked) : base(destination, country, traveller, userID)
     {
         Destination = destination;
         Country = country;
+        All_Inclusive = isBoxChecked;
         
     }
 
@@ -26,7 +27,7 @@ public class Vacation : Travel
         return $"Vacation destination: {Country}";
     }
 
-    // Might come in handy, just need to know how.
+    // Method never used, and is superflous. Yet lets just leave it here, in case the app becomes bigger and better and whatnot. Might want to return a string or something.
     public string AllInclusive()
     {
         if (All_Inclusive == true)

@@ -33,10 +33,19 @@ public partial class TravelWindow : Window
         this.userManager = userManager;
         this.travelManager = new();
 
+
+        // Shows all the travels of that specific signed in user in the listview.
+
         SendTravelInfo();
+
+
+        // Displays the username and country of the user somewhere in the TravelWindow.
 
         lblUsernameDisplay.Content = userManager.SignedInUser.Username;
         lblUserLocationDisplay.Content = userManager.SignedInUser.Location;
+
+
+        // If the signed in user is admin, the buttons "Show User Details" - "Add Travel" - "Info" will be hidden.
 
         if (userManager.SignedInUser.isAdmin)
         {
@@ -56,15 +65,20 @@ public partial class TravelWindow : Window
         this.userManager = userManager;
         this.travelManager = travelManager;
 
+
+        // Shows all the travels of that specific signed in user in the listview.
+
         SendTravelInfo();
+
+        // Displays the username and country of the user somewhere in the TravelWindow.
 
         lblUsernameDisplay.Content = userManager.SignedInUser.Username;
         lblUserLocationDisplay.Content = userManager.SignedInUser.Location;
 
 
-        // Hid user details and adding travel if admin is logged in. Admin does not need these buttons. 
-        // Admin does not need to change name or travel. 
-        // Admin has no confirmation needs.
+        // If the signed in user is admin, the buttons "Show User Details" - "Add Travel" - "Info" will be hidden.
+        // Admins do not need to change name or travel or read informations of any kind. 
+
         if (userManager.SignedInUser.isAdmin)
         {
             btnUserDetails.Visibility = Visibility.Hidden;
@@ -209,13 +223,14 @@ public partial class TravelWindow : Window
         MessageBox.Show("You need to select a travel to see any details!", "Warning!");
     }
 
+    // Clicking on "Remove travel" button without selecting a travel will make this message pop up.
     private void SelectForDelete()
     {
         MessageBox.Show("You need to select a travel you want to remove!", "Warning!");
     }
 
 
-    // In case of doubt, follow your nose.
+    // In case of doubt, follow your nose. Informations message box when clicking on the info button.
     private void btnInfo_Click(object sender, RoutedEventArgs e)
     {
         string welcomeAboutMessage = "Welcome to TravelPal!" +

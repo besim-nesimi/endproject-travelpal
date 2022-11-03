@@ -38,7 +38,7 @@ public partial class TravelDetailsWindow : Window
         this.travelManager = travelManager;
         this.travel = travel;
 
-        if(travel is Trip)
+        if(travel is Trip) // If the selectedTravel from TravelWindow is a Trip, does this segment of the if statement.
         {
             Trip trip = travel as Trip;
             lblTravelType.Content = "Trip";
@@ -53,7 +53,7 @@ public partial class TravelDetailsWindow : Window
             lblTravellers.Content = trip.Travellers.ToString();
             lblCountry.Content = trip.Country.ToString();
         }
-        else if (travel is Vacation)
+        else if (travel is Vacation) // If the selectedTravel from TravelWindow is a Vacation, does this segment of the if statement.
         {
             Vacation vacation = travel as Vacation;
 

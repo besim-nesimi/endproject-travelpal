@@ -5,12 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:slutproj_TravelPal"
         mc:Ignorable="d"
-        Title="AddTravelWindow" Height="450" Width="800" ResizeMode="NoResize">
+        Title="AddTravelWindow" Height="450" Width="600" ResizeMode="NoResize" Background="MediumSlateBlue">
     <Grid>
         <Grid Grid.Column="0" Margin="10" Background="MintCream">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="5*"/>
                 <ColumnDefinition Width="10*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -26,12 +25,15 @@
 
             <Label 
                 x:Name="lblHeader"
-                Grid.Column="1"
+                Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Content="Please insert your travel informations!"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Left"
-                FontSize="24"
+                BorderBrush="MintCream"
+                BorderThickness="3"
+                FontSize="20"
+                FontFamily="Arial"
                 FontWeight="Bold"
                 Foreground="MediumSlateBlue" 
                 Margin="13,0,0,0"/>
@@ -40,15 +42,19 @@
                 Grid.Column="0"
                 Grid.Row="2"
                 Content="Type of travel"
+                FontFamily="Arial"
                 FontSize="16"
+                Foreground="MediumSlateBlue" 
                 VerticalAlignment="Center" 
-                Grid.ColumnSpan="2"/>
+                Grid.ColumnSpan="2" Margin="13,0,-13,0"/>
             <Label
                 x:Name="lblAllInclusive"
-                Grid.Column="1"
+                Grid.Column="0"
                 Grid.Row="3"
                 Content="All inclusive?"
-                HorizontalAlignment="Center"
+                Foreground="MediumSlateBlue" 
+                FontFamily="Arial"
+                HorizontalAlignment="Right"
                 Margin="0,4,0,4"
                 Visibility="Hidden"
                 />
@@ -57,6 +63,7 @@
                 Grid.Column="1"
                 Grid.Row="3"
                 Content="Leisure or work?"
+                FontFamily="Arial"
                 HorizontalAlignment="Center"
                 Margin="0,4,0,4"
                 Visibility="Hidden"
@@ -66,31 +73,37 @@
                 Grid.Column="0"
                 Grid.Row="4"
                 Content="Number of travellers"
+                FontFamily="Arial"
+                Foreground="MediumSlateBlue" 
                 FontSize="16"
                 VerticalAlignment="Center" 
-                Grid.ColumnSpan="2"/>
+                Grid.ColumnSpan="2" Margin="13,0,-13,0"/>
             <Label 
                 x:Name="lblPurposeOfVisit"
                 Grid.Column="0"
                 Grid.Row="5"
                 Content="Purpose of visit"
+                FontFamily="Arial"
+                Foreground="MediumSlateBlue" 
                 FontSize="16"
                 VerticalAlignment="Center" 
-                Grid.ColumnSpan="2"/>
+                Grid.ColumnSpan="2" Margin="13,0,-13,0"/>
             <Label 
                 x:Name="lblCountries"
                 Grid.Column="0"
-                Grid.Row="1"
                 Content="Country"
+                FontFamily="Arial"
+                Foreground="MediumSlateBlue" 
                 FontSize="16"
-                VerticalAlignment="Center" 
-                Grid.ColumnSpan="2"/>
+                VerticalAlignment="Top" 
+                Grid.ColumnSpan="2" Margin="13,69,-13,0" Grid.RowSpan="2"/>
             <ComboBox
                 x:Name="cbTypeOfTrip"
                 Grid.Row="3"
                 Grid.Column="2"
                 Margin="4,4,0,4"
                 IsEnabled="False"
+                FontFamily="Arial"
                 Width="150"
                 HorizontalAlignment="Left" 
                 Visibility="Hidden"/>
@@ -98,8 +111,12 @@
                 x:Name="cbTypeofTravel"
                 IsEnabled="false"
                 Grid.Column="2"
+                FontFamily="Arial"
+                Foreground="MediumSlateBlue"
                 Grid.Row="2"
                 Width="150"
+                BorderBrush="MediumSlateBlue"
+                BorderThickness="2"
                 HorizontalAlignment="Left"
                 Margin="4,4,0,4" 
                 SelectionChanged="cbTypeofTravel_SelectionChanged"
@@ -111,40 +128,58 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 Margin="4"
-                Visibility="Hidden" Checked="xbAllInclusive_Checked"
+                Visibility="Hidden"
                 />
             <TextBox 
                 x:Name="tbDestination"
                 Grid.Column="2"
                 Grid.Row="5"
+                FontFamily="Arial"
+                Width="300"
+                HorizontalAlignment="Left"
                 TextWrapping="Wrap"
                 HorizontalContentAlignment="Left"
-                Margin="4,4,4,4" 
+                Margin="4" 
+                BorderBrush="MediumSlateBlue"
+                Foreground="MediumSlateBlue"
+                BorderThickness="2"
                 />
             <TextBox 
                 x:Name="tbTravellers"
                 Grid.Column="2"
+                FontFamily="Arial"
                 Grid.Row="4"
                 Width="150"
-                Margin="4,4,4,4" 
+                Margin="4" 
+                Foreground="MediumSlateBlue"
                 HorizontalAlignment="Left"
+                BorderBrush="MediumSlateBlue"
+                BorderThickness="2"
                 
                 />
             <ComboBox
                 x:Name="cbCountries"
                 Grid.Column="2"
+                FontFamily="Arial"
+                Foreground="MediumSlateBlue"
                 Grid.Row="1"
                 Margin="4"
+                BorderBrush="MediumSlateBlue"
+                BorderThickness="2"
                 Width="150"
                 HorizontalAlignment="Left"
                 SelectionChanged="cbCountries_SelectionChanged" />
             <Button
                 x:Name="btnAddTravel"
-                Grid.Column="2"
+                Grid.Column="1"
                 Grid.Row="6"
-                Margin="4"
-                Width="200"
-                HorizontalAlignment="Right"
+                Margin="146,4,0,4"
+                FontFamily="Arial"
+                BorderBrush="MediumSlateBlue"
+                Foreground="MediumSlateBlue"
+                BorderThickness="2"
+                Width="100"
+                HorizontalAlignment="Left"
                 Content="Add Travel"
                 Click="btnAddTravel_Click" />
             <Button
@@ -152,10 +187,17 @@
                 Grid.Column="2"
                 Grid.Row="6"
                 Margin="4"
-                Width="200"
+                FontFamily="Arial"
+                BorderBrush="MediumSlateBlue"
+                Foreground="MediumSlateBlue"
+                BorderThickness="2"
+                Width="100"
                 HorizontalAlignment="Left"
                 Content="Cancel" 
                 Click="btnCancelReturn_Click"/>
+            <Image Grid.Column="1" Margin="235,0,83,34" Grid.RowSpan="2" Source="/Images/Map.png" Stretch="Fill"/>
+            <Image Margin="44,103,44,0" Grid.RowSpan="3" Grid.Row="5" Source="/Images/BetterFlyg.png" Stretch="Fill"/>
+            <Image Grid.Column="1" Margin="309,7,22,6" Source="/Images/BetterSuitcase.png" Stretch="Fill"/>
         </Grid>
     </Grid>
 </Window>
