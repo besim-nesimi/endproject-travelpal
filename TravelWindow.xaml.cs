@@ -39,10 +39,9 @@ public partial class TravelWindow : Window
         SendTravelInfo();
 
 
-        // Displays the username and country of the user somewhere in the TravelWindow.
+        // Displays the username of the user somewhere in the TravelWindow.
 
         lblUsernameDisplay.Content = userManager.SignedInUser.Username;
-        lblUserLocationDisplay.Content = userManager.SignedInUser.Location;
 
 
         // If the signed in user is admin, the buttons "Show User Details" - "Add Travel" - "Info" will be hidden.
@@ -70,10 +69,9 @@ public partial class TravelWindow : Window
 
         SendTravelInfo();
 
-        // Displays the username and country of the user somewhere in the TravelWindow.
+        // Displays the username of the user somewhere in the TravelWindow.
 
         lblUsernameDisplay.Content = userManager.SignedInUser.Username;
-        lblUserLocationDisplay.Content = userManager.SignedInUser.Location;
 
 
         // If the signed in user is admin, the buttons "Show User Details" - "Add Travel" - "Info" will be hidden.
