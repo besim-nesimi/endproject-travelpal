@@ -14,6 +14,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -53,9 +54,10 @@ namespace slutproj_TravelPal
 
             string username = txtUsername.Text;
             string password = pbPassword.Password;
+            string confirmPass = pbConfirmPassword.Password;
             string country = cbCountries.SelectedItem as string;
 
-            string[] fields = new[] { username, password, country };
+            string[] fields = new[] { username, password, confirmPass, country };
 
 
             foreach (string field in fields)
@@ -67,6 +69,11 @@ namespace slutproj_TravelPal
                     return false;
                 }
                 else if (string.IsNullOrEmpty(password))
+                {
+                    MessageBox.Show("Check your username or password.", "Warning!");
+                    return false;
+                }
+                else if (string.IsNullOrEmpty(confirmPass))
                 {
                     MessageBox.Show("Check your username or password.", "Warning!");
                     return false;
@@ -86,7 +93,7 @@ namespace slutproj_TravelPal
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
 
-            if (CheckInputs())
+            if (CheckInputs() == true && userManager.ConfirmNewPassword(pbPassword.Password, pbConfirmPassword.Password))
             {
                 if (cbCountries.SelectedItem == null)
                 {
