@@ -68,7 +68,7 @@ namespace slutproj_TravelPal
 
             Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), cbCountries.SelectedItem.ToString()); 
 
-            if (userManager.ValidateUsername(txtUsername.Text) && userManager.ConfirmNewPassword(pbPassword.Password, pbConfirmPassword.Password) && userManager.CheckNewPasswordLength(pbPassword.Password))
+            if (userManager.CheckUserLenght(txtUsername.Text) && userManager.ValidateUsername(txtUsername.Text) && userManager.ConfirmNewPassword(pbPassword.Password, pbConfirmPassword.Password) && userManager.CheckNewPasswordLength(pbPassword.Password))
             {
                 userManager.SignedInUser.Username = txtUsername.Text;
                 userManager.SignedInUser.Password = pbPassword.Password;

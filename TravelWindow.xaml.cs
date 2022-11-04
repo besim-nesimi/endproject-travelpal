@@ -42,6 +42,7 @@ public partial class TravelWindow : Window
         // Displays the username of the user somewhere in the TravelWindow.
 
         lblUsernameDisplay.Content = userManager.SignedInUser.Username;
+        
 
 
         // If the signed in user is admin, the buttons "Show User Details" - "Add Travel" - "Info" will be hidden.
@@ -51,6 +52,7 @@ public partial class TravelWindow : Window
             btnUserDetails.Visibility = Visibility.Hidden;
             btnAddTravel.Visibility = Visibility.Hidden;
             btnInfo.Visibility = Visibility.Hidden;
+            ___imgPil_.Visibility = Visibility.Hidden;
             return;
         }
 

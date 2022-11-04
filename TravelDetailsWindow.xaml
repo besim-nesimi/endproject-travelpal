@@ -52,7 +52,7 @@
             FontFamily="Arial"
             FontSize="14"
             Foreground="MediumSlateBlue"
-            Content="Destination: "
+            Content="Destination/Purpose: "
             Margin="10"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"/>

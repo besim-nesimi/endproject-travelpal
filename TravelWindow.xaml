@@ -138,7 +138,7 @@
                 Content="Sign out"
                 Width="150"
                 HorizontalAlignment="Left" Click="btnSignOut_Click"/>
-            <Image Margin="222,12,122,12" Source="/Images/Pil.png" Stretch="Fill" RenderTransformOrigin="0.112,0.463" Grid.Column="1" Grid.Row="1"/>
+            <Image x:Name="___imgPil_" Margin="222,12,122,12" Source="/Images/Pil.png" Stretch="Fill" RenderTransformOrigin="0.112,0.463" Grid.Column="1" Grid.Row="1"/>
             <Image Grid.Column="1" Margin="228,15,127,15" Grid.Row="2" Source="/Images/ettX.png" Stretch="Fill"/>
             <Image Margin="90,281,222,56" Grid.RowSpan="3" Source="/Images/BetterFlyg.png" Stretch="Fill"/>
         </Grid>
